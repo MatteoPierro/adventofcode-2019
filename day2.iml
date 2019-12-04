@@ -25,5 +25,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="org.jooq:jool:0.9.14" level="project" />
+    <orderEntry type="library" name="com.google.guava:guava:19.0" level="project" />
   </component>
 </module>
