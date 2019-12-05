@@ -92,26 +92,24 @@ public class ChanceOfAsteroidsTest {
         return String.join(",", instructions);
     }
 
-    private List<String> execute(String[] instructions) {
+    private List<String> execute(String[] memory) {
         List<String> outputs = new ArrayList<>();
-        for (int instructionIndex = 0; instructionIndex < instructions.length;) {
-            String operation = instructions[instructionIndex];
-            if (STOP_OPERATION.equals(operation)) break;
-            if (SUM_OPERATION.equals(operation)) {
-                sum(instructions, instructionIndex);
-                instructionIndex += 4;
-            } else if (MULTIPLY_OPERATION.equals(operation)) {
-                multiply(instructions, instructionIndex);
-                instructionIndex += 4;
-            } else if (SAVE_OPERATION.equals(operation)) {
-                save(instructions, instructionIndex);
-                instructionIndex += 2;
-            } else if (OUTPUT_OPERATION.equals(operation)) {
-                output(outputs, instructions, instructionIndex);
-                instructionIndex += 2;
-            } else {
-                if (operation.contains(MULTIPLY_OPERATION)) computeParameterMode(instructions, instructionIndex);
-                instructionIndex += 4;
+        for (int memoryIndex = 0; memoryIndex < memory.length;) {
+            String operationCode = memory[memoryIndex];
+            if (STOP_OPERATION.equals(operationCode)) break;
+            if (SUM_OPERATION.equals(operationCode)) {
+                sum(memory, memoryIndex);
+                memoryIndex += 4;
+            } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
+                Multiply operation = new Multiply(operationCode);
+                operation.execute(memory, memoryIndex);
+                memoryIndex += operation.size();
+            } else if (SAVE_OPERATION.equals(operationCode)) {
+                save(memory, memoryIndex);
+                memoryIndex += 2;
+            } else if (OUTPUT_OPERATION.equals(operationCode)) {
+                output(outputs, memory, memoryIndex);
+                memoryIndex += 2;
             }
         }
         return outputs;
@@ -164,10 +162,6 @@ public class ChanceOfAsteroidsTest {
         execute(instructions, instructionIndex, Integer::sum);
     }
 
-    private void multiply(String[] instructions, int instructionIndex) {
-        execute(instructions, instructionIndex, (a, b) -> a * b);
-    }
-
     private void execute(String[] instructions, int instructionIndex, BiFunction<Integer, Integer, Integer> operation) {
         int first = operandForOperandPosition(instructions, instructionIndex + 1);
         int second = operandForOperandPosition(instructions, instructionIndex + 2);
@@ -187,6 +181,7 @@ public class ChanceOfAsteroidsTest {
 
     private interface Operation {
         void execute(String[] memory, int memoryIndex);
+        int size();
     }
 
     private interface Mode {
@@ -237,12 +232,43 @@ public class ChanceOfAsteroidsTest {
             this.resultMode = resultMode;
         }
 
+        public Multiply(String operationCode) {
+            if (operationCode.length() == 1) {
+                this.firstOperandMode = new Position();
+                this.secondOperandMode = new Position();
+                this.resultMode = new Position();
+            } else {
+                this.firstOperandMode = extractFirstOperandMode(operationCode);
+                this.secondOperandMode = extractSecondOperandMode(operationCode);
+                this.resultMode = extractResultOperandMode(operationCode);
+            }
+        }
+
+        private Mode extractFirstOperandMode(String instruction) {
+            return Mode.modeFor(instruction.split("")[instruction.length() - 3]);
+        }
+
+        private Mode extractSecondOperandMode(String instruction) {
+            return Mode.modeFor(instruction.split("")[instruction.length() - 4]);
+        }
+
+        private Mode extractResultOperandMode(String instruction) {
+            if (instruction.length() == 4) return new Position();
+
+            return Mode.modeFor(instruction.split("")[instruction.length() - 5]);
+        }
+
         @Override
         public void execute(String[] memory, int memoryIndex) {
             Integer firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
             Integer secondOperand = secondOperandMode.read(memory, memoryIndex + 2);
             String value = String.valueOf(firstOperand * secondOperand);
             resultMode.write(memory, memoryIndex + 3, value);
+        }
+
+        @Override
+        public int size() {
+            return 4;
         }
     }
 }
