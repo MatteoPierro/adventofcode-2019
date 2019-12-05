@@ -19,7 +19,7 @@ class ChanceOfAsteroidsTest {
     private static final String MULTIPLY_OPERATION = "2";
     private static final String SAVE_OPERATION = "3";
     private static final String STOP_OPERATION = "99";
-    private static final String OUTPUT_OPERATION = "4";
+    private static final String READ_OPERATION = "4";
     private static final String INPUT = "1";
 
     @ParameterizedTest
@@ -95,30 +95,26 @@ class ChanceOfAsteroidsTest {
         List<String> outputs = new ArrayList<>();
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
-            if (STOP_OPERATION.equals(operationCode)) break;
-            if (SUM_OPERATION.equals(operationCode)) {
-                Operation operation = new Sum(operationCode);
-                operation.execute(memory, memoryIndex);
-                memoryIndex += operation.size();
-            } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
-                Operation operation = new Multiply(operationCode);
-                operation.execute(memory, memoryIndex);
-                memoryIndex += operation.size();
-            } else if (SAVE_OPERATION.equals(operationCode)) {
-                Operation operation = new Save();
-                operation.execute(memory, memoryIndex);
-                memoryIndex += operation.size();
-            } else if (OUTPUT_OPERATION.equals(operationCode)) {
-                output(outputs, memory, memoryIndex);
-                memoryIndex += 2;
-            }
+            Operation operation = operationFor(operationCode, outputs);
+            operation.execute(memory, memoryIndex);
+            memoryIndex += operation.size();
         }
         return outputs;
     }
 
-    private void output(List<String> outputs, String[] instructions, int instructionIndex) {
-        int resultPosition = Integer.parseInt(instructions[instructionIndex + 1]);
-        outputs.add(instructions[resultPosition]);
+    private Operation operationFor(String operationCode, List<String> outputs) {
+        if (STOP_OPERATION.equals(operationCode)) {
+            return new Stop();
+        } else if (SUM_OPERATION.equals(operationCode)) {
+            return new Sum(operationCode);
+        } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
+            return new Multiply(operationCode);
+        } else if (SAVE_OPERATION.equals(operationCode)) {
+            return new Save();
+        } else if (READ_OPERATION.equals(operationCode)) {
+            return new Read(outputs);
+        }
+        throw new RuntimeException("Not Supported Operation!");
     }
 
     private interface Operation {
@@ -244,6 +240,42 @@ class ChanceOfAsteroidsTest {
         @Override
         public int size() {
             return 2;
+        }
+    }
+
+    private static class Read implements Operation {
+
+        private final List<String> outputs;
+
+        Read(List<String> outputs) {
+            this.outputs = outputs;
+        }
+
+        @Override
+        public void execute(String[] memory, int memoryIndex) {
+            int resultPosition = Integer.parseInt(memory[memoryIndex + 1]);
+            outputs.add(memory[resultPosition]);
+        }
+
+        @Override
+        public int size() {
+            return 2;
+        }
+    }
+
+    private static class Stop implements Operation {
+        private int memorySize = Integer.MAX_VALUE;
+        private int memoryIndex = 0;
+
+        @Override
+        public void execute(String[] memory, int memoryIndex) {
+            this.memorySize = memory.length;
+            this.memoryIndex = memoryIndex;
+        }
+
+        @Override
+        public int size() {
+            return memorySize - memoryIndex;
         }
     }
 }
