@@ -61,13 +61,13 @@ class ChanceOfAsteroidsTest {
     @Test
     void thirdPuzzle() throws IOException {
         String[] program = Files.readString(Paths.get("./input_day5")).split(",");
-        List<String> results = execute(program);
+        List<String> results = execute(program, "1");
         assertThat(results).containsExactly("3", "0", "0", "0", "0", "0", "0", "0", "0", "12234644");
     }
 
     @Test
     void outputItsInput() {
-        List<String> output = execute("3,0,4,0,99".split(","));
+        List<String> output = execute("3,0,4,0,99".split(","), INPUT);
         assertThat(output).containsExactly(INPUT);
     }
 
@@ -88,28 +88,27 @@ class ChanceOfAsteroidsTest {
     }
 
     private String compute(String[] instructions) {
-        execute(instructions);
+        execute(instructions, INPUT);
         return instructions[0];
     }
 
     String execute(String program) {
         String[] instructions = program.split(",");
-        execute(instructions);
+        execute(instructions, INPUT);
         return String.join(",", instructions);
     }
 
-    private List<String> execute(String[] memory) {
+    private List<String> execute(String[] memory, String input) {
         List<String> outputs = new ArrayList<>();
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
-            Operation operation = operationFor(operationCode, outputs);
-            operation.execute(memory, memoryIndex);
-            memoryIndex += operation.size();
+            Operation operation = operationFor(operationCode, outputs, input);
+            memoryIndex = operation.execute(memory, memoryIndex);
         }
         return outputs;
     }
 
-    private Operation operationFor(String operationCode, List<String> outputs) {
+    private Operation operationFor(String operationCode, List<String> outputs, String input) {
         if (STOP_OPERATION.equals(operationCode)) {
             return new Stop();
         } else if (operationCode.endsWith(SUM_OPERATION)) {
@@ -117,7 +116,7 @@ class ChanceOfAsteroidsTest {
         } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
             return new Multiply(operationCode);
         } else if (SAVE_OPERATION.equals(operationCode)) {
-            return new Save();
+            return new Save(input);
         } else if (operationCode.contains(READ_OPERATION)) {
             return new Read(outputs);
         }
@@ -125,9 +124,7 @@ class ChanceOfAsteroidsTest {
     }
 
     private interface Operation {
-        void execute(String[] memory, int memoryIndex);
-
-        int size();
+        int execute(String[] memory, int memoryIndex);
     }
 
     private interface Mode {
@@ -169,6 +166,7 @@ class ChanceOfAsteroidsTest {
     }
 
     public static abstract class TwoOperandsOperation implements Operation {
+        private static final int INSTRUCTION_SIZE = 4;
         private final Mode firstOperandMode;
         private final Mode secondOperandMode;
         private final Mode resultMode;
@@ -192,16 +190,12 @@ class ChanceOfAsteroidsTest {
         }
 
         @Override
-        public void execute(String[] memory, int memoryIndex) {
+        public int execute(String[] memory, int memoryIndex) {
             Integer firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
             Integer secondOperand = secondOperandMode.read(memory, memoryIndex + 2);
             String value = String.valueOf(execute(firstOperand, secondOperand));
             resultMode.write(memory, memoryIndex + 3, value);
-        }
-
-        @Override
-        public int size() {
-            return 4;
+            return memoryIndex + INSTRUCTION_SIZE;
         }
 
         protected abstract int execute(int firstOperand, int secondOperand);
@@ -232,51 +226,41 @@ class ChanceOfAsteroidsTest {
 
     private static class Save implements Operation {
 
-        @Override
-        public void execute(String[] memory, int memoryIndex) {
-            int savePosition = Integer.parseInt(memory[memoryIndex + 1]);
-            memory[savePosition] = INPUT;
+        private final String input;
+
+        Save(String input) {
+            this.input = input;
         }
 
         @Override
-        public int size() {
-            return 2;
+        public int execute(String[] memory, int memoryIndex) {
+            int savePosition = Integer.parseInt(memory[memoryIndex + 1]);
+            memory[savePosition] = input;
+            return memoryIndex + 2;
         }
     }
 
     private static class Read implements Operation {
 
         private final List<String> outputs;
+        private final Mode firstOperandMode = new Immediate();
 
         Read(List<String> outputs) {
             this.outputs = outputs;
         }
 
         @Override
-        public void execute(String[] memory, int memoryIndex) {
-            int resultPosition = Integer.parseInt(memory[memoryIndex + 1]);
+        public int execute(String[] memory, int memoryIndex) {
+            int resultPosition = firstOperandMode.read(memory, memoryIndex + 1);
             outputs.add(memory[resultPosition]);
-        }
-
-        @Override
-        public int size() {
-            return 2;
+            return memoryIndex + 2;
         }
     }
 
     private static class Stop implements Operation {
-        private int memorySize = Integer.MAX_VALUE;
-        private int memoryIndex = 0;
-
         @Override
-        public void execute(String[] memory, int memoryIndex) {
-            this.memorySize = memory.length;
-            this.memoryIndex = memoryIndex;
-        }
-
-        @Override
-        public int size() {
-            return memorySize - memoryIndex;
+        public int execute(String[] memory, int memoryIndex) {
+            return memory.length;
         }
     }
 }
