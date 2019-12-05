@@ -105,8 +105,9 @@ class ChanceOfAsteroidsTest {
                 operation.execute(memory, memoryIndex);
                 memoryIndex += operation.size();
             } else if (SAVE_OPERATION.equals(operationCode)) {
-                save(memory, memoryIndex);
-                memoryIndex += 2;
+                Operation operation = new Save();
+                operation.execute(memory, memoryIndex);
+                memoryIndex += operation.size();
             } else if (OUTPUT_OPERATION.equals(operationCode)) {
                 output(outputs, memory, memoryIndex);
                 memoryIndex += 2;
@@ -118,11 +119,6 @@ class ChanceOfAsteroidsTest {
     private void output(List<String> outputs, String[] instructions, int instructionIndex) {
         int resultPosition = Integer.parseInt(instructions[instructionIndex + 1]);
         outputs.add(instructions[resultPosition]);
-    }
-
-    private void save(String[] instructions, int instructionIndex) {
-        int savePosition = Integer.parseInt(instructions[instructionIndex + 1]);
-        instructions[savePosition] = INPUT;
     }
 
     private interface Operation {
@@ -234,6 +230,20 @@ class ChanceOfAsteroidsTest {
         @Override
         protected int execute(int firstOperand, int secondOperand) {
             return firstOperand + secondOperand;
+        }
+    }
+
+    private static class Save implements Operation {
+
+        @Override
+        public void execute(String[] memory, int memoryIndex) {
+            int savePosition = Integer.parseInt(memory[memoryIndex + 1]);
+            memory[savePosition] = INPUT;
+        }
+
+        @Override
+        public int size() {
+            return 2;
         }
     }
 }
