@@ -21,6 +21,8 @@ class ChanceOfAsteroidsTest {
     private static final String STOP_OPERATION = "99";
     private static final String READ_OPERATION = "4";
     private static final String JUMP_IF_TRUE = "5";
+    private static final String JUMP_IF_FALSE = "6";
+
     private static final String INPUT = "1";
 
     @ParameterizedTest
@@ -66,9 +68,31 @@ class ChanceOfAsteroidsTest {
         assertThat(results).containsExactly("3", "0", "0", "0", "0", "0", "0", "0", "0", "12234644");
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "0,0",
+            "123,1"
+    })
+    void jumpPositionMode(String input, String expectedResult) {
+        String program = "3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9";
+        List<String> result = execute(input, program);
+        assertThat(result).containsExactly(expectedResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0,0",
+            "123,1"
+    })
+    void jumpImmediateMode(String input, String expectedResult) {
+        String program = "3,3,1105,-1,9,1101,0,0,12,4,12,99,1";
+        List<String> result = execute(input, program);
+        assertThat(result).containsExactly(expectedResult);
+    }
+
     @Test
     void outputItsInput() {
-        List<String> output = execute("3,0,4,0,99".split(","), INPUT);
+        List<String> output = execute(INPUT, "3,0,4,0,99");
         assertThat(output).containsExactly(INPUT);
     }
 
@@ -99,6 +123,10 @@ class ChanceOfAsteroidsTest {
         return String.join(",", instructions);
     }
 
+    private List<String> execute(String input, String program) {
+        return execute(program.split(","), input);
+    }
+
     private List<String> execute(String[] memory, String input) {
         List<String> outputs = new ArrayList<>();
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
@@ -116,12 +144,14 @@ class ChanceOfAsteroidsTest {
             return new Sum(operationCode);
         } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
             return new Multiply(operationCode);
-        } else if (SAVE_OPERATION.equals(operationCode)) {
+        } else if (operationCode.endsWith(SAVE_OPERATION)) {
             return new Save(input);
-        } else if (operationCode.contains(READ_OPERATION)) {
+        } else if (operationCode.endsWith(READ_OPERATION)) {
             return new Read(outputs);
-        } else if (operationCode.contains(JUMP_IF_TRUE)) {
+        } else if (operationCode.endsWith(JUMP_IF_TRUE)) {
             return new JumpIfTrue(operationCode);
+        } else if (operationCode.endsWith(JUMP_IF_FALSE)) {
+            return new JumpIfFalse(operationCode);
         }
         throw new RuntimeException("Not Supported Operation! " + operationCode);
     }
@@ -281,17 +311,40 @@ class ChanceOfAsteroidsTest {
         }
     }
 
-    private static class JumpIfTrue extends TwoOperandOperation {
-        JumpIfTrue(String operationCode) {
+    public static abstract class Jump extends TwoOperandOperation {
+        Jump(String operationCode) {
             super(operationCode);
         }
 
         @Override
         protected int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand) {
-            if (firstOperand != 0) return secondOperand;
+            if (jumpCondition(firstOperand)) return secondOperand;
 
             return memoryIndex + 3;
         }
 
+        protected abstract boolean jumpCondition(Integer firstOperand);
+    }
+
+    private static class JumpIfTrue extends Jump {
+        JumpIfTrue(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected boolean jumpCondition(Integer firstOperand) {
+            return firstOperand != 0;
+        }
+    }
+
+    private static class JumpIfFalse extends Jump {
+        JumpIfFalse(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected boolean jumpCondition(Integer firstOperand) {
+            return firstOperand == 0;
+        }
     }
 }
