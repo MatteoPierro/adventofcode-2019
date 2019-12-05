@@ -20,6 +20,7 @@ class ChanceOfAsteroidsTest {
     private static final String SAVE_OPERATION = "3";
     private static final String STOP_OPERATION = "99";
     private static final String READ_OPERATION = "4";
+    private static final String JUMP_IF_TRUE = "5";
     private static final String INPUT = "1";
 
     @ParameterizedTest
@@ -119,6 +120,8 @@ class ChanceOfAsteroidsTest {
             return new Save(input);
         } else if (operationCode.contains(READ_OPERATION)) {
             return new Read(outputs);
+        } else if (operationCode.contains(JUMP_IF_TRUE)) {
+            return new JumpIfTrue(operationCode);
         }
         throw new RuntimeException("Not Supported Operation! " + operationCode);
     }
@@ -165,20 +168,17 @@ class ChanceOfAsteroidsTest {
         }
     }
 
-    public static abstract class TwoOperandsOperation implements Operation {
-        private static final int INSTRUCTION_SIZE = 4;
+    public static abstract class TwoOperandOperation implements Operation {
         private final Mode firstOperandMode;
         private final Mode secondOperandMode;
-        private final Mode resultMode;
 
-        TwoOperandsOperation(String operationCode) {
+        TwoOperandOperation(String operationCode) {
             this.firstOperandMode = extractFirstOperandMode(operationCode);
             this.secondOperandMode = extractSecondOperandMode(operationCode);
-            this.resultMode = new Position();
         }
 
         private Mode extractFirstOperandMode(String operationCode) {
-            if (operationCode.length() == 1) return new Position();
+            if (operationCode.length() < 3) return new Position();
 
             return Mode.modeFor(operationCode.split("")[operationCode.length() - 3]);
         }
@@ -193,6 +193,23 @@ class ChanceOfAsteroidsTest {
         public int execute(String[] memory, int memoryIndex) {
             Integer firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
             Integer secondOperand = secondOperandMode.read(memory, memoryIndex + 2);
+            return execute(memory, memoryIndex, firstOperand, secondOperand);
+        }
+
+        protected abstract int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand);
+    }
+
+    public static abstract class MathOperation extends TwoOperandOperation {
+        private static final int INSTRUCTION_SIZE = 4;
+        private final Mode resultMode;
+
+        MathOperation(String operationCode) {
+            super(operationCode);
+            this.resultMode = new Position();
+        }
+
+        @Override
+        protected int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand) {
             String value = String.valueOf(execute(firstOperand, secondOperand));
             resultMode.write(memory, memoryIndex + 3, value);
             return memoryIndex + INSTRUCTION_SIZE;
@@ -201,7 +218,7 @@ class ChanceOfAsteroidsTest {
         protected abstract int execute(int firstOperand, int secondOperand);
     }
 
-    private static class Multiply extends TwoOperandsOperation {
+    private static class Multiply extends MathOperation {
 
         Multiply(String operationCode) {
             super(operationCode);
@@ -213,7 +230,7 @@ class ChanceOfAsteroidsTest {
         }
     }
 
-    private static class Sum extends TwoOperandsOperation {
+    private static class Sum extends MathOperation {
         Sum(String operationCode) {
             super(operationCode);
         }
@@ -262,5 +279,19 @@ class ChanceOfAsteroidsTest {
         public int execute(String[] memory, int memoryIndex) {
             return memory.length;
         }
+    }
+
+    private static class JumpIfTrue extends TwoOperandOperation {
+        JumpIfTrue(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand) {
+            if (firstOperand != 0) return secondOperand;
+
+            return memoryIndex + 3;
+        }
+
     }
 }
