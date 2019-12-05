@@ -11,11 +11,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ChanceOfAsteroidsTest {
+class ChanceOfAsteroidsTest {
     private static final String SUM_OPERATION = "1";
     private static final String MULTIPLY_OPERATION = "2";
     private static final String SAVE_OPERATION = "3";
@@ -98,10 +97,11 @@ public class ChanceOfAsteroidsTest {
             String operationCode = memory[memoryIndex];
             if (STOP_OPERATION.equals(operationCode)) break;
             if (SUM_OPERATION.equals(operationCode)) {
-                sum(memory, memoryIndex);
-                memoryIndex += 4;
+                Operation operation = new Sum(operationCode);
+                operation.execute(memory, memoryIndex);
+                memoryIndex += operation.size();
             } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
-                Multiply operation = new Multiply(operationCode);
+                Operation operation = new Multiply(operationCode);
                 operation.execute(memory, memoryIndex);
                 memoryIndex += operation.size();
             } else if (SAVE_OPERATION.equals(operationCode)) {
@@ -123,27 +123,6 @@ public class ChanceOfAsteroidsTest {
     private void save(String[] instructions, int instructionIndex) {
         int savePosition = Integer.parseInt(instructions[instructionIndex + 1]);
         instructions[savePosition] = INPUT;
-    }
-
-    void sum(String[] instructions, int instructionIndex) {
-        execute(instructions, instructionIndex, Integer::sum);
-    }
-
-    private void execute(String[] instructions, int instructionIndex, BiFunction<Integer, Integer, Integer> operation) {
-        int first = operandForOperandPosition(instructions, instructionIndex + 1);
-        int second = operandForOperandPosition(instructions, instructionIndex + 2);
-        int sum = operation.apply(first, second);
-        store(instructions, instructionIndex, sum);
-    }
-
-    private void store(String[] instructions, int instructionIndex, int value) {
-        int storePosition = Integer.parseInt(instructions[instructionIndex + 3]);
-        instructions[storePosition] = String.valueOf(value);
-    }
-
-    private int operandForOperandPosition(String[] instructions, int position) {
-        int operandPosition = Integer.parseInt(instructions[position]);
-        return Integer.parseInt(instructions[operandPosition]);
     }
 
     private interface Operation {
@@ -190,12 +169,12 @@ public class ChanceOfAsteroidsTest {
         }
     }
 
-    private static class Multiply implements Operation {
+    public static abstract class TwoOperandsOperation implements Operation {
         private final Mode firstOperandMode;
         private final Mode secondOperandMode;
         private final Mode resultMode;
 
-        Multiply(String operationCode) {
+        TwoOperandsOperation(String operationCode) {
             this.firstOperandMode = extractFirstOperandMode(operationCode);
             this.secondOperandMode = extractSecondOperandMode(operationCode);
             this.resultMode = extractResultOperandMode(operationCode);
@@ -223,13 +202,38 @@ public class ChanceOfAsteroidsTest {
         public void execute(String[] memory, int memoryIndex) {
             Integer firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
             Integer secondOperand = secondOperandMode.read(memory, memoryIndex + 2);
-            String value = String.valueOf(firstOperand * secondOperand);
+            String value = String.valueOf(execute(firstOperand, secondOperand));
             resultMode.write(memory, memoryIndex + 3, value);
         }
 
         @Override
         public int size() {
             return 4;
+        }
+
+        protected abstract int execute(int firstOperand, int secondOperand);
+    }
+
+    private static class Multiply extends TwoOperandsOperation {
+
+        Multiply(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected int execute(int firstOperand, int secondOperand) {
+            return firstOperand * secondOperand;
+        }
+    }
+
+    private static class Sum extends TwoOperandsOperation {
+        Sum(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected int execute(int firstOperand, int secondOperand) {
+            return firstOperand + secondOperand;
         }
     }
 }
