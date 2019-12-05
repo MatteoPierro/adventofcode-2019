@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/ChanceOfAsteroidsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/ChanceOfAsteroidsTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChanceOfAsteroidsTest.outputItsInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ChanceOfAsteroidsTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -90,7 +91,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.ChanceOfAsteroidsTest" />
-      <option name="METHOD_NAME" value="outputItsInput" />
+      <option name="METHOD_NAME" value="name" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,7 +129,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SecureContainerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ChanceOfAsteroidsTest.thirdPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -137,8 +138,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SecureContainerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ChanceOfAsteroidsTest" />
+      <option name="METHOD_NAME" value="thirdPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -146,10 +148,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ChanceOfAsteroidsTest" />
+        <item itemvalue="JUnit.ChanceOfAsteroidsTest.name" />
+        <item itemvalue="JUnit.ChanceOfAsteroidsTest.thirdPuzzle" />
         <item itemvalue="JUnit.ChanceOfAsteroidsTest.parameterModes" />
         <item itemvalue="JUnit.ChanceOfAsteroidsTest.testExtractOperation" />
-        <item itemvalue="JUnit.ChanceOfAsteroidsTest.outputItsInput" />
-        <item itemvalue="JUnit.SecureContainerTest" />
       </list>
     </recent_temporary>
   </component>

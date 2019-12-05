@@ -59,6 +59,13 @@ class ChanceOfAsteroidsTest {
     }
 
     @Test
+    void thirdPuzzle() throws IOException {
+        String[] program = Files.readString(Paths.get("./input_day5")).split(",");
+        List<String> results = execute(program);
+        assertThat(results).containsExactly("3", "0", "0", "0", "0", "0", "0", "0", "0", "12234644");
+    }
+
+    @Test
     void outputItsInput() {
         List<String> output = execute("3,0,4,0,99".split(","));
         assertThat(output).containsExactly(INPUT);
@@ -105,16 +112,16 @@ class ChanceOfAsteroidsTest {
     private Operation operationFor(String operationCode, List<String> outputs) {
         if (STOP_OPERATION.equals(operationCode)) {
             return new Stop();
-        } else if (SUM_OPERATION.equals(operationCode)) {
+        } else if (operationCode.endsWith(SUM_OPERATION)) {
             return new Sum(operationCode);
         } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
             return new Multiply(operationCode);
         } else if (SAVE_OPERATION.equals(operationCode)) {
             return new Save();
-        } else if (READ_OPERATION.equals(operationCode)) {
+        } else if (operationCode.contains(READ_OPERATION)) {
             return new Read(outputs);
         }
-        throw new RuntimeException("Not Supported Operation!");
+        throw new RuntimeException("Not Supported Operation! " + operationCode);
     }
 
     private interface Operation {
@@ -169,7 +176,7 @@ class ChanceOfAsteroidsTest {
         TwoOperandsOperation(String operationCode) {
             this.firstOperandMode = extractFirstOperandMode(operationCode);
             this.secondOperandMode = extractSecondOperandMode(operationCode);
-            this.resultMode = extractResultOperandMode(operationCode);
+            this.resultMode = new Position();
         }
 
         private Mode extractFirstOperandMode(String operationCode) {
@@ -179,15 +186,9 @@ class ChanceOfAsteroidsTest {
         }
 
         private Mode extractSecondOperandMode(String operationCode) {
-            if (operationCode.length() == 1) return new Position();
+            if (operationCode.length() < 4) return new Position();
 
             return Mode.modeFor(operationCode.split("")[operationCode.length() - 4]);
-        }
-
-        private Mode extractResultOperandMode(String operationCode) {
-            if (operationCode.length() == 1 || operationCode.length() == 4) return new Position();
-
-            return Mode.modeFor(operationCode.split("")[operationCode.length() - 5]);
         }
 
         @Override
