@@ -22,6 +22,8 @@ class ChanceOfAsteroidsTest {
     private static final String READ_OPERATION = "4";
     private static final String JUMP_IF_TRUE = "5";
     private static final String JUMP_IF_FALSE = "6";
+    private static final String LESS_OPERATION = "7";
+    private static final String EQUAL_OPERATION = "8";
 
     private static final String INPUT = "1";
 
@@ -65,7 +67,7 @@ class ChanceOfAsteroidsTest {
     void thirdPuzzle() throws IOException {
         String[] program = Files.readString(Paths.get("./input_day5")).split(",");
         List<String> results = execute(program, "1");
-        assertThat(results).containsExactly("3", "0", "0", "0", "0", "0", "0", "0", "0", "12234644");
+        assertThat(results).containsExactly("0", "0", "0", "0", "0", "0", "0", "0", "0", "12234644");
     }
 
     @ParameterizedTest
@@ -86,6 +88,64 @@ class ChanceOfAsteroidsTest {
     })
     void jumpImmediateMode(String input, String expectedResult) {
         String program = "3,3,1105,-1,9,1101,0,0,12,4,12,99,1";
+        List<String> result = execute(input, program);
+        assertThat(result).containsExactly(expectedResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "8,1",
+            "123,0"
+    })
+    void equalPositionMode(String input, String expectedResult) {
+        String program = "3,9,8,9,10,9,4,9,99,-1,8";
+        List<String> result = execute(input, program);
+        assertThat(result).containsExactly(expectedResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "8,1",
+            "123,0"
+    })
+    void equalImmediateMode(String input, String expectedResult) {
+        String program = "3,3,1108,-1,8,3,4,3,99";
+        List<String> result = execute(input, program);
+        assertThat(result).containsExactly(expectedResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "123,0",
+            "4,1"
+    })
+    void lessPositionMode(String input, String expectedResult) {
+        String program = "3,9,7,9,10,9,4,9,99,-1,8";
+        List<String> result = execute(input, program);
+        assertThat(result).containsExactly(expectedResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "123,0",
+            "4,1"
+    })
+    void lessImmediateMode(String input, String expectedResult) {
+        String program = "3,3,1107,-1,8,3,4,3,99";
+        List<String> result = execute(input, program);
+        assertThat(result).containsExactly(expectedResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "7,999",
+            "8,1000",
+            "9,1001"
+    })
+    void largeExample(String input, String expectedResult) {
+        String program = "3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31," +
+                "1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104," +
+                "999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99";
         List<String> result = execute(input, program);
         assertThat(result).containsExactly(expectedResult);
     }
@@ -147,17 +207,17 @@ class ChanceOfAsteroidsTest {
         } else if (operationCode.endsWith(SAVE_OPERATION)) {
             return new Save(input);
         } else if (operationCode.endsWith(READ_OPERATION)) {
-            return new Read(outputs);
+            return new Read(operationCode, outputs);
         } else if (operationCode.endsWith(JUMP_IF_TRUE)) {
             return new JumpIfTrue(operationCode);
         } else if (operationCode.endsWith(JUMP_IF_FALSE)) {
             return new JumpIfFalse(operationCode);
+        } else if (operationCode.endsWith(LESS_OPERATION)) {
+            return new Less(operationCode);
+        } else if (operationCode.endsWith(EQUAL_OPERATION)) {
+            return new Equal(operationCode);
         }
         throw new RuntimeException("Not Supported Operation! " + operationCode);
-    }
-
-    private interface Operation {
-        int execute(String[] memory, int memoryIndex);
     }
 
     private interface Mode {
@@ -198,19 +258,38 @@ class ChanceOfAsteroidsTest {
         }
     }
 
-    public static abstract class TwoOperandOperation implements Operation {
-        private final Mode firstOperandMode;
-        private final Mode secondOperandMode;
+    private interface Operation {
+        int execute(String[] memory, int memoryIndex);
+    }
 
-        TwoOperandOperation(String operationCode) {
+    public static abstract class OneOperandOperation implements Operation {
+        private final Mode firstOperandMode;
+
+        OneOperandOperation(String operationCode) {
             this.firstOperandMode = extractFirstOperandMode(operationCode);
-            this.secondOperandMode = extractSecondOperandMode(operationCode);
         }
 
         private Mode extractFirstOperandMode(String operationCode) {
             if (operationCode.length() < 3) return new Position();
 
             return Mode.modeFor(operationCode.split("")[operationCode.length() - 3]);
+        }
+
+        @Override
+        public int execute(String[] memory, int memoryIndex) {
+            Integer firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
+            return execute(memory, memoryIndex, firstOperand);
+        }
+
+        protected abstract int execute(String[] memory, int memoryIndex, Integer firstOperand);
+    }
+
+    public static abstract class TwoOperandOperation extends OneOperandOperation {
+        private final Mode secondOperandMode;
+
+        TwoOperandOperation(String operationCode) {
+            super(operationCode);
+            this.secondOperandMode = extractSecondOperandMode(operationCode);
         }
 
         private Mode extractSecondOperandMode(String operationCode) {
@@ -220,8 +299,7 @@ class ChanceOfAsteroidsTest {
         }
 
         @Override
-        public int execute(String[] memory, int memoryIndex) {
-            Integer firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
+        public int execute(String[] memory, int memoryIndex, Integer firstOperand) {
             Integer secondOperand = secondOperandMode.read(memory, memoryIndex + 2);
             return execute(memory, memoryIndex, firstOperand, secondOperand);
         }
@@ -229,11 +307,11 @@ class ChanceOfAsteroidsTest {
         protected abstract int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand);
     }
 
-    public static abstract class MathOperation extends TwoOperandOperation {
+    public static abstract class TwoOperandWithResult extends TwoOperandOperation {
         private static final int INSTRUCTION_SIZE = 4;
         private final Mode resultMode;
 
-        MathOperation(String operationCode) {
+        TwoOperandWithResult(String operationCode) {
             super(operationCode);
             this.resultMode = new Position();
         }
@@ -248,7 +326,7 @@ class ChanceOfAsteroidsTest {
         protected abstract int execute(int firstOperand, int secondOperand);
     }
 
-    private static class Multiply extends MathOperation {
+    private static class Multiply extends TwoOperandWithResult {
 
         Multiply(String operationCode) {
             super(operationCode);
@@ -260,7 +338,7 @@ class ChanceOfAsteroidsTest {
         }
     }
 
-    private static class Sum extends MathOperation {
+    private static class Sum extends TwoOperandWithResult {
         Sum(String operationCode) {
             super(operationCode);
         }
@@ -287,19 +365,17 @@ class ChanceOfAsteroidsTest {
         }
     }
 
-    private static class Read implements Operation {
-
+    private static class Read extends OneOperandOperation {
         private final List<String> outputs;
-        private final Mode firstOperandMode = new Immediate();
 
-        Read(List<String> outputs) {
+        Read(String operationCode, List<String> outputs) {
+            super(operationCode);
             this.outputs = outputs;
         }
 
         @Override
-        public int execute(String[] memory, int memoryIndex) {
-            int resultPosition = firstOperandMode.read(memory, memoryIndex + 1);
-            outputs.add(memory[resultPosition]);
+        protected int execute(String[] memory, int memoryIndex, Integer firstOperand) {
+            outputs.add(String.valueOf(firstOperand));
             return memoryIndex + 2;
         }
     }
@@ -345,6 +421,30 @@ class ChanceOfAsteroidsTest {
         @Override
         protected boolean jumpCondition(Integer firstOperand) {
             return firstOperand == 0;
+        }
+    }
+
+    private static class Less extends TwoOperandWithResult {
+
+        Less(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected int execute(int firstOperand, int secondOperand) {
+            return firstOperand < secondOperand ? 1 : 0;
+        }
+    }
+
+    private static class Equal extends TwoOperandWithResult {
+
+        Equal(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected int execute(int firstOperand, int secondOperand) {
+            return firstOperand == secondOperand ? 1 : 0;
         }
     }
 }
