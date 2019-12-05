@@ -94,7 +94,7 @@ public class ChanceOfAsteroidsTest {
 
     private List<String> execute(String[] memory) {
         List<String> outputs = new ArrayList<>();
-        for (int memoryIndex = 0; memoryIndex < memory.length;) {
+        for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
             if (STOP_OPERATION.equals(operationCode)) break;
             if (SUM_OPERATION.equals(operationCode)) {
@@ -113,39 +113,6 @@ public class ChanceOfAsteroidsTest {
             }
         }
         return outputs;
-    }
-
-    @Test
-    void testExtractOperation() {
-        assertThat(extractOperation("1002")).isEqualTo("2");
-    }
-
-    private void computeParameterMode(String[] instructions, int instructionIndex) {
-        String instruction = instructions[instructionIndex];
-        String operation = extractOperation(instruction);
-        Mode firstOperandMode = extractFirsOperandMode(instruction);
-        Mode secondOperandMode = extractSecondOperandMode(instruction);
-        Mode resultMode = extractResultOperandMode(instruction);
-        Operation multiply = new Multiply(firstOperandMode, secondOperandMode, resultMode);
-        multiply.execute(instructions, instructionIndex);
-    }
-
-    private Mode extractFirsOperandMode(String instruction) {
-        return Mode.modeFor(instruction.split("")[instruction.length() - 3]);
-    }
-
-    private Mode extractSecondOperandMode(String instruction) {
-        return Mode.modeFor(instruction.split("")[instruction.length() - 4]);
-    }
-
-    private Mode extractResultOperandMode(String instruction) {
-        if (instruction.length() == 4) return new Position();
-
-        return Mode.modeFor(instruction.split("")[instruction.length() - 5]);
-    }
-
-    private String extractOperation(String instruction) {
-        return instruction.substring(instruction.length() - 1);
     }
 
     private void output(List<String> outputs, String[] instructions, int instructionIndex) {
@@ -181,6 +148,7 @@ public class ChanceOfAsteroidsTest {
 
     private interface Operation {
         void execute(String[] memory, int memoryIndex);
+
         int size();
     }
 
@@ -192,6 +160,7 @@ public class ChanceOfAsteroidsTest {
         }
 
         Integer read(String[] memory, Integer address);
+
         void write(String[] memory, Integer address, String value);
     }
 
@@ -226,36 +195,28 @@ public class ChanceOfAsteroidsTest {
         private final Mode secondOperandMode;
         private final Mode resultMode;
 
-        Multiply(Mode firstOperandMode, Mode secondOperandMode, Mode resultMode) {
-            this.firstOperandMode = firstOperandMode;
-            this.secondOperandMode = secondOperandMode;
-            this.resultMode = resultMode;
+        Multiply(String operationCode) {
+            this.firstOperandMode = extractFirstOperandMode(operationCode);
+            this.secondOperandMode = extractSecondOperandMode(operationCode);
+            this.resultMode = extractResultOperandMode(operationCode);
         }
 
-        public Multiply(String operationCode) {
-            if (operationCode.length() == 1) {
-                this.firstOperandMode = new Position();
-                this.secondOperandMode = new Position();
-                this.resultMode = new Position();
-            } else {
-                this.firstOperandMode = extractFirstOperandMode(operationCode);
-                this.secondOperandMode = extractSecondOperandMode(operationCode);
-                this.resultMode = extractResultOperandMode(operationCode);
-            }
+        private Mode extractFirstOperandMode(String operationCode) {
+            if (operationCode.length() == 1) return new Position();
+
+            return Mode.modeFor(operationCode.split("")[operationCode.length() - 3]);
         }
 
-        private Mode extractFirstOperandMode(String instruction) {
-            return Mode.modeFor(instruction.split("")[instruction.length() - 3]);
+        private Mode extractSecondOperandMode(String operationCode) {
+            if (operationCode.length() == 1) return new Position();
+
+            return Mode.modeFor(operationCode.split("")[operationCode.length() - 4]);
         }
 
-        private Mode extractSecondOperandMode(String instruction) {
-            return Mode.modeFor(instruction.split("")[instruction.length() - 4]);
-        }
+        private Mode extractResultOperandMode(String operationCode) {
+            if (operationCode.length() == 1 || operationCode.length() == 4) return new Position();
 
-        private Mode extractResultOperandMode(String instruction) {
-            if (instruction.length() == 4) return new Position();
-
-            return Mode.modeFor(instruction.split("")[instruction.length() - 5]);
+            return Mode.modeFor(operationCode.split("")[operationCode.length() - 5]);
         }
 
         @Override
