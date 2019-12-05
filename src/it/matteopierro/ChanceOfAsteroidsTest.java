@@ -151,6 +151,13 @@ class ChanceOfAsteroidsTest {
     }
 
     @Test
+    void forthPuzzle() throws IOException {
+        String[] program = Files.readString(Paths.get("./input_day5")).split(",");
+        List<String> results = execute(program, "5");
+        assertThat(results).containsExactly("3508186");
+    }
+
+    @Test
     void outputItsInput() {
         List<String> output = execute(INPUT, "3,0,4,0,99");
         assertThat(output).containsExactly(INPUT);
