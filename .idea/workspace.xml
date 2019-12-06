@@ -65,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UniversalOrbitMapTest.firstPuzzle">
+  <component name="RunManager" selected="JUnit.UniversalOrbitMapTest">
     <configuration name="UniversalOrbitMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -81,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UniversalOrbitMapTest.findAnOrbit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UniversalOrbitMapTest.findAllPaths" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -91,23 +91,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
-      <option name="METHOD_NAME" value="findAnOrbit" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UniversalOrbitMapTest.findDirectAndIndirectOrbitsForAPlanet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
-      <option name="METHOD_NAME" value="findDirectAndIndirectOrbitsForAPlanet" />
+      <option name="METHOD_NAME" value="findAllPaths" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,13 +129,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UniversalOrbitMapTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UniversalOrbitMapTest" />
+        <item itemvalue="JUnit.UniversalOrbitMapTest.secondPuzzle" />
+        <item itemvalue="JUnit.UniversalOrbitMapTest.findAllPaths" />
         <item itemvalue="JUnit.UniversalOrbitMapTest.firstPuzzle" />
         <item itemvalue="JUnit.UniversalOrbitMapTest.findTotalOrbits" />
-        <item itemvalue="JUnit.UniversalOrbitMapTest.findDirectAndIndirectOrbitsForAPlanet" />
-        <item itemvalue="JUnit.UniversalOrbitMapTest" />
-        <item itemvalue="JUnit.UniversalOrbitMapTest.findAnOrbit" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575485395216</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="solution first challenge day6">
+      <created>1575617363208</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1575617363208</updated>
+    </task>
+    <task id="LOCAL-00004" summary="solve second puzzle">
+      <created>1575619571626</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1575619571626</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,6 +214,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="solution day3" />
-    <option name="LAST_COMMIT_MESSAGE" value="solution day3" />
+    <MESSAGE value="solution first challenge day6" />
+    <MESSAGE value="solve second puzzle" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve second puzzle" />
   </component>
 </project>
