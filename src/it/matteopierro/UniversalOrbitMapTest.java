@@ -24,7 +24,17 @@ class UniversalOrbitMapTest {
         Universe universe = new Universe(new String[]{"COM)B", "B)C"});
 
         assertThat(universe.orbitsFor("C"))
-                .containsExactlyInAnyOrder("COM)B", "B)C");
+                .containsExactlyInAnyOrder("COM)C", "B)C");
+    }
+
+    @Test
+    void findTotalOrbits() {
+        String[] orbits = {"COM)B", "B)C", "C)D", "D)E", "E)F", "B)G", "G)H", "D)I", "E)J", "J)K", "K)L"};
+        Universe universe = new Universe(orbits);
+
+        assertThat(universe.orbitsFor("D")).hasSize(3);
+        assertThat(universe.orbitsFor("L")).hasSize(7);
+        assertThat(universe.totalOrbits()).hasSize(42);
     }
 
     public static class Universe {
@@ -52,10 +62,18 @@ class UniversalOrbitMapTest {
             ArrayList<String> foundOrbits = new ArrayList<>();
             String currentPlanet = planet;
             while (reverseOrbits.containsKey(currentPlanet)) {
-                foundOrbits.add(reverseOrbits.get(currentPlanet) + ")" + currentPlanet);
+                foundOrbits.add(reverseOrbits.get(currentPlanet) + ")" + planet);
                 currentPlanet = reverseOrbits.get(currentPlanet);
             }
             return foundOrbits;
+        }
+
+        List<String> totalOrbits() {
+            ArrayList<String> totalOrbits = new ArrayList<>();
+            for (String planet : reverseOrbits.keySet()) {
+                totalOrbits.addAll(orbitsFor(planet));
+            }
+            return totalOrbits;
         }
     }
 }
