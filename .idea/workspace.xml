@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_day5" beforeDir="false" afterPath="$PROJECT_DIR$/input_day5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/ChanceOfAsteroidsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/ChanceOfAsteroidsTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ChanceOfAsteroidsTest.forthPuzzle">
+  <component name="RunManager" selected="JUnit.UniversalOrbitMapTest.findDirectAndIndirectOrbitsForAPlanet">
     <configuration name="ChanceOfAsteroidsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -98,7 +96,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChanceOfAsteroidsTest.largeExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UniversalOrbitMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -107,14 +105,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ChanceOfAsteroidsTest" />
-      <option name="METHOD_NAME" value="largeExample(java.lang.String,java.lang.String)" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UniversalOrbitMapTest.findAnOrbit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
+      <option name="METHOD_NAME" value="findAnOrbit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChanceOfAsteroidsTest.lessImmediateMode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UniversalOrbitMapTest.findDirectAndIndirectOrbitsForAPlanet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -123,24 +136,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ChanceOfAsteroidsTest" />
-      <option name="METHOD_NAME" value="lessImmediateMode(java.lang.String,java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChanceOfAsteroidsTest.lessPositionMode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ChanceOfAsteroidsTest" />
-      <option name="METHOD_NAME" value="lessPositionMode(java.lang.String,java.lang.String)" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
+      <option name="METHOD_NAME" value="findDirectAndIndirectOrbitsForAPlanet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UniversalOrbitMapTest.findDirectAndIndirectOrbitsForAPlanet" />
+        <item itemvalue="JUnit.UniversalOrbitMapTest" />
+        <item itemvalue="JUnit.UniversalOrbitMapTest.findAnOrbit" />
         <item itemvalue="JUnit.ChanceOfAsteroidsTest.forthPuzzle" />
         <item itemvalue="JUnit.ChanceOfAsteroidsTest" />
-        <item itemvalue="JUnit.ChanceOfAsteroidsTest.largeExample" />
-        <item itemvalue="JUnit.ChanceOfAsteroidsTest.lessImmediateMode" />
-        <item itemvalue="JUnit.ChanceOfAsteroidsTest.lessPositionMode" />
       </list>
     </recent_temporary>
   </component>
