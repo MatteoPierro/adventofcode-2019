@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/ChanceOfAsteroidsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/ChanceOfAsteroidsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +64,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ChanceOfAsteroidsTest">
+  <component name="RunManager" selected="JUnit.AmplificationCircuitTest.findAllPermutations">
+    <configuration name="AmplificationCircuitTest.findAllPermutations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="METHOD_NAME" value="findAllPermutations" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ChanceOfAsteroidsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -112,22 +127,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UniversalOrbitMapTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UniversalOrbitMapTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -146,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AmplificationCircuitTest.findAllPermutations" />
         <item itemvalue="JUnit.ChanceOfAsteroidsTest" />
         <item itemvalue="JUnit.UniversalOrbitMapTest" />
         <item itemvalue="JUnit.UniversalOrbitMapTest.secondPuzzle" />
         <item itemvalue="JUnit.UniversalOrbitMapTest.findAllPaths" />
-        <item itemvalue="JUnit.UniversalOrbitMapTest.firstPuzzle" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575619571626</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="computer can manage more than one input">
+      <created>1575700610165</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575700610165</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -215,6 +221,7 @@
     <MESSAGE value="solution day3" />
     <MESSAGE value="solution first challenge day6" />
     <MESSAGE value="solve second puzzle" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve second puzzle" />
+    <MESSAGE value="computer can manage more than one input" />
+    <option name="LAST_COMMIT_MESSAGE" value="computer can manage more than one input" />
   </component>
 </project>
