@@ -1,6 +1,7 @@
 package it.matteopierro;
 
 import it.matteopierro.computer.Computer;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -43,6 +44,15 @@ class AmplificationCircuitTest {
     void firstPuzzle() throws IOException {
         String program = Files.readString(Paths.get("./input_day7"));
         assertThat(maxThrusterSignal(program)).isEqualTo(45730);
+    }
+
+    @Test
+    @Disabled
+    void feedbackLoop() {
+        String program = "3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5";
+        int[] inputs = {9,8,7,6,5};
+        int signal = calculateThrusterSignal(program, inputs);
+        assertThat(signal).isEqualTo(123);
     }
 
     private int maxThrusterSignal(String program) {

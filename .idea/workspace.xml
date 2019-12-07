@@ -39,7 +39,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="extract.method.default.visibility" value="private" />
+    <property name="extract.method.default.visibility" value="public" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -66,8 +66,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AmplificationCircuitTest.firstPuzzle">
-    <configuration name="AmplificationCircuitTest.findAllPermutations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AmplificationCircuitTest">
+    <configuration name="AmplificationCircuitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -77,7 +77,22 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="findAllPermutations" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmplificationCircuitTest.feedbackLoop" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="METHOD_NAME" value="feedbackLoop" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -115,7 +130,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AmplificationCircuitTest.maxThrusterSignal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="it.matteopierro in day2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -124,36 +139,18 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="maxThrusterSignal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AmplificationCircuitTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="name" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AmplificationCircuitTest" />
+        <item itemvalue="JUnit.it.matteopierro in day2" />
+        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop" />
         <item itemvalue="JUnit.AmplificationCircuitTest.firstPuzzle" />
         <item itemvalue="JUnit.AmplificationCircuitTest.maxThrusterSignal (1)" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.maxThrusterSignal" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.name" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.findAllPermutations" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575702679571</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="complete first challenge day 7">
+      <created>1575704398335</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575704398335</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,6 +238,28 @@
     <MESSAGE value="solve second puzzle" />
     <MESSAGE value="computer can manage more than one input" />
     <MESSAGE value="calculate Permutations" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculate Permutations" />
+    <MESSAGE value="complete first challenge day 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete first challenge day 7" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
+          <line>217</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

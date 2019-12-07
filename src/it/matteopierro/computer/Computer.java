@@ -14,8 +14,6 @@ public class Computer {
     private static final String LESS_OPERATION = "7";
     private static final String EQUAL_OPERATION = "8";
 
-    private int currentInput;
-
     public int execute(String program, int input, int result) {
         List<String> results = execute(program, String.valueOf(input), String.valueOf(result));
         return Integer.parseInt(results.get(results.size() - 1));
@@ -26,17 +24,20 @@ public class Computer {
     }
 
     public List<String> execute(String[] memory, String... inputs) {
-        this.currentInput = 0;
+        return execute(memory, new ComputerListener(inputs));
+    }
+
+    public List<String> execute(String[] memory, ComputerListener listener) {
         List<String> outputs = new ArrayList<>();
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
-            Operation operation = operationFor(operationCode, outputs, inputs);
+            Operation operation = operationFor(operationCode, outputs, listener);
             memoryIndex = operation.execute(memory, memoryIndex);
         }
         return outputs;
     }
 
-    private Operation operationFor(String operationCode, List<String> outputs, String... inputs) {
+    private Operation operationFor(String operationCode, List<String> outputs, ComputerListener listener) {
         if (STOP_OPERATION.equals(operationCode)) {
             return new Stop();
         } else if (operationCode.endsWith(SUM_OPERATION)) {
@@ -44,7 +45,7 @@ public class Computer {
         } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
             return new Multiply(operationCode);
         } else if (operationCode.endsWith(SAVE_OPERATION)) {
-            return new Save(inputs);
+            return new Save(listener);
         } else if (operationCode.endsWith(READ_OPERATION)) {
             return new Read(operationCode, outputs);
         } else if (operationCode.endsWith(JUMP_IF_TRUE)) {
@@ -188,18 +189,18 @@ public class Computer {
         }
     }
 
-    private class Save implements Operation {
+    private static class Save implements Operation {
 
-        private final String[] input;
+        private final ComputerListener listener;
 
-        Save(String... input) {
-            this.input = input;
+        Save(ComputerListener listener) {
+            this.listener = listener;
         }
 
         @Override
         public int execute(String[] memory, int memoryIndex) {
             int savePosition = Integer.parseInt(memory[memoryIndex + 1]);
-            memory[savePosition] = input[currentInput++];
+            memory[savePosition] = listener.onInputRequested();
             return memoryIndex + 2;
         }
     }
