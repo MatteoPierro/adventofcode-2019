@@ -40,26 +40,38 @@ class AmplificationCircuitTest {
             "3,23,3,24,1002,24,10,24,1002,23,-1,23,101,5,23,23,1,24,23,23,4,23,99,0,0:54321",
             "3,31,3,32,1002,32,10,32,1001,31,-2,31,1007,31,0,33,1002,33,7,33,1,33,31,31,1,32,31,31,4,31,99,0,0,0:65210"
     }, delimiter = ':')
-    void maxThrusterSignal(String program, int expectedMaxThrusterSignal) {
-        assertThat(maxThrusterSignal(program)).isEqualTo(expectedMaxThrusterSignal);
+    void maxThrusterSignalWithoutFeedbackLoop(String program, int expectedMaxThrusterSignal) {
+        assertThat(maxThrusterSignalWithoutFeedbackLoop(program)).isEqualTo(expectedMaxThrusterSignal);
     }
 
     @Test
     void firstPuzzle() throws IOException {
         String program = Files.readString(Paths.get("./input_day7"));
-        assertThat(maxThrusterSignal(program)).isEqualTo(45730);
+        assertThat(maxThrusterSignalWithoutFeedbackLoop(program)).isEqualTo(45730);
     }
 
-    @Test
-    void feedbackLoop() {
-        String program = "3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5";
-        int[] inputs = {9,8,7,6,5};
-        int signal = calculateThrusterSignal(program, inputs);
-        assertThat(signal).isEqualTo(139629729);
+    @ParameterizedTest
+    @CsvSource(value = {
+            "3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5:139629729",
+            "3,52,1001,52,-5,52,3,53,1,52,56,54,1007,54,5,55,1005,55,26,1001,54,-5,54," +
+                    "1105,1,12,1,53,54,53,1008,54,0,55,1001,55,1,55,2,53,55,53,4,53,1001,56," +
+                    "-1,56,1005,56,6,99,0,0,0,0,10:18216",
+    }, delimiter = ':')
+    void feedbackLoop(String program, int expectedMaxThrusterSignal) {
+        int signal = maxThrusterSignalWithFeedbackLoop(program);
+        assertThat(signal).isEqualTo(expectedMaxThrusterSignal);
     }
 
-    private int maxThrusterSignal(String program) {
-        return permutations(new int[]{0, 1, 2, 3, 4})
+    private int maxThrusterSignalWithoutFeedbackLoop(String program) {
+        return maxThrusterSignal(program, new int[]{0, 1, 2, 3, 4});
+    }
+
+    private int maxThrusterSignalWithFeedbackLoop(String program) {
+        return maxThrusterSignal(program, new int[]{5, 6, 7, 8, 9});
+    }
+
+    private int maxThrusterSignal(String program, int[] phaseSettings) {
+        return permutations(phaseSettings)
                 .stream()
                 .mapToInt(inputs -> calculateThrusterSignal(program, inputs))
                 .max()
@@ -70,13 +82,13 @@ class AmplificationCircuitTest {
         ChainableComputerListener fifthAmplifierListener = new ChainableComputerListener(inputs[4]);
         ComputerListener fourthAmplifierListener = new ChainableComputerListener(inputs[3], fifthAmplifierListener);
         ComputerListener thirdAmplifierListener = new ChainableComputerListener(inputs[2], fourthAmplifierListener);
-        ComputerListener secondAmplifierListener =  new ChainableComputerListener(inputs[1], thirdAmplifierListener);
+        ComputerListener secondAmplifierListener = new ChainableComputerListener(inputs[1], thirdAmplifierListener);
         ComputerListener firstAmplifierListener = new ChainableComputerListener(inputs[0], secondAmplifierListener);
         firstAmplifierListener.addInput("0");
         fifthAmplifierListener.setListener(firstAmplifierListener);
 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
-        executorService.submit( () -> new Computer().execute(program, firstAmplifierListener));
+        executorService.submit(() -> new Computer().execute(program, firstAmplifierListener));
         executorService.submit(() -> new Computer().execute(program, secondAmplifierListener));
         executorService.submit(() -> new Computer().execute(program, thirdAmplifierListener));
         executorService.submit(() -> new Computer().execute(program, fourthAmplifierListener));

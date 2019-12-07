@@ -65,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AmplificationCircuitTest">
+  <component name="RunManager" selected="JUnit.AmplificationCircuitTest.feedbackLoop (1)">
     <configuration name="AmplificationCircuitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -77,6 +77,22 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmplificationCircuitTest.feedbackLoop (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="METHOD_NAME" value="feedbackLoop(java.lang.String,int)" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -113,22 +129,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AmplificationCircuitTest.maxThrusterSignal (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="maxThrusterSignal(java.lang.String,int)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="it.matteopierro in day2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -145,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop (1)" />
         <item itemvalue="JUnit.AmplificationCircuitTest" />
         <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop" />
         <item itemvalue="JUnit.it.matteopierro in day2" />
         <item itemvalue="JUnit.AmplificationCircuitTest.firstPuzzle" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.maxThrusterSignal (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575747425387</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="move to multithread implementation">
+      <created>1575747825651</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1575747825651</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +253,8 @@
     <MESSAGE value="calculate Permutations" />
     <MESSAGE value="complete first challenge day 7" />
     <MESSAGE value="use listener to pass inputs between amplifiers" />
-    <option name="LAST_COMMIT_MESSAGE" value="use listener to pass inputs between amplifiers" />
+    <MESSAGE value="move to multithread implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="move to multithread implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
