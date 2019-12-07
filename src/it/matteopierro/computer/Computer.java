@@ -1,6 +1,5 @@
 package it.matteopierro.computer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
@@ -28,16 +27,15 @@ public class Computer {
     }
 
     public List<String> execute(String[] memory, ComputerListener listener) {
-        List<String> outputs = new ArrayList<>();
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
-            Operation operation = operationFor(operationCode, outputs, listener);
+            Operation operation = operationFor(operationCode, listener);
             memoryIndex = operation.execute(memory, memoryIndex);
         }
-        return outputs;
+        return listener.results();
     }
 
-    private Operation operationFor(String operationCode, List<String> outputs, ComputerListener listener) {
+    private Operation operationFor(String operationCode, ComputerListener listener) {
         if (STOP_OPERATION.equals(operationCode)) {
             return new Stop();
         } else if (operationCode.endsWith(SUM_OPERATION)) {
@@ -45,9 +43,9 @@ public class Computer {
         } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
             return new Multiply(operationCode);
         } else if (operationCode.endsWith(SAVE_OPERATION)) {
-            return new Save(listener);
+            return new Read(listener);
         } else if (operationCode.endsWith(READ_OPERATION)) {
-            return new Read(operationCode, outputs);
+            return new Store(operationCode, listener);
         } else if (operationCode.endsWith(JUMP_IF_TRUE)) {
             return new JumpIfTrue(operationCode);
         } else if (operationCode.endsWith(JUMP_IF_FALSE)) {
@@ -189,11 +187,11 @@ public class Computer {
         }
     }
 
-    private static class Save implements Operation {
+    private static class Read implements Operation {
 
         private final ComputerListener listener;
 
-        Save(ComputerListener listener) {
+        Read(ComputerListener listener) {
             this.listener = listener;
         }
 
@@ -205,17 +203,17 @@ public class Computer {
         }
     }
 
-    private static class Read extends OneOperandOperation {
-        private final List<String> outputs;
+    private static class Store extends OneOperandOperation {
+        private final ComputerListener listener;
 
-        Read(String operationCode, List<String> outputs) {
+        Store(String operationCode, ComputerListener listener) {
             super(operationCode);
-            this.outputs = outputs;
+            this.listener = listener;
         }
 
         @Override
         protected int execute(String[] memory, int memoryIndex, Integer firstOperand) {
-            outputs.add(String.valueOf(firstOperand));
+            listener.addResult(String.valueOf(firstOperand));
             return memoryIndex + 2;
         }
     }
