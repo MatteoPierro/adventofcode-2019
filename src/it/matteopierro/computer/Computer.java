@@ -26,7 +26,12 @@ public class Computer {
         return execute(memory, new ComputerListener(inputs));
     }
 
-    public List<String> execute(String[] memory, ComputerListener listener) {
+    public int execute(String program, ComputerListener listener) {
+        List<String> results = execute(program.split(","), listener);
+        return Integer.parseInt(results.get(results.size() - 1));
+    }
+
+    private List<String> execute(String[] memory, ComputerListener listener) {
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
             Operation operation = operationFor(operationCode, listener);

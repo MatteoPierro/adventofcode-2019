@@ -12,6 +12,17 @@ public class ComputerListener {
     private final BlockingQueue<String> inputs;
     private final List<String> results = new LinkedList<>();
 
+    public ComputerListener(Integer... inputs) {
+        this.inputs = new LinkedBlockingQueue<>();
+        asList(inputs).forEach(input -> {
+            try {
+                this.inputs.put(String.valueOf(input));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
     public ComputerListener(String[] inputs) {
         this.inputs = new LinkedBlockingQueue<>();
         asList(inputs).forEach(input -> {
@@ -37,5 +48,9 @@ public class ComputerListener {
 
     public List<String> results() {
         return results;
+    }
+
+    public void addInput(String result) {
+        inputs.add(result);
     }
 }

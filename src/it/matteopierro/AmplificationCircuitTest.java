@@ -1,6 +1,7 @@
 package it.matteopierro;
 
 import it.matteopierro.computer.Computer;
+import it.matteopierro.computer.ComputerListener;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -64,13 +65,21 @@ class AmplificationCircuitTest {
     }
 
     private int calculateThrusterSignal(String program, int[] inputs) {
-        int result = 0;
+        ChainableComputerListener fifthAmplifierListener = new ChainableComputerListener(inputs[4]);
+        ComputerListener fourthAmplifierListener = new ChainableComputerListener(inputs[3], fifthAmplifierListener);
+        ComputerListener thirdAmplifierListener = new ChainableComputerListener(inputs[2], fourthAmplifierListener);
+        ComputerListener secondAmplifierListener =  new ChainableComputerListener(inputs[1], thirdAmplifierListener);
+        ComputerListener firstAmplifierListener = new ChainableComputerListener(inputs[0], secondAmplifierListener);
+        firstAmplifierListener.addInput("0");
+        fifthAmplifierListener.setListener(firstAmplifierListener);
 
-        for (int input : inputs) {
-            result = new Computer().execute(program, input, result);
-        }
+        int firstAmplifier = new Computer().execute(program, firstAmplifierListener);
+        int secondAmplifier = new Computer().execute(program, secondAmplifierListener);
+        int thirdAmplifier = new Computer().execute(program, thirdAmplifierListener);
+        int fourthAmplifier = new Computer().execute(program, fourthAmplifierListener);
+        int fifthAmplifier = new Computer().execute(program, fifthAmplifierListener);
 
-        return result;
+        return fifthAmplifier;
     }
 
     private List<int[]> permutations(int[] inputs) {
@@ -98,5 +107,28 @@ class AmplificationCircuitTest {
         int tmp = input[a];
         input[a] = input[b];
         input[b] = tmp;
+    }
+
+    private static class ChainableComputerListener extends ComputerListener {
+        private ComputerListener listener;
+
+        public ChainableComputerListener(int input, ComputerListener listener) {
+            super(input);
+            this.listener = listener;
+        }
+
+        public ChainableComputerListener(int input) {
+            super(input);
+        }
+
+        @Override
+        public void addResult(String result) {
+            super.addResult(result);
+            listener.addInput(result);
+        }
+
+        public void setListener(ComputerListener listener) {
+            this.listener = listener;
+        }
     }
 }

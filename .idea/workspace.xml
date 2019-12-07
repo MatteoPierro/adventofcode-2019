@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" afterDir="false" />
     </list>
@@ -66,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.it.matteopierro in day2">
+  <component name="RunManager" selected="JUnit.AmplificationCircuitTest">
     <configuration name="AmplificationCircuitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -146,8 +147,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.it.matteopierro in day2" />
         <item itemvalue="JUnit.AmplificationCircuitTest" />
+        <item itemvalue="JUnit.it.matteopierro in day2" />
         <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop" />
         <item itemvalue="JUnit.AmplificationCircuitTest.firstPuzzle" />
         <item itemvalue="JUnit.AmplificationCircuitTest.maxThrusterSignal (1)" />
@@ -246,17 +247,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
-          <line>200</line>
+          <line>205</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
-          <line>215</line>
+          <line>220</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
