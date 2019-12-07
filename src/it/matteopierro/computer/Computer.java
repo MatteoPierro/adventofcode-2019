@@ -14,12 +14,20 @@ public class Computer {
     private static final String LESS_OPERATION = "7";
     private static final String EQUAL_OPERATION = "8";
 
+    private int currentInput;
+
+    public int execute(String program, int input, int result) {
+        List<String> results = execute(program, String.valueOf(input), String.valueOf(result));
+        return Integer.parseInt(results.get(results.size() - 1));
+    }
+
     public List<String> execute(String program, String... inputs) {
         return execute(program.split(","), inputs);
     }
 
     public List<String> execute(String[] memory, String... inputs) {
-        List<String> outputs = new ArrayList<String>();
+        this.currentInput = 0;
+        List<String> outputs = new ArrayList<>();
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
             Operation operation = operationFor(operationCode, outputs, inputs);
@@ -180,14 +188,12 @@ public class Computer {
         }
     }
 
-    private static class Save implements Operation {
+    private class Save implements Operation {
 
         private final String[] input;
-        private int currentInput;
 
         Save(String... input) {
             this.input = input;
-            this.currentInput = 0;
         }
 
         @Override

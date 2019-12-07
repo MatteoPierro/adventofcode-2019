@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +66,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AmplificationCircuitTest.findAllPermutations">
+  <component name="RunManager" selected="JUnit.AmplificationCircuitTest.firstPuzzle">
     <configuration name="AmplificationCircuitTest.findAllPermutations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -81,7 +83,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChanceOfAsteroidsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AmplificationCircuitTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -90,44 +92,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ChanceOfAsteroidsTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UniversalOrbitMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UniversalOrbitMapTest.findAllPaths" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
-      <option name="METHOD_NAME" value="findAllPaths" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UniversalOrbitMapTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AmplificationCircuitTest.maxThrusterSignal (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -136,8 +108,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.UniversalOrbitMapTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="METHOD_NAME" value="maxThrusterSignal(java.lang.String,int)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmplificationCircuitTest.maxThrusterSignal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="METHOD_NAME" value="maxThrusterSignal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AmplificationCircuitTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="METHOD_NAME" value="name" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AmplificationCircuitTest.firstPuzzle" />
+        <item itemvalue="JUnit.AmplificationCircuitTest.maxThrusterSignal (1)" />
+        <item itemvalue="JUnit.AmplificationCircuitTest.maxThrusterSignal" />
+        <item itemvalue="JUnit.AmplificationCircuitTest.name" />
         <item itemvalue="JUnit.AmplificationCircuitTest.findAllPermutations" />
-        <item itemvalue="JUnit.ChanceOfAsteroidsTest" />
-        <item itemvalue="JUnit.UniversalOrbitMapTest" />
-        <item itemvalue="JUnit.UniversalOrbitMapTest.secondPuzzle" />
-        <item itemvalue="JUnit.UniversalOrbitMapTest.findAllPaths" />
       </list>
     </recent_temporary>
   </component>
@@ -199,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575700610165</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="calculate Permutations">
+      <created>1575702679571</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575702679571</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -222,6 +233,7 @@
     <MESSAGE value="solution first challenge day6" />
     <MESSAGE value="solve second puzzle" />
     <MESSAGE value="computer can manage more than one input" />
-    <option name="LAST_COMMIT_MESSAGE" value="computer can manage more than one input" />
+    <MESSAGE value="calculate Permutations" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculate Permutations" />
   </component>
 </project>
