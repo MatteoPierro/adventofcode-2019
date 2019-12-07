@@ -14,21 +14,21 @@ public class Computer {
     private static final String LESS_OPERATION = "7";
     private static final String EQUAL_OPERATION = "8";
 
-    public List<String> execute(String input, String program) {
-        return execute(program.split(","), input);
+    public List<String> execute(String program, String... inputs) {
+        return execute(program.split(","), inputs);
     }
 
-    public List<String> execute(String[] memory, String input) {
+    public List<String> execute(String[] memory, String... inputs) {
         List<String> outputs = new ArrayList<String>();
         for (int memoryIndex = 0; memoryIndex < memory.length; ) {
             String operationCode = memory[memoryIndex];
-            Operation operation = operationFor(operationCode, outputs, input);
+            Operation operation = operationFor(operationCode, outputs, inputs);
             memoryIndex = operation.execute(memory, memoryIndex);
         }
         return outputs;
     }
 
-    private Operation operationFor(String operationCode, List<String> outputs, String input) {
+    private Operation operationFor(String operationCode, List<String> outputs, String... inputs) {
         if (STOP_OPERATION.equals(operationCode)) {
             return new Stop();
         } else if (operationCode.endsWith(SUM_OPERATION)) {
@@ -36,7 +36,7 @@ public class Computer {
         } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
             return new Multiply(operationCode);
         } else if (operationCode.endsWith(SAVE_OPERATION)) {
-            return new Save(input);
+            return new Save(inputs);
         } else if (operationCode.endsWith(READ_OPERATION)) {
             return new Read(operationCode, outputs);
         } else if (operationCode.endsWith(JUMP_IF_TRUE)) {
@@ -182,16 +182,18 @@ public class Computer {
 
     private static class Save implements Operation {
 
-        private final String input;
+        private final String[] input;
+        private int currentInput;
 
-        Save(String input) {
+        Save(String... input) {
             this.input = input;
+            this.currentInput = 0;
         }
 
         @Override
         public int execute(String[] memory, int memoryIndex) {
             int savePosition = Integer.parseInt(memory[memoryIndex + 1]);
-            memory[savePosition] = input;
+            memory[savePosition] = input[currentInput++];
             return memoryIndex + 2;
         }
     }
