@@ -13,11 +13,6 @@ public class Computer {
     private static final String LESS_OPERATION = "7";
     private static final String EQUAL_OPERATION = "8";
 
-    public int execute(String program, int input, int result) {
-        List<String> results = execute(program, String.valueOf(input), String.valueOf(result));
-        return Integer.parseInt(results.get(results.size() - 1));
-    }
-
     public List<String> execute(String program, String... inputs) {
         return execute(program.split(","), inputs);
     }
@@ -41,7 +36,7 @@ public class Computer {
     }
 
     private Operation operationFor(String operationCode, ComputerListener listener) {
-        if (STOP_OPERATION.equals(operationCode)) {
+        if (operationCode.endsWith(STOP_OPERATION)) {
             return new Stop();
         } else if (operationCode.endsWith(SUM_OPERATION)) {
             return new Sum(operationCode);
@@ -60,7 +55,7 @@ public class Computer {
         } else if (operationCode.endsWith(EQUAL_OPERATION)) {
             return new Equal(operationCode);
         }
-        throw new RuntimeException("Not Supported Operation! " + operationCode);
+        throw new RuntimeException("Not Supported Operation!" + operationCode);
     }
 
     private interface Mode {
@@ -203,7 +198,7 @@ public class Computer {
         @Override
         public int execute(String[] memory, int memoryIndex) {
             int savePosition = Integer.parseInt(memory[memoryIndex + 1]);
-            memory[savePosition] = listener.onInputRequested();
+            memory[savePosition] = listener.onReadRequested();
             return memoryIndex + 2;
         }
     }
@@ -218,7 +213,7 @@ public class Computer {
 
         @Override
         protected int execute(String[] memory, int memoryIndex, Integer firstOperand) {
-            listener.addResult(String.valueOf(firstOperand));
+            listener.onStoreRequested(String.valueOf(firstOperand));
             return memoryIndex + 2;
         }
     }

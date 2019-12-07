@@ -34,7 +34,7 @@ public class ComputerListener {
         });
     }
 
-    public String onInputRequested() {
+    public String onReadRequested() {
         try {
             return inputs.take();
         } catch (InterruptedException e) {
@@ -42,7 +42,7 @@ public class ComputerListener {
         }
     }
 
-    public void addResult(String result) {
+    public void onStoreRequested(String result) {
         this.results.add(result);
     }
 

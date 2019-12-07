@@ -4,6 +4,8 @@
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AmplificationCircuitTest.feedbackLoop (1)">
+  <component name="RunManager" selected="JUnit.it.matteopierro in day2">
     <configuration name="AmplificationCircuitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -113,7 +115,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AmplificationCircuitTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AmplificationCircuitTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -123,7 +125,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop (1)" />
-        <item itemvalue="JUnit.AmplificationCircuitTest" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop" />
         <item itemvalue="JUnit.it.matteopierro in day2" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.firstPuzzle" />
+        <item itemvalue="JUnit.AmplificationCircuitTest" />
+        <item itemvalue="JUnit.AmplificationCircuitTest.secondPuzzle" />
+        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop (1)" />
+        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop" />
       </list>
     </recent_temporary>
   </component>
@@ -227,7 +229,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575747825651</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="find max thruster signal with feedback loop">
+      <created>1575748200129</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1575748200129</updated>
+    </task>
+    <task id="LOCAL-00011" summary="solve second challenge day7">
+      <created>1575748609859</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575748609859</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,19 +270,21 @@
     <MESSAGE value="complete first challenge day 7" />
     <MESSAGE value="use listener to pass inputs between amplifiers" />
     <MESSAGE value="move to multithread implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="move to multithread implementation" />
+    <MESSAGE value="find max thruster signal with feedback loop" />
+    <MESSAGE value="solve second challenge day7" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve second challenge day7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
-          <line>205</line>
+          <line>200</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
-          <line>220</line>
+          <line>215</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

@@ -62,6 +62,12 @@ class AmplificationCircuitTest {
         assertThat(signal).isEqualTo(expectedMaxThrusterSignal);
     }
 
+    @Test
+    void secondPuzzle() throws IOException {
+        String program = Files.readString(Paths.get("./input_day7"));
+        assertThat(maxThrusterSignalWithFeedbackLoop(program)).isEqualTo(5406484);
+    }
+
     private int maxThrusterSignalWithoutFeedbackLoop(String program) {
         return maxThrusterSignal(program, new int[]{0, 1, 2, 3, 4});
     }
@@ -87,7 +93,7 @@ class AmplificationCircuitTest {
         firstAmplifierListener.addInput("0");
         fifthAmplifierListener.setListener(firstAmplifierListener);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        ExecutorService executorService = Executors.newCachedThreadPool();
         executorService.submit(() -> new Computer().execute(program, firstAmplifierListener));
         executorService.submit(() -> new Computer().execute(program, secondAmplifierListener));
         executorService.submit(() -> new Computer().execute(program, thirdAmplifierListener));
@@ -141,8 +147,8 @@ class AmplificationCircuitTest {
         }
 
         @Override
-        public void addResult(String result) {
-            super.addResult(result);
+        public void onStoreRequested(String result) {
+            super.onStoreRequested(result);
             listener.addInput(result);
         }
 
