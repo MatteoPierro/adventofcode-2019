@@ -4,8 +4,6 @@
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -148,8 +146,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AmplificationCircuitTest" />
-        <item itemvalue="JUnit.it.matteopierro in day2" />
         <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop" />
+        <item itemvalue="JUnit.it.matteopierro in day2" />
         <item itemvalue="JUnit.AmplificationCircuitTest.firstPuzzle" />
         <item itemvalue="JUnit.AmplificationCircuitTest.maxThrusterSignal (1)" />
       </list>
@@ -215,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575704398335</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="use listener to pass inputs between amplifiers">
+      <created>1575747425387</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1575747425387</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -240,7 +245,8 @@
     <MESSAGE value="computer can manage more than one input" />
     <MESSAGE value="calculate Permutations" />
     <MESSAGE value="complete first challenge day 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete first challenge day 7" />
+    <MESSAGE value="use listener to pass inputs between amplifiers" />
+    <option name="LAST_COMMIT_MESSAGE" value="use listener to pass inputs between amplifiers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

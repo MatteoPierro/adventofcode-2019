@@ -2,7 +2,6 @@ package it.matteopierro;
 
 import it.matteopierro.computer.Computer;
 import it.matteopierro.computer.ComputerListener;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,6 +11,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import static java.util.Arrays.copyOf;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,12 +51,11 @@ class AmplificationCircuitTest {
     }
 
     @Test
-    @Disabled
     void feedbackLoop() {
         String program = "3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5";
         int[] inputs = {9,8,7,6,5};
         int signal = calculateThrusterSignal(program, inputs);
-        assertThat(signal).isEqualTo(123);
+        assertThat(signal).isEqualTo(139629729);
     }
 
     private int maxThrusterSignal(String program) {
@@ -73,13 +75,18 @@ class AmplificationCircuitTest {
         firstAmplifierListener.addInput("0");
         fifthAmplifierListener.setListener(firstAmplifierListener);
 
-        int firstAmplifier = new Computer().execute(program, firstAmplifierListener);
-        int secondAmplifier = new Computer().execute(program, secondAmplifierListener);
-        int thirdAmplifier = new Computer().execute(program, thirdAmplifierListener);
-        int fourthAmplifier = new Computer().execute(program, fourthAmplifierListener);
-        int fifthAmplifier = new Computer().execute(program, fifthAmplifierListener);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        executorService.submit( () -> new Computer().execute(program, firstAmplifierListener));
+        executorService.submit(() -> new Computer().execute(program, secondAmplifierListener));
+        executorService.submit(() -> new Computer().execute(program, thirdAmplifierListener));
+        executorService.submit(() -> new Computer().execute(program, fourthAmplifierListener));
+        Future<Integer> fifthAmplifier = executorService.submit(() -> new Computer().execute(program, fifthAmplifierListener));
 
-        return fifthAmplifier;
+        try {
+            return fifthAmplifier.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private List<int[]> permutations(int[] inputs) {
