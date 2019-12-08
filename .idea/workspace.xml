@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SpaceImageFormatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SpaceImageFormatTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpaceImageFormatTest">
+  <component name="RunManager" selected="JUnit.SpaceImageFormatTest.finalImage">
     <configuration name="SpaceImageFormatTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -91,6 +92,22 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
       <option name="METHOD_NAME" value="countNumberOfGivenDigit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpaceImageFormatTest.finalImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
+      <option name="METHOD_NAME" value="finalImage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,27 +145,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="it.matteopierro in day2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpaceImageFormatTest.finalImage" />
         <item itemvalue="JUnit.SpaceImageFormatTest" />
         <item itemvalue="JUnit.SpaceImageFormatTest.firstPuzzle" />
         <item itemvalue="JUnit.SpaceImageFormatTest.countNumberOfGivenDigit" />
         <item itemvalue="JUnit.SpaceImageFormatTest.findGroupWithMinimumZeros" />
-        <item itemvalue="JUnit.it.matteopierro in day2" />
       </list>
     </recent_temporary>
   </component>
@@ -240,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575748609859</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="solve first challenge day8">
+      <created>1575789222967</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575789222967</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,7 +279,8 @@
     <MESSAGE value="move to multithread implementation" />
     <MESSAGE value="find max thruster signal with feedback loop" />
     <MESSAGE value="solve second challenge day7" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve second challenge day7" />
+    <MESSAGE value="solve first challenge day8" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve first challenge day8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

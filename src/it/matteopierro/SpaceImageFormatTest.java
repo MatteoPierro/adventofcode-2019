@@ -1,5 +1,6 @@
 package it.matteopierro;
 
+import org.jooq.lambda.Seq;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -34,7 +35,7 @@ class SpaceImageFormatTest {
         int tall = 2;
         List<Integer> input = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2);
         List<List<Integer>> groups = layersFor(input, wide, tall);
-        assertThat(findWithMinimumZeros(groups)).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(findLayerWithMinimumZeros(groups)).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @Test
@@ -45,15 +46,40 @@ class SpaceImageFormatTest {
 
     @Test
     void firstPuzzle() throws IOException {
-        List<Integer> input = Stream.of(Files.readString(Paths.get("./input_day8")).split(""))
-                .map(Integer::parseInt)
-                .collect(toList());
-
-        List<List<Integer>> groups = layersFor(input, 25, 6);
-        List<Integer> groupMinimumZeros = findWithMinimumZeros(groups);
+        List<Integer> imageData = toImageData(Files.readString(Paths.get("./input_day8")));
+        List<List<Integer>> layers = layersFor(imageData, 25, 6);
+        List<Integer> groupMinimumZeros = findLayerWithMinimumZeros(layers);
         assertThat(
                 countDigits(groupMinimumZeros, 1) * countDigits(groupMinimumZeros, 2)
         ).isEqualTo(1792);
+    }
+
+    @Test
+    void finalImage() {
+        List<List<Integer>> layers = layersFor(toImageData("0222112222120000"), 2, 2);
+        List<Integer> image = decodeImage(layers);
+
+        assertThat(image).containsExactly(0, 1, 1, 0);
+    }
+
+    private List<Integer> decodeImage(List<List<Integer>> layers) {
+        return Seq.range(0, layers.get(0).size())
+                .map(pixelIndex -> decodePixel(layers, pixelIndex))
+                .toList();
+    }
+
+    private Integer decodePixel(List<List<Integer>> layers, Integer pixelIndex) {
+        return layers.stream()
+                .map(layer -> layer.get(pixelIndex))
+                .filter(layer -> layer == 1 || layer == 0)
+                .findFirst()
+                .orElse(2);
+    }
+
+    private List<Integer> toImageData(String imageData) {
+        return Stream.of(imageData.split(""))
+                .map(Integer::parseInt)
+                .collect(toList());
     }
 
     private int countDigits(List<Integer> integers, int digit) {
@@ -62,7 +88,7 @@ class SpaceImageFormatTest {
                 .count();
     }
 
-    private List<Integer> findWithMinimumZeros(List<List<Integer>> groups) {
+    private List<Integer> findLayerWithMinimumZeros(List<List<Integer>> groups) {
         return groups.stream()
                 .map(group -> {
                     return tuple(numberOfZeros(group), group);
