@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/AmplificationCircuitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +64,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.it.matteopierro in day2">
-    <configuration name="AmplificationCircuitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SpaceImageFormatTest">
+    <configuration name="SpaceImageFormatTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -77,13 +74,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AmplificationCircuitTest.feedbackLoop (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceImageFormatTest.countNumberOfGivenDigit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -92,14 +89,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="feedbackLoop(java.lang.String,int)" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
+      <option name="METHOD_NAME" value="countNumberOfGivenDigit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AmplificationCircuitTest.feedbackLoop" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceImageFormatTest.findGroupWithMinimumZeros" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -108,14 +105,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="feedbackLoop" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
+      <option name="METHOD_NAME" value="findGroupWithMinimumZeros" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AmplificationCircuitTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceImageFormatTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -124,8 +121,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.AmplificationCircuitTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,11 +144,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpaceImageFormatTest" />
+        <item itemvalue="JUnit.SpaceImageFormatTest.firstPuzzle" />
+        <item itemvalue="JUnit.SpaceImageFormatTest.countNumberOfGivenDigit" />
+        <item itemvalue="JUnit.SpaceImageFormatTest.findGroupWithMinimumZeros" />
         <item itemvalue="JUnit.it.matteopierro in day2" />
-        <item itemvalue="JUnit.AmplificationCircuitTest" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.secondPuzzle" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop (1)" />
-        <item itemvalue="JUnit.AmplificationCircuitTest.feedbackLoop" />
       </list>
     </recent_temporary>
   </component>
