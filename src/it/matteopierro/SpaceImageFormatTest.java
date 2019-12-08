@@ -62,6 +62,22 @@ class SpaceImageFormatTest {
         assertThat(image).containsExactly(0, 1, 1, 0);
     }
 
+    @Test
+    void secondPuzzle() throws IOException {
+        List<Integer> imageData = toImageData(Files.readString(Paths.get("./input_day8")));
+        List<List<Integer>> layers = layersFor(imageData, 25, 6);
+        List<Integer> image = decodeImage(layers);
+
+        assertThat(image).containsExactly(
+                1,0,0,0,0,0,0,1,1,0,1,1,1,1,0,0,1,1,0,0,1,0,0,1,0,
+                1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,
+                1,0,0,0,0,0,0,0,1,0,1,1,1,0,0,1,0,0,0,0,1,1,1,1,0,
+                1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,1,0,
+                1,0,0,0,0,1,0,0,1,0,1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,
+                1,1,1,1,0,0,1,1,0,0,1,1,1,1,0,0,1,1,0,0,1,0,0,1,0
+        );
+    }
+
     private List<Integer> decodeImage(List<List<Integer>> layers) {
         return Seq.range(0, layers.get(0).size())
                 .map(pixelIndex -> decodePixel(layers, pixelIndex))

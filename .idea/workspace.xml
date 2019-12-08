@@ -65,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpaceImageFormatTest.finalImage">
+  <component name="RunManager" selected="JUnit.SpaceImageFormatTest.secondPuzzle">
     <configuration name="SpaceImageFormatTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -113,22 +113,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpaceImageFormatTest.findGroupWithMinimumZeros" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
-      <option name="METHOD_NAME" value="findGroupWithMinimumZeros" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SpaceImageFormatTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -145,13 +129,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpaceImageFormatTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpaceImageFormatTest.secondPuzzle" />
         <item itemvalue="JUnit.SpaceImageFormatTest.finalImage" />
         <item itemvalue="JUnit.SpaceImageFormatTest" />
         <item itemvalue="JUnit.SpaceImageFormatTest.firstPuzzle" />
         <item itemvalue="JUnit.SpaceImageFormatTest.countNumberOfGivenDigit" />
-        <item itemvalue="JUnit.SpaceImageFormatTest.findGroupWithMinimumZeros" />
       </list>
     </recent_temporary>
   </component>
@@ -250,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575789222967</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="implement decode image">
+      <created>1575805365687</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1575805365687</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +287,8 @@
     <MESSAGE value="find max thruster signal with feedback loop" />
     <MESSAGE value="solve second challenge day7" />
     <MESSAGE value="solve first challenge day8" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve first challenge day8" />
+    <MESSAGE value="implement decode image" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement decode image" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
