@@ -12,6 +12,9 @@ public class Computer {
     private static final String JUMP_IF_FALSE = "6";
     private static final String LESS_OPERATION = "7";
     private static final String EQUAL_OPERATION = "8";
+    private static final String ADJUST_RELATIVE_BASE_OPERATION = "9";
+
+    private static int relativeBase = 0;
 
     public List<String> execute(String program, String... inputs) {
         return execute(program.split(","), inputs);
@@ -26,11 +29,11 @@ public class Computer {
         return Integer.parseInt(results.get(results.size() - 1));
     }
 
-    private List<String> execute(String[] memory, ComputerListener listener) {
-        for (int memoryIndex = 0; memoryIndex < memory.length; ) {
-            String operationCode = memory[memoryIndex];
+    private List<String> execute(String[] instructions, ComputerListener listener) {
+        for (int instructionIndex = 0; instructionIndex < instructions.length; ) {
+            String operationCode = instructions[instructionIndex];
             Operation operation = operationFor(operationCode, listener);
-            memoryIndex = operation.execute(memory, memoryIndex);
+            instructionIndex = operation.execute(instructions, instructionIndex);
         }
         return listener.results();
     }
@@ -54,12 +57,16 @@ public class Computer {
             return new Less(operationCode);
         } else if (operationCode.endsWith(EQUAL_OPERATION)) {
             return new Equal(operationCode);
+        } else if (operationCode.endsWith(ADJUST_RELATIVE_BASE_OPERATION)) {
+            return new AdjustRelativeBase(operationCode);
         }
         throw new RuntimeException("Not Supported Operation!" + operationCode);
     }
 
     private interface Mode {
         static Mode modeFor(String mode) {
+            if (mode.equals("2")) return new Relative();
+
             return mode.equals("0")
                     ? new Position()
                     : new Immediate();
@@ -93,6 +100,19 @@ public class Computer {
         @Override
         public void write(String[] memory, Integer address, String value) {
             memory[address] = String.valueOf(value);
+        }
+    }
+
+    private static class Relative extends Position {
+
+        @Override
+        public Long read(String[] memory, Integer address) {
+            return super.read(memory, relativeBase + address);
+        }
+
+        @Override
+        public void write(String[] memory, Integer address, String value) {
+            super.write(memory, relativeBase + address, value);
         }
     }
 
@@ -283,6 +303,19 @@ public class Computer {
         @Override
         protected long execute(long firstOperand, long secondOperand) {
             return firstOperand == secondOperand ? 1 : 0;
+        }
+    }
+
+    private class AdjustRelativeBase extends OneOperandOperation {
+
+        AdjustRelativeBase(String operationCode) {
+            super(operationCode);
+        }
+
+        @Override
+        protected int execute(String[] memory, int memoryIndex, Long firstOperand) {
+            relativeBase = (int) (long) firstOperand;
+            return memoryIndex + 2;
         }
     }
 }
