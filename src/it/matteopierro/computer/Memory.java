@@ -6,7 +6,7 @@ import java.util.Map;
 public class Memory {
     private final String[] instructions;
     private final Map<Integer, String> extraMemory = new HashMap<>();
-    public int relativeBase = 0;
+    private int relativeBase = 0;
 
     public Memory(String[] instructions) {
         this.instructions = instructions;
@@ -40,5 +40,9 @@ public class Memory {
 
     public void setRelative(int offset, String value) {
         this.set(relativeBase + offset, value);
+    }
+
+    public int relativeBase() {
+        return relativeBase;
     }
 }

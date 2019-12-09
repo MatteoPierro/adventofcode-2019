@@ -29,7 +29,7 @@ class SensorBoostTest {
         Memory memory = new Memory(program);
         List<String> results = computer.execute(program, new ComputerListener(), memory);
 
-        assertThat(memory.relativeBase).isEqualTo(1);
+        assertThat(memory.relativeBase()).isEqualTo(1);
         assertThat(results).containsExactly("109");
         assertThat(memory.get(100)).contains("1");
         assertThat(memory.get(101)).contains("0");

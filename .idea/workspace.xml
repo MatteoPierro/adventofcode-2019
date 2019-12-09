@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -312,7 +312,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575924701043</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="remove global relativeBase">
+      <created>1575925362231</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1575925362231</updated>
+    </task>
+    <task id="LOCAL-00023" summary="remove duplication">
+      <created>1575926047902</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1575926047902</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -351,17 +365,8 @@
     <MESSAGE value="output 16 DigitOutput" />
     <MESSAGE value="test copy itself" />
     <MESSAGE value="resolve first puzzle day9" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolve first puzzle day9" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="remove global relativeBase" />
+    <MESSAGE value="remove duplication" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove duplication" />
   </component>
 </project>

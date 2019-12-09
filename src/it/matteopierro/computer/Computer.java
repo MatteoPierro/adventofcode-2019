@@ -218,23 +218,17 @@ public class Computer {
 
     private static class Read implements Operation {
 
-        private final String operationCode;
         private final ComputerListener listener;
+        private final Position mode;
 
         Read(String operationCode, ComputerListener listener) {
-            this.operationCode = operationCode;
             this.listener = listener;
+            this.mode = operationCode.startsWith("2") ? new Relative() : new Position();
         }
 
         @Override
         public int execute(Memory memory, int memoryIndex) {
-            int address = Integer.parseInt(memory.get(memoryIndex + 1));
-            if (operationCode.startsWith("2")) {
-                address += memory.relativeBase;
-            }
-            int savePosition = address;
-            //int savePosition = Integer.parseInt(memory.get(memoryIndex + 1));
-            memory.set(savePosition, listener.onReadRequested());
+            mode.write(memory, memoryIndex + 1, listener.onReadRequested());
             return memoryIndex + 2;
         }
     }
@@ -262,6 +256,7 @@ public class Computer {
     }
 
     public static abstract class Jump extends TwoOperandOperation {
+
         Jump(String operationCode) {
             super(operationCode);
         }
@@ -277,6 +272,7 @@ public class Computer {
     }
 
     private static class JumpIfTrue extends Jump {
+
         JumpIfTrue(String operationCode) {
             super(operationCode);
         }
@@ -288,6 +284,7 @@ public class Computer {
     }
 
     private static class JumpIfFalse extends Jump {
+
         JumpIfFalse(String operationCode) {
             super(operationCode);
         }
