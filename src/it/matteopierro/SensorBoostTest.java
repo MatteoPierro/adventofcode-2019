@@ -1,6 +1,7 @@
 package it.matteopierro;
 
 import it.matteopierro.computer.Computer;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -27,6 +28,15 @@ class SensorBoostTest {
     }
 
     @Test
+    void output16DigitOutput() {
+        String program = "1102,34915192,34915192,7,4,7,99,0";
+        String result = String.join(",", new Computer().execute(program));
+        assertThat(result.length()).isEqualTo(16);
+        assertThat(result).isEqualTo(String.valueOf(34915192L * 34915192L));
+    }
+
+    @Test
+    @Disabled
     void copyTheInputToTheOutput() {
         String program = "109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99";
         String result = String.join(",", new Computer().execute(program));

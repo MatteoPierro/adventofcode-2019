@@ -75,7 +75,10 @@ public class Computer {
 
         Long read(Memory memory, Integer address);
 
-        void write(Memory memory, Integer address, String value);
+        default void write(Memory memory, Integer address, String value) {
+            int position = Integer.parseInt(memory.get(address));
+            memory.set(position, String.valueOf(value));
+        };
     }
 
     private static class Position implements Mode {
@@ -84,23 +87,12 @@ public class Computer {
             int position = Integer.parseInt(memory.get(address));
             return Long.parseLong(memory.get(position));
         }
-
-        @Override
-        public void write(Memory memory, Integer address, String value) {
-            int position = Integer.parseInt(memory.get(address));
-            memory.set(position, String.valueOf(value));
-        }
     }
 
     private static class Immediate implements Mode {
         @Override
         public Long read(Memory memory, Integer address) {
             return Long.parseLong(memory.get(address));
-        }
-
-        @Override
-        public void write(Memory memory, Integer address, String value) {
-            memory.set(address, String.valueOf(value));
         }
     }
 
@@ -110,11 +102,6 @@ public class Computer {
         public Long read(Memory memory, Integer address) {
             int offset = Integer.parseInt(memory.get(address));
             return Long.parseLong(memory.get(relativeBase + offset));
-        }
-
-        @Override
-        public void write(Memory memory, Integer address, String value) {
-            super.write(memory, relativeBase + address, value);
         }
     }
 

@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +67,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.it.matteopierro in day2">
+  <component name="RunManager" selected="JUnit.SensorBoostTest">
+    <configuration name="SensorBoostTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SensorBoostTest.copyTheInputToTheOutput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -85,7 +99,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorBoostTest.manageRelativeInstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SensorBoostTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -95,13 +109,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
-      <option name="METHOD_NAME" value="manageRelativeInstruction" />
+      <option name="METHOD_NAME" value="name" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorBoostTest.outputTheLargeNumberInTheMiddle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SensorBoostTest.output16DigitOutput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -111,23 +125,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
-      <option name="METHOD_NAME" value="outputTheLargeNumberInTheMiddle" />
+      <option name="METHOD_NAME" value="output16DigitOutput" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpaceImageFormatTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SensorBoostTest" />
+        <item itemvalue="JUnit.SensorBoostTest.output16DigitOutput" />
+        <item itemvalue="JUnit.SensorBoostTest.name" />
         <item itemvalue="JUnit.it.matteopierro in day2" />
         <item itemvalue="JUnit.SensorBoostTest.copyTheInputToTheOutput" />
-        <item itemvalue="JUnit.SensorBoostTest.manageRelativeInstruction" />
-        <item itemvalue="JUnit.SensorBoostTest.outputTheLargeNumberInTheMiddle" />
-        <item itemvalue="JUnit.SpaceImageFormatTest" />
       </list>
     </recent_temporary>
   </component>
@@ -286,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575910441584</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix relative mode">
+      <created>1575915472801</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1575915472801</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -321,37 +327,7 @@
     <MESSAGE value="implement long numbers" />
     <MESSAGE value="introduce adjust relative base instruction" />
     <MESSAGE value="extract Memory class" />
-    <option name="LAST_COMMIT_MESSAGE" value="extract Memory class" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="fix relative mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix relative mode" />
   </component>
 </project>
