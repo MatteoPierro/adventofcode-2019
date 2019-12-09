@@ -43,7 +43,7 @@ public class ComputerListener {
     }
 
     public void onStoreRequested(String result) {
-        this.results.add(result);
+        this.results.add(result + "");
     }
 
     public List<String> results() {

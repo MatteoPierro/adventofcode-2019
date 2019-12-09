@@ -14,7 +14,7 @@ public class Computer {
     private static final String EQUAL_OPERATION = "8";
     private static final String ADJUST_RELATIVE_BASE_OPERATION = "9";
 
-    private static int relativeBase = 0;
+    public static int relativeBase = 0;
 
     public List<String> execute(String program, String... inputs) {
         return execute(program.split(","), inputs);
@@ -108,7 +108,8 @@ public class Computer {
 
         @Override
         public Long read(Memory memory, Integer address) {
-            return super.read(memory, relativeBase + address);
+            int offset = Integer.parseInt(memory.get(address));
+            return Long.parseLong(memory.get(relativeBase + offset));
         }
 
         @Override

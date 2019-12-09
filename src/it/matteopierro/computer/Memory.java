@@ -1,7 +1,11 @@
 package it.matteopierro.computer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Memory {
     private final String[] instructions;
+    private final Map<Integer, String> extraMemory = new HashMap<>();
 
     public Memory(String[] instructions) {
         this.instructions = instructions;
@@ -12,13 +16,13 @@ public class Memory {
             instructions[address] = value;
             return;
         }
-        throw new UnsupportedOperationException();
+        extraMemory.put(address, value);
     }
 
     public String get(Integer address) {
         if (address < instructions.length)
             return instructions[address];
-        throw new UnsupportedOperationException();
+        return extraMemory.getOrDefault(address, "0");
     }
 
     public int instructionLength() {
