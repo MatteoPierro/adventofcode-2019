@@ -5,6 +5,9 @@ import it.matteopierro.computer.ComputerListener;
 import it.matteopierro.computer.Memory;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,5 +48,12 @@ class SensorBoostTest {
         String program = "109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99";
         String result = String.join(",", new Computer().execute(program));
         assertThat(result).isEqualTo(program);
+    }
+
+    @Test
+    void firstPuzzle() throws IOException {
+        String program = Files.readString(Paths.get("./input_day9"));
+        List<String> results = new Computer().execute(program, "1");
+        assertThat(results).containsExactly("3906448201");
     }
 }

@@ -98,6 +98,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SensorBoostTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SensorBoostTest.manageRelativeInstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -109,22 +125,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
       <option name="METHOD_NAME" value="manageRelativeInstruction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SensorBoostTest.output16DigitOutput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
-      <option name="METHOD_NAME" value="output16DigitOutput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,10 +147,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.it.matteopierro in day2" />
+        <item itemvalue="JUnit.SensorBoostTest.firstPuzzle" />
+        <item itemvalue="JUnit.SensorBoostTest" />
         <item itemvalue="JUnit.SensorBoostTest.copyTheInputToTheOutput" />
         <item itemvalue="JUnit.SensorBoostTest.manageRelativeInstruction" />
-        <item itemvalue="JUnit.SensorBoostTest" />
-        <item itemvalue="JUnit.SensorBoostTest.output16DigitOutput" />
       </list>
     </recent_temporary>
   </component>
@@ -298,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575916266705</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="test copy itself">
+      <created>1575918157249</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1575918157249</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -335,6 +342,18 @@
     <MESSAGE value="extract Memory class" />
     <MESSAGE value="fix relative mode" />
     <MESSAGE value="output 16 DigitOutput" />
-    <option name="LAST_COMMIT_MESSAGE" value="output 16 DigitOutput" />
+    <MESSAGE value="test copy itself" />
+    <option name="LAST_COMMIT_MESSAGE" value="test copy itself" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

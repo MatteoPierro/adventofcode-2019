@@ -52,7 +52,7 @@ public class Computer {
         } else if (operationCode.endsWith(MULTIPLY_OPERATION)) {
             return new Multiply(operationCode);
         } else if (operationCode.endsWith(SAVE_OPERATION)) {
-            return new Read(listener);
+            return new Read(operationCode, listener);
         } else if (operationCode.endsWith(READ_OPERATION)) {
             return new Store(operationCode, listener);
         } else if (operationCode.endsWith(JUMP_IF_TRUE)) {
@@ -83,7 +83,7 @@ public class Computer {
         default void write(Memory memory, Integer address, String value) {
             int position = Integer.parseInt(memory.get(address));
             memory.set(position, String.valueOf(value));
-        };
+        }
     }
 
     private static class Position implements Mode {
@@ -107,6 +107,12 @@ public class Computer {
         public Long read(Memory memory, Integer address) {
             int offset = Integer.parseInt(memory.get(address));
             return Long.parseLong(memory.get(relativeBase + offset));
+        }
+
+        @Override
+        public void write(Memory memory, Integer address, String value) {
+            int position = Integer.parseInt(memory.get(address)) + relativeBase;
+            memory.set(position, String.valueOf(value));
         }
     }
 
@@ -162,17 +168,29 @@ public class Computer {
     public static abstract class TwoOperandWithResult extends TwoOperandOperation {
         private static final int INSTRUCTION_SIZE = 4;
         private final Mode resultMode;
+        private final String op;
 
         TwoOperandWithResult(String operationCode) {
             super(operationCode);
-            this.resultMode = new Position();
+            this.op = operationCode;
+            this.resultMode = resultModeFor(operationCode);
+        }
+
+        private Mode resultModeFor(String operationCode) {
+            if (operationCode.length() < 5) return new Position();
+
+            return operationCode.startsWith("2") ? new Relative() : new Position();
         }
 
         @Override
         protected int execute(Memory memory, int memoryIndex, long firstOperand, long secondOperand) {
-            String value = String.valueOf(execute(firstOperand, secondOperand));
-            resultMode.write(memory, memoryIndex + 3, value);
-            return memoryIndex + INSTRUCTION_SIZE;
+            try {
+                String value = String.valueOf(execute(firstOperand, secondOperand));
+                resultMode.write(memory, memoryIndex + 3, value);
+                return memoryIndex + INSTRUCTION_SIZE;
+            } catch (Exception e) {
+                throw new RuntimeException("operation code " + op, e);
+            }
         }
 
         protected abstract long execute(long firstOperand, long secondOperand);
@@ -203,15 +221,22 @@ public class Computer {
 
     private static class Read implements Operation {
 
+        private final String operationCode;
         private final ComputerListener listener;
 
-        Read(ComputerListener listener) {
+        Read(String operationCode, ComputerListener listener) {
+            this.operationCode = operationCode;
             this.listener = listener;
         }
 
         @Override
         public int execute(Memory memory, int memoryIndex) {
-            int savePosition = Integer.parseInt(memory.get(memoryIndex + 1));
+            int address = Integer.parseInt(memory.get(memoryIndex + 1));
+            if (operationCode.startsWith("2")) {
+                address += relativeBase;
+            }
+            int savePosition = address;
+            //int savePosition = Integer.parseInt(memory.get(memoryIndex + 1));
             memory.set(savePosition, listener.onReadRequested());
             return memoryIndex + 2;
         }
