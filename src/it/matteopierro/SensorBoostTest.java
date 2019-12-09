@@ -56,4 +56,11 @@ class SensorBoostTest {
         List<String> results = new Computer().execute(program, "1");
         assertThat(results).containsExactly("3906448201");
     }
+
+    @Test
+    void secondPuzzle() throws IOException {
+        String program = Files.readString(Paths.get("./input_day9"));
+        List<String> results = new Computer().execute(program, "2");
+        assertThat(results).containsExactly("59785");
+    }
 }
