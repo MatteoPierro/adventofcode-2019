@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +66,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SensorBoostTest.secondPuzzle">
+  <component name="RunManager" selected="JUnit.it.matteopierro in day2">
     <configuration name="SensorBoostTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -145,8 +146,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SensorBoostTest.secondPuzzle" />
         <item itemvalue="JUnit.it.matteopierro in day2" />
+        <item itemvalue="JUnit.SensorBoostTest.secondPuzzle" />
         <item itemvalue="JUnit.SensorBoostTest.firstPuzzle" />
         <item itemvalue="JUnit.SensorBoostTest" />
         <item itemvalue="JUnit.SensorBoostTest.copyTheInputToTheOutput" />
@@ -357,7 +358,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java</url>
-          <line>113</line>
+          <line>110</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>

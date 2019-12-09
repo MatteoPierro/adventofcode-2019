@@ -14,8 +14,6 @@ public class Computer {
     private static final String EQUAL_OPERATION = "8";
     private static final String ADJUST_RELATIVE_BASE_OPERATION = "9";
 
-    public static int relativeBase = 0;
-
     public List<String> execute(String program, String... inputs) {
         return execute(program.split(","), inputs);
     }
@@ -35,7 +33,6 @@ public class Computer {
     }
 
     public List<String> execute(String[] instructions, ComputerListener listener, Memory memory) {
-        relativeBase = 0;
         for (int instructionIndex = 0; instructionIndex < instructions.length; ) {
             String operationCode = instructions[instructionIndex];
             Operation operation = operationFor(operationCode, listener);
@@ -106,13 +103,13 @@ public class Computer {
         @Override
         public Long read(Memory memory, Integer address) {
             int offset = Integer.parseInt(memory.get(address));
-            return Long.parseLong(memory.get(relativeBase + offset));
+            return Long.parseLong(memory.getRelative(offset));
         }
 
         @Override
         public void write(Memory memory, Integer address, String value) {
-            int position = Integer.parseInt(memory.get(address)) + relativeBase;
-            memory.set(position, String.valueOf(value));
+            int offset = Integer.parseInt(memory.get(address));
+            memory.setRelative(offset, String.valueOf(value));
         }
     }
 
@@ -233,7 +230,7 @@ public class Computer {
         public int execute(Memory memory, int memoryIndex) {
             int address = Integer.parseInt(memory.get(memoryIndex + 1));
             if (operationCode.startsWith("2")) {
-                address += relativeBase;
+                address += memory.relativeBase;
             }
             int savePosition = address;
             //int savePosition = Integer.parseInt(memory.get(memoryIndex + 1));
@@ -333,7 +330,7 @@ public class Computer {
 
         @Override
         protected int execute(Memory memory, int memoryIndex, Long firstOperand) {
-            relativeBase += (int) (long) firstOperand;
+            memory.addRelativeOffset(firstOperand);
             return memoryIndex + 2;
         }
     }
