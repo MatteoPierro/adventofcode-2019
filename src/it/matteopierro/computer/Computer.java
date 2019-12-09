@@ -65,16 +65,16 @@ public class Computer {
                     : new Immediate();
         }
 
-        Integer read(String[] memory, Integer address);
+        Long read(String[] memory, Integer address);
 
         void write(String[] memory, Integer address, String value);
     }
 
     private static class Position implements Mode {
         @Override
-        public Integer read(String[] memory, Integer address) {
+        public Long read(String[] memory, Integer address) {
             int position = Integer.parseInt(memory[address]);
-            return Integer.parseInt(memory[position]);
+            return Long.parseLong(memory[position]);
         }
 
         @Override
@@ -86,8 +86,8 @@ public class Computer {
 
     private static class Immediate implements Mode {
         @Override
-        public Integer read(String[] memory, Integer address) {
-            return Integer.parseInt(memory[address]);
+        public Long read(String[] memory, Integer address) {
+            return Long.parseLong(memory[address]);
         }
 
         @Override
@@ -115,11 +115,11 @@ public class Computer {
 
         @Override
         public int execute(String[] memory, int memoryIndex) {
-            Integer firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
+            Long firstOperand = firstOperandMode.read(memory, memoryIndex + 1);
             return execute(memory, memoryIndex, firstOperand);
         }
 
-        protected abstract int execute(String[] memory, int memoryIndex, Integer firstOperand);
+        protected abstract int execute(String[] memory, int memoryIndex, Long firstOperand);
     }
 
     public static abstract class TwoOperandOperation extends OneOperandOperation {
@@ -137,12 +137,12 @@ public class Computer {
         }
 
         @Override
-        public int execute(String[] memory, int memoryIndex, Integer firstOperand) {
-            Integer secondOperand = secondOperandMode.read(memory, memoryIndex + 2);
+        public int execute(String[] memory, int memoryIndex, Long firstOperand) {
+            Long secondOperand = secondOperandMode.read(memory, memoryIndex + 2);
             return execute(memory, memoryIndex, firstOperand, secondOperand);
         }
 
-        protected abstract int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand);
+        protected abstract int execute(String[] memory, int memoryIndex, long firstOperand, long secondOperand);
     }
 
     public static abstract class TwoOperandWithResult extends TwoOperandOperation {
@@ -155,13 +155,13 @@ public class Computer {
         }
 
         @Override
-        protected int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand) {
+        protected int execute(String[] memory, int memoryIndex, long firstOperand, long secondOperand) {
             String value = String.valueOf(execute(firstOperand, secondOperand));
             resultMode.write(memory, memoryIndex + 3, value);
             return memoryIndex + INSTRUCTION_SIZE;
         }
 
-        protected abstract int execute(int firstOperand, int secondOperand);
+        protected abstract long execute(long firstOperand, long secondOperand);
     }
 
     private static class Multiply extends TwoOperandWithResult {
@@ -171,7 +171,7 @@ public class Computer {
         }
 
         @Override
-        protected int execute(int firstOperand, int secondOperand) {
+        protected long execute(long firstOperand, long secondOperand) {
             return firstOperand * secondOperand;
         }
     }
@@ -182,7 +182,7 @@ public class Computer {
         }
 
         @Override
-        protected int execute(int firstOperand, int secondOperand) {
+        protected long execute(long firstOperand, long secondOperand) {
             return firstOperand + secondOperand;
         }
     }
@@ -212,7 +212,7 @@ public class Computer {
         }
 
         @Override
-        protected int execute(String[] memory, int memoryIndex, Integer firstOperand) {
+        protected int execute(String[] memory, int memoryIndex, Long firstOperand) {
             listener.onStoreRequested(String.valueOf(firstOperand));
             return memoryIndex + 2;
         }
@@ -231,13 +231,13 @@ public class Computer {
         }
 
         @Override
-        protected int execute(String[] memory, int memoryIndex, Integer firstOperand, Integer secondOperand) {
-            if (jumpCondition(firstOperand)) return secondOperand;
+        protected int execute(String[] memory, int memoryIndex, long firstOperand, long secondOperand) {
+            if (jumpCondition(firstOperand)) return (int) secondOperand;
 
             return memoryIndex + 3;
         }
 
-        protected abstract boolean jumpCondition(Integer firstOperand);
+        protected abstract boolean jumpCondition(long firstOperand);
     }
 
     private static class JumpIfTrue extends Jump {
@@ -246,7 +246,7 @@ public class Computer {
         }
 
         @Override
-        protected boolean jumpCondition(Integer firstOperand) {
+        protected boolean jumpCondition(long firstOperand) {
             return firstOperand != 0;
         }
     }
@@ -257,7 +257,7 @@ public class Computer {
         }
 
         @Override
-        protected boolean jumpCondition(Integer firstOperand) {
+        protected boolean jumpCondition(long firstOperand) {
             return firstOperand == 0;
         }
     }
@@ -269,7 +269,7 @@ public class Computer {
         }
 
         @Override
-        protected int execute(int firstOperand, int secondOperand) {
+        protected long execute(long firstOperand, long secondOperand) {
             return firstOperand < secondOperand ? 1 : 0;
         }
     }
@@ -281,7 +281,7 @@ public class Computer {
         }
 
         @Override
-        protected int execute(int firstOperand, int secondOperand) {
+        protected long execute(long firstOperand, long secondOperand) {
             return firstOperand == secondOperand ? 1 : 0;
         }
     }

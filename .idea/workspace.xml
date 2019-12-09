@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SpaceImageFormatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SpaceImageFormatTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +79,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SensorBoostTest.outputTheLargeNumberInTheMiddle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
+      <option name="METHOD_NAME" value="outputTheLargeNumberInTheMiddle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpaceImageFormatTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -90,22 +106,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpaceImageFormatTest.finalImage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceImageFormatTest" />
-      <option name="METHOD_NAME" value="finalImage" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -143,10 +143,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.it.matteopierro in day2" />
+        <item itemvalue="JUnit.SensorBoostTest.outputTheLargeNumberInTheMiddle" />
         <item itemvalue="JUnit.SpaceImageFormatTest" />
         <item itemvalue="Application.ImageDecoder" />
         <item itemvalue="JUnit.SpaceImageFormatTest.secondPuzzle" />
-        <item itemvalue="JUnit.SpaceImageFormatTest.finalImage" />
       </list>
     </recent_temporary>
   </component>
