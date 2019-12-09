@@ -1,7 +1,8 @@
 package it.matteopierro;
 
 import it.matteopierro.computer.Computer;
-import org.junit.jupiter.api.Disabled;
+import it.matteopierro.computer.ComputerListener;
+import it.matteopierro.computer.Memory;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -21,10 +22,14 @@ class SensorBoostTest {
     void manageRelativeInstruction() {
         Computer computer = new Computer();
 
-        List<String> results = computer.execute("109,1,204,-1,99");
+        String[] program = "109,1,204,-1,1001,100,1,100,1008,100,16,101,99".split(",");
+        Memory memory = new Memory(program);
+        List<String> results = computer.execute(program, new ComputerListener(), memory);
 
         assertThat(computer.relativeBase).isEqualTo(1);
         assertThat(results).containsExactly("109");
+        assertThat(memory.get(100)).contains("1");
+        assertThat(memory.get(101)).contains("0");
     }
 
     @Test
@@ -36,7 +41,6 @@ class SensorBoostTest {
     }
 
     @Test
-    @Disabled
     void copyTheInputToTheOutput() {
         String program = "109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99";
         String result = String.join(",", new Computer().execute(program));

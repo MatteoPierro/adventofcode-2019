@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +66,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SensorBoostTest">
+  <component name="RunManager" selected="JUnit.it.matteopierro in day2">
     <configuration name="SensorBoostTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -99,7 +98,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorBoostTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SensorBoostTest.manageRelativeInstruction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -109,7 +108,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
-      <option name="METHOD_NAME" value="name" />
+      <option name="METHOD_NAME" value="manageRelativeInstruction" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SensorBoostTest" />
-        <item itemvalue="JUnit.SensorBoostTest.output16DigitOutput" />
-        <item itemvalue="JUnit.SensorBoostTest.name" />
         <item itemvalue="JUnit.it.matteopierro in day2" />
         <item itemvalue="JUnit.SensorBoostTest.copyTheInputToTheOutput" />
+        <item itemvalue="JUnit.SensorBoostTest.manageRelativeInstruction" />
+        <item itemvalue="JUnit.SensorBoostTest" />
+        <item itemvalue="JUnit.SensorBoostTest.output16DigitOutput" />
       </list>
     </recent_temporary>
   </component>
@@ -292,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575915472801</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="output 16 DigitOutput">
+      <created>1575916266705</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1575916266705</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -328,6 +334,7 @@
     <MESSAGE value="introduce adjust relative base instruction" />
     <MESSAGE value="extract Memory class" />
     <MESSAGE value="fix relative mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix relative mode" />
+    <MESSAGE value="output 16 DigitOutput" />
+    <option name="LAST_COMMIT_MESSAGE" value="output 16 DigitOutput" />
   </component>
 </project>

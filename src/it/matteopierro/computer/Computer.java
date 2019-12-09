@@ -31,6 +31,11 @@ public class Computer {
 
     private List<String> execute(String[] instructions, ComputerListener listener) {
         Memory memory = new Memory(instructions);
+        return execute(instructions, listener, memory);
+    }
+
+    public List<String> execute(String[] instructions, ComputerListener listener, Memory memory) {
+        relativeBase = 0;
         for (int instructionIndex = 0; instructionIndex < instructions.length; ) {
             String operationCode = instructions[instructionIndex];
             Operation operation = operationFor(operationCode, listener);
@@ -303,7 +308,7 @@ public class Computer {
 
         @Override
         protected int execute(Memory memory, int memoryIndex, Long firstOperand) {
-            relativeBase = (int) (long) firstOperand;
+            relativeBase += (int) (long) firstOperand;
             return memoryIndex + 2;
         }
     }
