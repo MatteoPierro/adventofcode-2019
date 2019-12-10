@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SensorBoostTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Memory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,8 +64,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.it.matteopierro in day2">
-    <configuration name="SensorBoostTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MonitoringStationTest.findAllAsteroids">
+    <configuration name="MonitoringStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -76,13 +74,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorBoostTest.copyTheInputToTheOutput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.findAllAsteroids" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -91,14 +89,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
-      <option name="METHOD_NAME" value="copyTheInputToTheOutput" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="findAllAsteroids" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorBoostTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.findAsteroidsInOneColumn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -107,14 +105,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="findAsteroidsInOneColumn" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorBoostTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.findAsteroidsInOneRow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -123,14 +121,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SensorBoostTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="findAsteroidsInOneRow" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="it.matteopierro in day2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.findAsteroidsInTwoColumn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -139,18 +137,20 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="findAsteroidsInTwoColumn" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.it.matteopierro in day2" />
-        <item itemvalue="JUnit.SensorBoostTest.secondPuzzle" />
-        <item itemvalue="JUnit.SensorBoostTest.firstPuzzle" />
-        <item itemvalue="JUnit.SensorBoostTest" />
-        <item itemvalue="JUnit.SensorBoostTest.copyTheInputToTheOutput" />
+        <item itemvalue="JUnit.MonitoringStationTest.findAllAsteroids" />
+        <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInTwoColumn" />
+        <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInOneColumn" />
+        <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInOneRow" />
+        <item itemvalue="JUnit.MonitoringStationTest" />
       </list>
     </recent_temporary>
   </component>
