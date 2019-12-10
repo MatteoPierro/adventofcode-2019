@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ import java.util.List;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
-import static java.math.BigInteger.ZERO;
 import static java.math.RoundingMode.HALF_UP;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
@@ -64,19 +64,64 @@ class MonitoringStationTest {
 
     @Test
     void findAllAsteroids() {
-        String map =
+        String space =
                         ".#..#\n" +
                         ".....\n" +
                         "#####\n" +
                         "....#\n" +
                         "...##";
 
-        assertThat(findAllAsteroids(map)).containsExactly(
+        assertThat(findAllAsteroids(space)).containsExactly(
                 tuple(1, 0), tuple(4, 0),
                 tuple(0, 2), tuple(1, 2), tuple(2, 2), tuple(3, 2), tuple(4, 2),
                 tuple(4, 3),
                 tuple(3, 4), tuple(4, 4)
         );
+    }
+
+    @Test
+    void orderAsteroidsBySlope() {
+        String space =
+                        ".#..#\n" +
+                        ".....\n" +
+                        "#####\n" +
+                        "....#\n" +
+                        "...##";
+
+        List<Tuple2<Integer, Integer>> asteroids = findAllAsteroids(space);
+        Tuple2<Integer, Integer> station = tuple(1, 2);
+        List<Tuple2<Integer, Integer>> toVaporize = lineOfSight(station, asteroids)
+                .stream()
+                .map(a -> tuple(a, slope(station, a).abs(), position(station, a)))
+                .sorted( (t1, t2) -> {
+                    if (t1.v3.equals(t2.v3)) return t1.v2.compareTo(t2.v2);
+                    return t1.v3.compareTo(t2.v3);
+                })
+                .map( t -> t.v1)
+                .collect(toList());
+
+        assertThat(toVaporize).containsExactly(tuple(1,0), tuple(4,0), tuple(2,2), tuple(4,3), tuple(4,4), tuple(3,4), tuple(0,2));
+    }
+
+    @Test
+    void testPosition() {
+        assertThat(position(tuple(1,1), tuple(1,0))).isEqualTo(1);
+        assertThat(position(tuple(1,1), tuple(2,0))).isEqualTo(1);
+        assertThat(position(tuple(1,1), tuple(2,1))).isEqualTo(2);
+        assertThat(position(tuple(1,1), tuple(2,2))).isEqualTo(2);
+        assertThat(position(tuple(1,1), tuple(1,2))).isEqualTo(3);
+        assertThat(position(tuple(1,1), tuple(0,2))).isEqualTo(3);
+        assertThat(position(tuple(1,1), tuple(0,1))).isEqualTo(4);
+        assertThat(position(tuple(1,1), tuple(0,0))).isEqualTo(4);
+    }
+
+    private int position(Tuple2<Integer, Integer> pointA, Tuple2<Integer, Integer> pointB) {
+        int dx = pointB.v1 - pointA.v1;
+        int dy = pointB.v2 - pointA.v2;
+        if (dx >= 0 && dy < 0) return 1;
+        if (dx > 0 && dy >= 0) return 2;
+        if (dx <= 0 && dy > 0) return 3;
+        return 4;
     }
 
     @Test
@@ -233,7 +278,6 @@ class MonitoringStationTest {
 
     @Test
     void testSlop() {
-        assertThat(slope(tuple(1,0), tuple(1,0))).isEqualTo(slope(tuple(4,0), tuple(1,0)));
         assertThat(slope(tuple(1,0), tuple(4,0))).isEqualTo(slope(tuple(4,0), tuple(1,0)));
         assertThat(slope(tuple(1,0), tuple(1,2))).isEqualTo(slope(tuple(1,2), tuple(1,0)));
         assertThat(slope(tuple(1,0), tuple(0,2))).isEqualTo(slope(tuple(0,2), tuple(1,0)));
@@ -257,7 +301,7 @@ class MonitoringStationTest {
     }
 
     private BigDecimal slope(Tuple2<Integer, Integer> pointA, Tuple2<Integer, Integer> pointB) {
-        if (pointA.v1.equals(pointB.v1)) return new BigDecimal(ZERO, 4);
+        if (pointA.v1.equals(pointB.v1)) return new BigDecimal(BigInteger.ZERO, 4);
         return new BigDecimal(pointB.v2 - pointA.v2).divide(new BigDecimal(pointB.v1 - pointA.v1), 4, HALF_UP);
     }
 

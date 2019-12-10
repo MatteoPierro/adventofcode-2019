@@ -113,7 +113,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.maxLineOfSightSecondExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.orderAsteroidsBySlope" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -123,13 +123,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="maxLineOfSightSecondExample" />
+      <option name="METHOD_NAME" value="orderAsteroidsBySlope" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.maxLineOfSightThirdExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.testPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -139,7 +139,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="maxLineOfSightThirdExample" />
+      <option name="METHOD_NAME" value="testPosition" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,10 +148,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MonitoringStationTest" />
+        <item itemvalue="JUnit.MonitoringStationTest.orderAsteroidsBySlope" />
+        <item itemvalue="JUnit.MonitoringStationTest.testPosition" />
         <item itemvalue="JUnit.MonitoringStationTest.firstPuzzle" />
         <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightForthExample" />
-        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightThirdExample" />
-        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightSecondExample" />
       </list>
     </recent_temporary>
   </component>
@@ -341,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575994241212</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="solve first puzzle day 10">
+      <created>1576011745300</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1576011745300</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -384,7 +391,8 @@
     <MESSAGE value="remove duplication" />
     <MESSAGE value="find all asteroids" />
     <MESSAGE value="attempt of implement the line of sight" />
-    <option name="LAST_COMMIT_MESSAGE" value="attempt of implement the line of sight" />
+    <MESSAGE value="solve first puzzle day 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve first puzzle day 10" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
