@@ -210,8 +210,8 @@ class MonitoringStationTest {
 
         List<Tuple2<Integer, Integer>> asteroids = findAllAsteroids(space);
         Tuple2<Tuple2<Integer, Integer>, Integer> result = maxLightOfSight(asteroids);
-        assertThat(asList(result.v1)).containsExactly(tuple(18,25));
-        assertThat(result.v2).isEqualTo(301);
+        assertThat(asList(result.v1)).containsExactly(tuple(31,20));
+        assertThat(result.v2).isEqualTo(319);
     }
 
     private Tuple2<Tuple2<Integer, Integer>, Integer> maxLightOfSight(List<Tuple2<Integer, Integer>> asteroids) {
@@ -257,8 +257,8 @@ class MonitoringStationTest {
     }
 
     private BigDecimal slope(Tuple2<Integer, Integer> pointA, Tuple2<Integer, Integer> pointB) {
-        if (pointA.v1.equals(pointB.v1)) return new BigDecimal(ZERO, 2);
-        return new BigDecimal(pointB.v2 - pointA.v2).divide(new BigDecimal(pointB.v1 - pointA.v1), 2, HALF_UP);
+        if (pointA.v1.equals(pointB.v1)) return new BigDecimal(ZERO, 4);
+        return new BigDecimal(pointB.v2 - pointA.v2).divide(new BigDecimal(pointB.v1 - pointA.v1), 4, HALF_UP);
     }
 
     private List<Tuple2<Integer, Integer>> findAllAsteroids(String map) {

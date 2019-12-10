@@ -65,7 +65,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MonitoringStationTest.maxLineOfSightForthExample">
+  <component name="RunManager" selected="JUnit.MonitoringStationTest">
+    <configuration name="MonitoringStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MonitoringStationTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -77,22 +92,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
       <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MonitoringStationTest.maxLineOfSightFirstExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="maxLineOfSightFirstExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MonitoringStationTest" />
+        <item itemvalue="JUnit.MonitoringStationTest.firstPuzzle" />
         <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightForthExample" />
         <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightThirdExample" />
-        <item itemvalue="JUnit.MonitoringStationTest.firstPuzzle" />
         <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightSecondExample" />
-        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightFirstExample" />
       </list>
     </recent_temporary>
   </component>
