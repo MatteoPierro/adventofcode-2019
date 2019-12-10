@@ -81,38 +81,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MonitoringStationTest.maxLineOfSightForthExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="maxLineOfSightForthExample" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MonitoringStationTest.orderAsteroidsBySlope" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -124,6 +92,22 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
       <option name="METHOD_NAME" value="orderAsteroidsBySlope" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonitoringStationTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,13 +129,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MonitoringStationTest.testVaporization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="testVaporization" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MonitoringStationTest" />
+        <item itemvalue="JUnit.MonitoringStationTest.secondPuzzle" />
+        <item itemvalue="JUnit.MonitoringStationTest.testVaporization" />
         <item itemvalue="JUnit.MonitoringStationTest.orderAsteroidsBySlope" />
         <item itemvalue="JUnit.MonitoringStationTest.testPosition" />
-        <item itemvalue="JUnit.MonitoringStationTest.firstPuzzle" />
-        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightForthExample" />
       </list>
     </recent_temporary>
   </component>
@@ -348,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576011745300</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="find asteroids to vaporize">
+      <created>1576014810268</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1576014810269</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,7 +374,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="solution day3" />
     <MESSAGE value="solution first challenge day6" />
     <MESSAGE value="solve second puzzle" />
     <MESSAGE value="computer can manage more than one input" />
@@ -392,7 +398,8 @@
     <MESSAGE value="find all asteroids" />
     <MESSAGE value="attempt of implement the line of sight" />
     <MESSAGE value="solve first puzzle day 10" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve first puzzle day 10" />
+    <MESSAGE value="find asteroids to vaporize" />
+    <option name="LAST_COMMIT_MESSAGE" value="find asteroids to vaporize" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

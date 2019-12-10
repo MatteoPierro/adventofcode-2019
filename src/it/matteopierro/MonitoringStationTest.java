@@ -1,6 +1,7 @@
 package it.matteopierro;
 
 import org.jooq.lambda.tuple.Tuple2;
+import org.jooq.lambda.tuple.Tuple3;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -80,27 +81,62 @@ class MonitoringStationTest {
     }
 
     @Test
-    void orderAsteroidsBySlope() {
-        String space =
-                        ".#..#\n" +
-                        ".....\n" +
-                        "#####\n" +
-                        "....#\n" +
-                        "...##";
+    void testVaporization() {
+        String space = ".#..##.###...#######\n" +
+                "##.############..##.\n" +
+                ".#.######.########.#\n" +
+                ".###.#######.####.#.\n" +
+                "#####.##.#.##.###.##\n" +
+                "..#####..#.#########\n" +
+                "####################\n" +
+                "#.####....###.#.#.##\n" +
+                "##.#################\n" +
+                "#####.##.###..####..\n" +
+                "..######..##.#######\n" +
+                "####.##.####...##..#\n" +
+                ".#####..#.######.###\n" +
+                "##...#.##########...\n" +
+                "#.##########.#######\n" +
+                ".####.#.###.###.#.##\n" +
+                "....##.##.###..#####\n" +
+                ".#.#.###########.###\n" +
+                "#.#.#.#####.####.###\n" +
+                "###.##.####.##.#..##";
 
         List<Tuple2<Integer, Integer>> asteroids = findAllAsteroids(space);
-        Tuple2<Integer, Integer> station = tuple(1, 2);
-        List<Tuple2<Integer, Integer>> toVaporize = lineOfSight(station, asteroids)
+        Tuple2<Integer, Integer> base = tuple(11, 13);
+
+        List<Tuple2<Integer, Integer>> vaporize = vaporize(asteroids, base);
+        assertThat(asList(vaporize.get(9))).containsExactly(tuple(12,8));
+        assertThat(asList(vaporize.get(19))).containsExactly(tuple(16,0));
+        assertThat(asList(vaporize.get(199))).containsExactly(tuple(8,2));
+    }
+
+    @Test
+    void secondPuzzle() throws IOException {
+        String space = Files.readString(Paths.get("./input_day10"));
+
+        List<Tuple2<Integer, Integer>> asteroids = findAllAsteroids(space);
+        List<Tuple2<Integer, Integer>> vaporize = vaporize(asteroids, tuple(31,20));
+
+        assertThat(asList(vaporize.get(199))).containsExactly(tuple(5, 17));
+    }
+
+    private List<Tuple2<Integer, Integer>> vaporize(List<Tuple2<Integer, Integer>> asteroids, Tuple2<Integer, Integer> station) {
+        return lineOfSight(station, asteroids)
                 .stream()
                 .map(a -> tuple(a, slope(station, a).abs(), position(station, a)))
                 .sorted( (t1, t2) -> {
-                    if (t1.v3.equals(t2.v3)) return t1.v2.compareTo(t2.v2);
+                    if (t1.v3.equals(t2.v3)) return orderInSector(t1, t2);
                     return t1.v3.compareTo(t2.v3);
                 })
                 .map( t -> t.v1)
                 .collect(toList());
+    }
 
-        assertThat(toVaporize).containsExactly(tuple(1,0), tuple(4,0), tuple(2,2), tuple(4,3), tuple(4,4), tuple(3,4), tuple(0,2));
+    private int orderInSector(Tuple3<Tuple2<Integer, Integer>, BigDecimal, Integer> t1, Tuple3<Tuple2<Integer, Integer>, BigDecimal, Integer> t2) {
+        if (t1.v3.equals(1)) return t2.v2.compareTo(t1.v2);
+        return t1.v2.compareTo(t2.v2);
     }
 
     @Test
@@ -301,7 +337,7 @@ class MonitoringStationTest {
     }
 
     private BigDecimal slope(Tuple2<Integer, Integer> pointA, Tuple2<Integer, Integer> pointB) {
-        if (pointA.v1.equals(pointB.v1)) return new BigDecimal(BigInteger.ZERO, 4);
+        if (pointA.v1.equals(pointB.v1)) return new BigDecimal(BigInteger.valueOf(Long.MAX_VALUE), 4);
         return new BigDecimal(pointB.v2 - pointA.v2).divide(new BigDecimal(pointB.v1 - pointA.v1), 4, HALF_UP);
     }
 
