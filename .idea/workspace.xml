@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/MonitoringStationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/MonitoringStationTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,22 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MonitoringStationTest.findAllAsteroids">
-    <configuration name="MonitoringStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.MonitoringStationTest.findVisibleAsteroidsForOneAsteroid">
     <configuration name="MonitoringStationTest.findAllAsteroids" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -112,22 +98,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.findAsteroidsInOneRow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="findAsteroidsInOneRow" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MonitoringStationTest.findAsteroidsInTwoColumn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -144,13 +114,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MonitoringStationTest.findVisibleAsteroidsForOneAsteroid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="findVisibleAsteroidsForOneAsteroid" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonitoringStationTest.lineOfSight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="METHOD_NAME" value="lineOfSight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MonitoringStationTest.findVisibleAsteroidsForOneAsteroid" />
+        <item itemvalue="JUnit.MonitoringStationTest.lineOfSight" />
         <item itemvalue="JUnit.MonitoringStationTest.findAllAsteroids" />
         <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInTwoColumn" />
         <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInOneColumn" />
-        <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInOneRow" />
-        <item itemvalue="JUnit.MonitoringStationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -326,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575926047902</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="find all asteroids">
+      <created>1575960192795</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1575960192795</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,6 +376,14 @@
     <MESSAGE value="resolve first puzzle day9" />
     <MESSAGE value="remove global relativeBase" />
     <MESSAGE value="remove duplication" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove duplication" />
+    <MESSAGE value="find all asteroids" />
+    <option name="LAST_COMMIT_MESSAGE" value="find all asteroids" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="asteroids.contains(coordinates)" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
