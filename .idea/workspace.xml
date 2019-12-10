@@ -65,8 +65,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MonitoringStationTest.findVisibleAsteroidsForOneAsteroid">
-    <configuration name="MonitoringStationTest.findAllAsteroids" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MonitoringStationTest.maxLineOfSightForthExample">
+    <configuration name="MonitoringStationTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -76,13 +76,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="findAllAsteroids" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.findAsteroidsInOneColumn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.maxLineOfSightFirstExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -92,13 +92,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="findAsteroidsInOneColumn" />
+      <option name="METHOD_NAME" value="maxLineOfSightFirstExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.findAsteroidsInTwoColumn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.maxLineOfSightForthExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -108,13 +108,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="findAsteroidsInTwoColumn" />
+      <option name="METHOD_NAME" value="maxLineOfSightForthExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.findVisibleAsteroidsForOneAsteroid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.maxLineOfSightSecondExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -124,13 +124,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="findVisibleAsteroidsForOneAsteroid" />
+      <option name="METHOD_NAME" value="maxLineOfSightSecondExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.lineOfSight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MonitoringStationTest.maxLineOfSightThirdExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -140,7 +140,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="lineOfSight" />
+      <option name="METHOD_NAME" value="maxLineOfSightThirdExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MonitoringStationTest.findVisibleAsteroidsForOneAsteroid" />
-        <item itemvalue="JUnit.MonitoringStationTest.lineOfSight" />
-        <item itemvalue="JUnit.MonitoringStationTest.findAllAsteroids" />
-        <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInTwoColumn" />
-        <item itemvalue="JUnit.MonitoringStationTest.findAsteroidsInOneColumn" />
+        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightForthExample" />
+        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightThirdExample" />
+        <item itemvalue="JUnit.MonitoringStationTest.firstPuzzle" />
+        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightSecondExample" />
+        <item itemvalue="JUnit.MonitoringStationTest.maxLineOfSightFirstExample" />
       </list>
     </recent_temporary>
   </component>
@@ -335,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575960192795</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="attempt of implement the line of sight">
+      <created>1575994241212</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1575994241212</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,12 +384,16 @@
     <MESSAGE value="remove global relativeBase" />
     <MESSAGE value="remove duplication" />
     <MESSAGE value="find all asteroids" />
-    <option name="LAST_COMMIT_MESSAGE" value="find all asteroids" />
+    <MESSAGE value="attempt of implement the line of sight" />
+    <option name="LAST_COMMIT_MESSAGE" value="attempt of implement the line of sight" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="asteroids.contains(coordinates)" language="JAVA" />
+        <watch expression="asteroid.v2 - target.v2" language="JAVA" />
+        <watch expression="target.v1 - candidate.v1" language="JAVA" />
+        <watch expression="target.v2 - candidate.v2" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
