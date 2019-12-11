@@ -9,8 +9,11 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static it.matteopierro.SpacePoliceTest.Robot.*;
 import static java.util.Collections.singletonList;
@@ -18,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.jooq.lambda.tuple.Tuple.tuple;
 
-class SpacePoliceTest {
+public class SpacePoliceTest {
 
     public static final String RANDOM_RESULT = "RANDOM RESULT";
     private Robot robot;
@@ -101,7 +104,54 @@ class SpacePoliceTest {
         String program = Files.readString(Paths.get("./input_day11"));
         new Computer().execute(program, robot);
 
-        assertThat(robot.tiles).hasSize(-1);
+        assertThat(robot.tiles).hasSize(2883);
+    }
+
+    @Test
+    void secondPuzzle() throws IOException {
+        String program = Files.readString(Paths.get("./input_day11"));
+        robot.startingColor = WHITE_COLOR;
+        new Computer().execute(program, robot);
+
+        assertThat(robot.tiles).hasSize(249);
+
+        int minX = robot.tiles.keySet()
+                .stream()
+                .min(Comparator.comparing(t -> t.v1))
+                .map(t -> t.v1)
+                .orElseThrow();
+
+        int maxX = robot.tiles.keySet()
+                .stream()
+                .max(Comparator.comparing(t -> t.v1))
+                .map(t -> t.v1)
+                .orElseThrow();
+
+        int minY = robot.tiles.keySet()
+                .stream()
+                .min(Comparator.comparing(t -> t.v2))
+                .map(t -> t.v2)
+                .orElseThrow();
+
+        int maxY = robot.tiles.keySet()
+                .stream()
+                .max(Comparator.comparing(t -> t.v2))
+                .map(t -> t.v2)
+                .orElseThrow();
+
+
+        int gridX = maxX - minX;
+        int gridY = maxY - minY;
+
+        assertThat(gridX).isEqualTo(42);
+        assertThat(gridY).isEqualTo(5);
+        List<Tuple2<Integer, Integer>> centeredFilteredTiles = robot.tiles.keySet()
+                .stream()
+                .filter(t -> robot.tiles.get(t).equals(WHITE_COLOR))
+                .map(t -> tuple(t.v1 - minX, t.v2 - minY))
+                .collect(Collectors.toList());
+
+        assertThat(centeredFilteredTiles).hasSize(91);
     }
 
     private void step(String color, String direction) {
@@ -111,16 +161,25 @@ class SpacePoliceTest {
     }
 
 
-    static class Robot extends ComputerListener {
+    public static class Robot extends ComputerListener {
         public static final String BLACK_COLOR = "0";
         public static final String WHITE_COLOR = "1";
         public static final String TURN_LEFT = "0";
         public static final String TURN_RIGHT = "1";
 
         private final Map<Tuple2<Integer, Integer>, String> tiles = new HashMap<>();
+        private String startingColor;
         private Tuple2<Integer, Integer> currentTile = tuple(0, 0);
         private int storeInstructions = 2;
         private Direction currentDirection = Direction.NORTH;
+
+        Robot() {
+            this(BLACK_COLOR);
+        }
+
+        public Robot(String color) {
+            this.startingColor = color;
+        }
 
         @Override
         public String onReadRequested() {
@@ -148,15 +207,24 @@ class SpacePoliceTest {
         }
 
         public String colorAt(Tuple2<Integer, Integer> tuple) {
+            if (startingColor != null) {
+                String color = startingColor;
+                startingColor = null;
+                return color;
+            }
             return tiles.getOrDefault(tuple, BLACK_COLOR);
         }
 
         public Tuple2<Integer, Integer> currentPosition() {
             return currentTile;
         }
+
+        public Map<Tuple2<Integer, Integer>, String> tiles() {
+            return tiles;
+        }
     }
 
-    private static enum Direction {
+    public enum Direction {
         NORTH(0, 1), EAST(-1, 0), WEST(1, 0), SOUTH(0, -1);
 
         private static final Map<Direction, Direction> LEFT_ROTATIONS = Map.of(
