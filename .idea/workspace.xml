@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/MonitoringStationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/MonitoringStationTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,8 +64,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MonitoringStationTest">
-    <configuration name="MonitoringStationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SpacePoliceTest">
+    <configuration name="SpacePoliceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -75,13 +74,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpacePoliceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.orderAsteroidsBySlope" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpacePoliceTest.readBeforeTwoStoresIsNotAllowed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -90,14 +89,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="orderAsteroidsBySlope" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpacePoliceTest" />
+      <option name="METHOD_NAME" value="readBeforeTwoStoresIsNotAllowed" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpacePoliceTest.robotWaitsAlwaysForTwoInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -106,14 +105,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpacePoliceTest" />
+      <option name="METHOD_NAME" value="robotWaitsAlwaysForTwoInput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.testPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpacePoliceTest.theFirstTileIsAlwaysBlack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -122,14 +121,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="testPosition" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpacePoliceTest" />
+      <option name="METHOD_NAME" value="theFirstTileIsAlwaysBlack" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitoringStationTest.testVaporization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpacePoliceTest.threeConsecutiveStoresAreNotAllowed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -138,8 +137,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.MonitoringStationTest" />
-      <option name="METHOD_NAME" value="testVaporization" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpacePoliceTest" />
+      <option name="METHOD_NAME" value="threeConsecutiveStoresAreNotAllowed" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MonitoringStationTest" />
-        <item itemvalue="JUnit.MonitoringStationTest.secondPuzzle" />
-        <item itemvalue="JUnit.MonitoringStationTest.testVaporization" />
-        <item itemvalue="JUnit.MonitoringStationTest.orderAsteroidsBySlope" />
-        <item itemvalue="JUnit.MonitoringStationTest.testPosition" />
+        <item itemvalue="JUnit.SpacePoliceTest" />
+        <item itemvalue="JUnit.SpacePoliceTest.readBeforeTwoStoresIsNotAllowed" />
+        <item itemvalue="JUnit.SpacePoliceTest.threeConsecutiveStoresAreNotAllowed" />
+        <item itemvalue="JUnit.SpacePoliceTest.robotWaitsAlwaysForTwoInput" />
+        <item itemvalue="JUnit.SpacePoliceTest.theFirstTileIsAlwaysBlack" />
       </list>
     </recent_temporary>
   </component>
@@ -355,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576014810269</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="implement second puzzle day 10">
+      <created>1576016650661</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1576016650661</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,7 +380,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="solution first challenge day6" />
     <MESSAGE value="solve second puzzle" />
     <MESSAGE value="computer can manage more than one input" />
     <MESSAGE value="calculate Permutations" />
@@ -399,7 +404,8 @@
     <MESSAGE value="attempt of implement the line of sight" />
     <MESSAGE value="solve first puzzle day 10" />
     <MESSAGE value="find asteroids to vaporize" />
-    <option name="LAST_COMMIT_MESSAGE" value="find asteroids to vaporize" />
+    <MESSAGE value="implement second puzzle day 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement second puzzle day 10" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
