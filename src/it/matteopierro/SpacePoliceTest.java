@@ -1,10 +1,14 @@
 package it.matteopierro;
 
+import it.matteopierro.computer.Computer;
 import it.matteopierro.computer.ComputerListener;
 import org.jooq.lambda.tuple.Tuple2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,11 +35,9 @@ class SpacePoliceTest {
 
     @Test
     void robotWaitsAlwaysForTwoInput() {
-        robot.onReadRequested();
-        robot.onStoreRequested(WHITE_COLOR);
-        robot.onStoreRequested(TURN_LEFT);
+        step(WHITE_COLOR, TURN_LEFT);
 
-        assertThat(robot.tileAt(tuple(0, 0))).isEqualTo(WHITE_COLOR);
+        assertThat(robot.colorAt(tuple(0, 0))).isEqualTo(WHITE_COLOR);
         assertThat(singletonList(robot.currentPosition())).containsExactly(tuple(-1, 0));
     }
 
@@ -59,25 +61,55 @@ class SpacePoliceTest {
 
     @Test
     void returnBlackTheFirstTimeVisitNewTile() {
-        robot.onReadRequested();
-        robot.onStoreRequested(WHITE_COLOR);
-        robot.onStoreRequested(TURN_LEFT);
+        step(WHITE_COLOR, TURN_LEFT);
         robot.onReadRequested();
 
-        assertThat(robot.tileAt(tuple(-1, 0))).isEqualTo(BLACK_COLOR);
+        assertThat(robot.colorAt(tuple(-1, 0))).isEqualTo(BLACK_COLOR);
     }
 
     @Test
     void paintTheSecondTile() {
-        robot.onReadRequested();
-        robot.onStoreRequested(WHITE_COLOR);
-        robot.onStoreRequested(TURN_LEFT);
-        robot.onReadRequested();
-        robot.onStoreRequested(WHITE_COLOR);
-        robot.onStoreRequested(TURN_LEFT);
+        step(WHITE_COLOR, TURN_LEFT);
+        step(WHITE_COLOR, TURN_LEFT);
 
-        assertThat(robot.tileAt(tuple(-1, 0))).isEqualTo(WHITE_COLOR);
+        assertThat(robot.colorAt(tuple(-1, 0))).isEqualTo(WHITE_COLOR);
     }
+
+    @Test
+    void completePath() {
+        step(WHITE_COLOR, TURN_LEFT); //1 0
+        step(BLACK_COLOR, TURN_LEFT); //0 0
+        step(WHITE_COLOR, TURN_LEFT); //1 0
+        step(WHITE_COLOR, TURN_LEFT); //1 0
+        step(BLACK_COLOR, TURN_RIGHT);//0 1
+        step(WHITE_COLOR, TURN_LEFT); //1 0
+        step(WHITE_COLOR, TURN_LEFT); //1 0
+
+        assertThat(robot.tiles).hasSize(6);
+        assertThat(robot.tiles.keySet()).containsExactlyInAnyOrder(
+                tuple(0, 0),
+                tuple(-1, 0),
+                tuple(-1, -1),
+                tuple(0, -1),
+                tuple(1, 0),
+                tuple(1, 1)
+        );
+    }
+
+    @Test
+    void firstPuzzle() throws IOException {
+        String program = Files.readString(Paths.get("./input_day11"));
+        new Computer().execute(program, robot);
+
+        assertThat(robot.tiles).hasSize(-1);
+    }
+
+    private void step(String color, String direction) {
+        robot.onReadRequested();
+        robot.onStoreRequested(color);
+        robot.onStoreRequested(direction);
+    }
+
 
     static class Robot extends ComputerListener {
         public static final String BLACK_COLOR = "0";
@@ -96,7 +128,7 @@ class SpacePoliceTest {
                 throw new RuntimeException(storeInstructions + " read before two stores");
             }
             storeInstructions = 0;
-            return tileAt(currentTile);
+            return colorAt(currentTile);
         }
 
         @Override
@@ -107,7 +139,7 @@ class SpacePoliceTest {
                 tiles.put(currentTile, result);
                 storeInstructions++;
             } else if (storeInstructions == 1) {
-                currentDirection = currentDirection.left();
+                currentDirection = TURN_LEFT.equals(result) ? currentDirection.left() : currentDirection.right();
                 currentTile = currentDirection.move(currentTile);
                 storeInstructions++;
             } else {
@@ -115,7 +147,7 @@ class SpacePoliceTest {
             }
         }
 
-        public String tileAt(Tuple2<Integer, Integer> tuple) {
+        public String colorAt(Tuple2<Integer, Integer> tuple) {
             return tiles.getOrDefault(tuple, BLACK_COLOR);
         }
 
