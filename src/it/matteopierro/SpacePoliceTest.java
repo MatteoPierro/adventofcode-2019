@@ -35,13 +35,13 @@ class SpacePoliceTest {
         robot.onStoreRequested(WHITE_COLOR);
         robot.onStoreRequested(TURN_LEFT);
 
-        assertThat(robot.tileAt(tuple(0,0))).isEqualTo(WHITE_COLOR);
+        assertThat(robot.tileAt(tuple(0, 0))).isEqualTo(WHITE_COLOR);
         assertThat(singletonList(robot.currentPosition())).containsExactly(tuple(-1, 0));
     }
 
     @Test
     void threeConsecutiveStoresAreNotAllowed() {
-        assertThatThrownBy( () -> {
+        assertThatThrownBy(() -> {
             robot.onStoreRequested(WHITE_COLOR);
             robot.onStoreRequested(TURN_LEFT);
             robot.onStoreRequested(RANDOM_RESULT);
@@ -50,7 +50,7 @@ class SpacePoliceTest {
 
     @Test
     void readBeforeTwoStoresIsNotAllowed() {
-        assertThatThrownBy( () -> {
+        assertThatThrownBy(() -> {
             robot.onReadRequested();
             robot.onStoreRequested(WHITE_COLOR);
             robot.onReadRequested();
@@ -86,8 +86,9 @@ class SpacePoliceTest {
         public static final String TURN_RIGHT = "1";
 
         private final Map<Tuple2<Integer, Integer>, String> tiles = new HashMap<>();
-        private Tuple2<Integer, Integer> currentTile = tuple(0,0);
+        private Tuple2<Integer, Integer> currentTile = tuple(0, 0);
         private int storeInstructions = 2;
+        private Direction currentDirection = Direction.NORTH;
 
         @Override
         public String onReadRequested() {
@@ -106,7 +107,8 @@ class SpacePoliceTest {
                 tiles.put(currentTile, result);
                 storeInstructions++;
             } else if (storeInstructions == 1) {
-                currentTile = tuple(-1, 0);
+                currentDirection = currentDirection.left();
+                currentTile = currentDirection.move(currentTile);
                 storeInstructions++;
             } else {
                 throw new RuntimeException(storeInstructions + " consecutive reads");
@@ -119,6 +121,40 @@ class SpacePoliceTest {
 
         public Tuple2<Integer, Integer> currentPosition() {
             return currentTile;
+        }
+    }
+
+    private static enum Direction {
+        NORTH(0, 1), EAST(-1, 0), WEST(1, 0), SOUTH(0, -1);
+
+        private static final Map<Direction, Direction> LEFT_ROTATIONS = Map.of(
+                NORTH, EAST,
+                EAST, SOUTH,
+                SOUTH, WEST,
+                WEST, NORTH
+        );
+        private static final Map<Direction, Direction> RIGHT_ROTATIONS = Map.of(
+                NORTH, WEST,
+                WEST, SOUTH,
+                SOUTH, EAST,
+                EAST, NORTH
+        );
+        private final Tuple2<Integer, Integer> step;
+
+        Direction(int x, int y) {
+            this.step = tuple(x, y);
+        }
+
+        public Direction left() {
+            return LEFT_ROTATIONS.get(this);
+        }
+
+        public Direction right() {
+            return RIGHT_ROTATIONS.get(this);
+        }
+
+        public Tuple2<Integer, Integer> move(Tuple2<Integer, Integer> position) {
+            return tuple(position.v1 + step.v1, position.v2 + step.v2);
         }
     }
 }
