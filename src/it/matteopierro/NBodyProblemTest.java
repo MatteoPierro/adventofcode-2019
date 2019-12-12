@@ -76,6 +76,135 @@ class NBodyProblemTest {
         assertThat(totalEnergy(steps(moonsPositions, 1000))).isEqualTo(9999);
     }
 
+    @Test
+    void secondPuzzle() {
+        List<Moon> moonsPositions = List.of(
+                new Moon(tuple(14, 9, 14)),
+                new Moon(tuple(9, 11, 6)),
+                new Moon(tuple(-6, 14, -4)),
+                new Moon(tuple(4, -4, -3))
+        );
+
+        assertThat(xRepeated(moonsPositions)).isEqualTo(161428L);
+        assertThat(yRepeated(moonsPositions)).isEqualTo(231614L);
+        assertThat(zRepeated(moonsPositions)).isEqualTo(60424L);
+        assertThat(lcm(lcm(161428L, 60424L), 231614L)).isEqualTo(282399002133976L);
+    }
+
+    @Test
+    void findRepeatedAlignment() {
+        List<Moon> moonsPositions = List.of(
+                new Moon(tuple(-1, 0, 2)),
+                new Moon(tuple(2, -10, -7)),
+                new Moon(tuple(4, -8, 8)),
+                new Moon(tuple(3, 5, -1))
+        );
+
+        assertThat(xRepeated(moonsPositions)).isEqualTo(18);
+        assertThat(yRepeated(moonsPositions)).isEqualTo(28);
+        assertThat(zRepeated(moonsPositions)).isEqualTo(44);
+        assertThat(lcm(lcm(18, 28), 44)).isEqualTo(2772L);
+    }
+
+    @Test
+    void secondExamplePreviousTime() {
+        List<Moon> moonsPositions = List.of(
+                new Moon(tuple(-8, -10, 0)),
+                new Moon(tuple(5, 5, 10)),
+                new Moon(tuple(2, -7, 3)),
+                new Moon(tuple(9, -8, -3))
+        );
+
+        assertThat(xRepeated(moonsPositions)).isEqualTo(2028L);
+        assertThat(yRepeated(moonsPositions)).isEqualTo(5898L);
+        assertThat(zRepeated(moonsPositions)).isEqualTo(4702L);
+        assertThat(lcm(lcm(2028L, 5898L), 4702L)).isEqualTo(4686774924L);
+    }
+
+    private long lcm(long n1, long n2) {
+        long gcd = 1;
+        for(int i = 1; i <= n1 && i <= n2; ++i)
+        {
+            // Checks if i is factor of both integers
+            if(n1 % i == 0 && n2 % i == 0)
+                gcd = i;
+        }
+        return (n1 * n2) / gcd;
+    }
+
+    private long xRepeated(List<Moon> moonsPositions) {
+
+        long xSteps = 0;
+        List<Moon> newMoons = moonsPositions;
+
+        while (true) {
+            newMoons = step(newMoons);
+            xSteps++;
+
+            boolean isStopped =
+                       newMoons.get(0).position.v1.equals(moonsPositions.get(0).position.v1)
+                    && newMoons.get(1).position.v1.equals(moonsPositions.get(1).position.v1)
+                    && newMoons.get(2).position.v1.equals(moonsPositions.get(2).position.v1)
+                    && newMoons.get(3).position.v1.equals(moonsPositions.get(3).position.v1)
+
+                    && newMoons.get(0).velocity.v1.equals(moonsPositions.get(0).velocity.v1)
+                    && newMoons.get(1).velocity.v1.equals(moonsPositions.get(1).velocity.v1)
+                    && newMoons.get(2).velocity.v1.equals(moonsPositions.get(2).velocity.v1)
+                    && newMoons.get(3).velocity.v1.equals(moonsPositions.get(3).velocity.v1);
+            if (isStopped) break;
+        }
+
+        return xSteps;
+    }
+
+    private long yRepeated(List<Moon> moonsPositions) {
+        long ySize = 0;
+        List<Moon> newMoons = moonsPositions;
+
+        while (true) {
+            newMoons = step(newMoons);
+            ySize++;
+
+            boolean isStopped =
+                               newMoons.get(0).position.v2.equals(moonsPositions.get(0).position.v2)
+                            && newMoons.get(1).position.v2.equals(moonsPositions.get(1).position.v2)
+                            && newMoons.get(2).position.v2.equals(moonsPositions.get(2).position.v2)
+                            && newMoons.get(3).position.v2.equals(moonsPositions.get(3).position.v2)
+
+                            && newMoons.get(0).velocity.v2.equals(moonsPositions.get(0).velocity.v2)
+                            && newMoons.get(1).velocity.v2.equals(moonsPositions.get(1).velocity.v2)
+                            && newMoons.get(2).velocity.v2.equals(moonsPositions.get(2).velocity.v2)
+                            && newMoons.get(3).velocity.v2.equals(moonsPositions.get(3).velocity.v2);
+            if (isStopped) break;
+        }
+
+        return ySize;
+    }
+
+    private long zRepeated(List<Moon> moonsPositions) {
+        long zSize = 0;
+        List<Moon> newMoons = moonsPositions;
+
+        while (true) {
+            newMoons = step(newMoons);
+            zSize++;
+
+            boolean isStopped =
+                     newMoons.get(0).position.v3.equals(moonsPositions.get(0).position.v3)
+                            && newMoons.get(1).position.v3.equals(moonsPositions.get(1).position.v3)
+                            && newMoons.get(2).position.v3.equals(moonsPositions.get(2).position.v3)
+                            && newMoons.get(3).position.v3.equals(moonsPositions.get(3).position.v3)
+
+                            && newMoons.get(0).velocity.v3.equals(moonsPositions.get(0).velocity.v3)
+                            && newMoons.get(1).velocity.v3.equals(moonsPositions.get(1).velocity.v3)
+                            && newMoons.get(2).velocity.v3.equals(moonsPositions.get(2).velocity.v3)
+                            && newMoons.get(3).velocity.v3.equals(moonsPositions.get(3).velocity.v3);
+            if (isStopped) break;
+        }
+
+        return zSize;
+    }
+
     private List<Moon> steps(List<Moon> moonsPositions, int numberOfSteps) {
         List<Moon> result = moonsPositions;
 

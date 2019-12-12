@@ -81,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NBodyProblemTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NBodyProblemTest.findRepeatedAlignment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -91,13 +91,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="METHOD_NAME" value="findRepeatedAlignment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NBodyProblemTest.moonIsEqualsWhenHasSamePositionAndVelocity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NBodyProblemTest.secondExamplePreviousTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -107,13 +107,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
-      <option name="METHOD_NAME" value="moonIsEqualsWhenHasSamePositionAndVelocity" />
+      <option name="METHOD_NAME" value="secondExamplePreviousTime" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NBodyProblemTest.secondExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NBodyProblemTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -123,13 +123,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
-      <option name="METHOD_NAME" value="secondExample" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NBodyProblemTest.updateAllMoonsPositionsAccordingToGravity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NBodyProblemTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -139,7 +139,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
-      <option name="METHOD_NAME" value="updateAllMoonsPositionsAccordingToGravity" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NBodyProblemTest.xRepeated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
+      <option name="METHOD_NAME" value="xRepeated" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,10 +164,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.NBodyProblemTest" />
-        <item itemvalue="JUnit.NBodyProblemTest.firstPuzzle" />
-        <item itemvalue="JUnit.NBodyProblemTest.secondExample" />
-        <item itemvalue="JUnit.NBodyProblemTest.updateAllMoonsPositionsAccordingToGravity" />
-        <item itemvalue="JUnit.NBodyProblemTest.moonIsEqualsWhenHasSamePositionAndVelocity" />
+        <item itemvalue="JUnit.NBodyProblemTest.secondExamplePreviousTime" />
+        <item itemvalue="JUnit.NBodyProblemTest.findRepeatedAlignment" />
+        <item itemvalue="JUnit.NBodyProblemTest.secondPuzzle" />
+        <item itemvalue="JUnit.NBodyProblemTest.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -425,7 +441,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576152005927</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="solve first challenge day 12">
+      <created>1576183780755</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1576183780755</updated>
+    </task>
+    <task id="LOCAL-00039" summary="solve second challenge day 12">
+      <created>1576188489362</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1576188489362</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -444,8 +474,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="implement decode image" />
-    <MESSAGE value="resolve second puzzle day8" />
     <MESSAGE value="implement long numbers" />
     <MESSAGE value="introduce adjust relative base instruction" />
     <MESSAGE value="extract Memory class" />
@@ -469,7 +497,9 @@
     <MESSAGE value="calculate position based on gravity for each moon" />
     <MESSAGE value="introduce Moon" />
     <MESSAGE value="calculate velocity" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculate velocity" />
+    <MESSAGE value="solve first challenge day 12" />
+    <MESSAGE value="solve second challenge day 12" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve second challenge day 12" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
