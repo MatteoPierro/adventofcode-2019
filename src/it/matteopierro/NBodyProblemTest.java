@@ -25,36 +25,31 @@ class NBodyProblemTest {
     }
 
     private Tuple3<Integer, Integer, Integer> positionForGravity(Tuple3<Integer, Integer, Integer> moonPosition, List<Tuple3<Integer, Integer, Integer>> moonsPositions) {
-        Tuple3<Integer, Integer, Integer> newMoonPosition = moonPosition.clone();
+        Tuple3<Integer, Integer, Integer> oldMoonPosition = moonPosition.clone();
         int dX = 0;
         int dY = 0;
         int dZ = 0;
         for (Tuple3<Integer, Integer, Integer> anotherMoonsPosition : moonsPositions) {
-            if (anotherMoonsPosition.v1 > moonPosition.v1) {
-                dX++;
-            }
-            if (anotherMoonsPosition.v1 < moonPosition.v1) {
-                dX--;
-            }
-            if (anotherMoonsPosition.v2 > moonPosition.v2) {
-                dY++;
-            }
-            if (anotherMoonsPosition.v2 < moonPosition.v2) {
-                dY--;
-            }
-            if (anotherMoonsPosition.v3 > moonPosition.v3) {
-                dZ++;
-            }
-            if (anotherMoonsPosition.v3 < moonPosition.v3) {
-                dZ--;
-            }
+            dX += delta(anotherMoonsPosition.v1, moonPosition.v1);
+            dY += delta(anotherMoonsPosition.v2, moonPosition.v2);
+            dZ += delta(anotherMoonsPosition.v3, moonPosition.v3);
         }
 
-        newMoonPosition = tuple(
-                newMoonPosition.v1 + dX,
-                newMoonPosition.v2 + dY,
-                newMoonPosition.v3 + dZ
+        return tuple(
+                oldMoonPosition.v1 + dX,
+                oldMoonPosition.v2 + dY,
+                oldMoonPosition.v3 + dZ
         );
-        return newMoonPosition;
+    }
+
+    private int delta(Integer p1, Integer p2) {
+        int delta = 0;
+        if (p1 > p2) {
+            delta = 1;
+        }
+        if (p1 < p2) {
+            delta = -1;
+        }
+        return delta;
     }
 }

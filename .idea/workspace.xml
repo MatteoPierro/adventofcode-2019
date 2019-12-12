@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="solve second puzzle challenge">
+    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/NBodyProblemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/NBodyProblemTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.NBodyProblemTest.updateMoonPositionAccordingToGravity">
+  <component name="RunManager" selected="JUnit.NBodyProblemTest">
     <configuration name="SpaceRegisterIdentifier" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.robot.SpaceRegisterIdentifier" />
       <module name="day2" />
@@ -74,6 +75,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NBodyProblemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,22 +125,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpacePoliceTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpacePoliceTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SpacePoliceTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -143,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NBodyProblemTest" />
         <item itemvalue="JUnit.NBodyProblemTest.updateMoonPositionAccordingToGravity" />
         <item itemvalue="Application.SpaceRegisterIdentifier" />
         <item itemvalue="JUnit.SpacePoliceTest.secondPuzzle" />
         <item itemvalue="JUnit.SpacePoliceTest" />
-        <item itemvalue="JUnit.SpacePoliceTest.firstPuzzle" />
       </list>
     </recent_temporary>
   </component>
@@ -386,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576088146682</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="calculate Gravity position">
+      <created>1576134423664</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1576134423664</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -405,7 +412,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="use listener to pass inputs between amplifiers" />
     <MESSAGE value="move to multithread implementation" />
     <MESSAGE value="find max thruster signal with feedback loop" />
     <MESSAGE value="solve second challenge day7" />
@@ -430,7 +436,8 @@
     <MESSAGE value="introduce Directions" />
     <MESSAGE value="resolve first puzzle" />
     <MESSAGE value="solve second puzzle challenge" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve second puzzle challenge" />
+    <MESSAGE value="calculate Gravity position" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculate Gravity position" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
