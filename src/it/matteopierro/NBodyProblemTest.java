@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static java.lang.Math.abs;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jooq.lambda.tuple.Tuple.tuple;
 
@@ -27,7 +28,64 @@ class NBodyProblemTest {
                 new Moon(tuple(1, -7, 5), tuple(-3, 1, -3)),
                 new Moon(tuple(2, 2, 0), tuple(-1, -3, 1))
         );
+
+        assertThat(steps(moonsPositions, 10)).containsExactly(
+                new Moon(tuple(2, 1, -3), tuple(-3, -2, 1)),
+                new Moon(tuple(1, -8, 0), tuple(-1, 1, 3)),
+                new Moon(tuple(3, -6, 1), tuple(3, 2, -3)),
+                new Moon(tuple(2, 0, 4), tuple(1, -1, -1))
+        );
+
+        assertThat(totalEnergy(steps(moonsPositions, 10))).isEqualTo(179);
     }
+
+    private int totalEnergy(List<Moon> moonsPositions) {
+        return moonsPositions.stream()
+                .mapToInt(Moon::energy)
+                .sum();
+    }
+
+    @Test
+    void secondExample() {
+        List<Moon> moonsPositions = List.of(
+                new Moon(tuple(-8, -10, 0)),
+                new Moon(tuple(5, 5, 10)),
+                new Moon(tuple(2, -7, 3)),
+                new Moon(tuple(9, -8, -3))
+        );
+
+        assertThat(steps(moonsPositions, 100)).containsExactly(
+                new Moon(tuple(8, -12, -9), tuple(-7, 3, 0)),
+                new Moon(tuple(13, 16, -3), tuple(3, -11, -5)),
+                new Moon(tuple(-29, -11, -1), tuple(-3, 7, 4)),
+                new Moon(tuple(16, -13, 23), tuple(7, 1, 1))
+        );
+
+        assertThat(totalEnergy(steps(moonsPositions, 100))).isEqualTo(1940);
+    }
+
+    @Test
+    void firstPuzzle() {
+        List<Moon> moonsPositions = List.of(
+                new Moon(tuple(14, 9, 14)),
+                new Moon(tuple(9, 11, 6)),
+                new Moon(tuple(-6, 14, -4)),
+                new Moon(tuple(4, -4, -3))
+        );
+
+        assertThat(totalEnergy(steps(moonsPositions, 1000))).isEqualTo(9999);
+    }
+
+    private List<Moon> steps(List<Moon> moonsPositions, int numberOfSteps) {
+        List<Moon> result = moonsPositions;
+
+        for (int step = 0; step < numberOfSteps; step++) {
+            result = step(result);
+        }
+
+        return result;
+    }
+
 
     private List<Moon> step(List<Moon> moons) {
         return moons.stream()
@@ -125,6 +183,10 @@ class NBodyProblemTest {
         @Override
         public String toString() {
             return "position " + position.toString() + " velocity " + velocity.toString();
+        }
+
+        public int energy() {
+            return (abs(position.v1) + abs(position.v2) + abs(position.v3)) * (abs(velocity.v1) + abs(velocity.v2) + abs(velocity.v3));
         }
     }
 }
