@@ -4,6 +4,7 @@ import org.jooq.lambda.tuple.Tuple3;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,6 +23,30 @@ class NBodyProblemTest {
         );
         Tuple3<Integer, Integer, Integer> newPosition = positionForGravity(moonPosition, moonsPositions);
         assertThat(asList(newPosition)).containsExactly(tuple(2, -1, 1));
+    }
+
+    @Test
+    void updateAllMoonsPositionsAccordingToGravity() {
+        List<Tuple3<Integer, Integer, Integer>> moonsPositions = List.of(
+                tuple(-1, 0, 2),
+                tuple(2, -10, -7),
+                tuple(4, -8, 8),
+                tuple(3, 5, -1)
+        );
+        List<Tuple3<Integer, Integer, Integer>> newPositions = positionsForGravity(moonsPositions);
+        assertThat(newPositions).containsExactly(
+                tuple(2, -1, 1),
+                tuple(3, -7, -4),
+                tuple(1, -7, 5),
+                tuple(2, 2, 0)
+        );
+    }
+
+    private List<Tuple3<Integer, Integer, Integer>> positionsForGravity(List<Tuple3<Integer, Integer, Integer>> moonsPositions) {
+        return moonsPositions.stream()
+                .map(Tuple3::clone)
+                .map(moon -> positionForGravity(moon, moonsPositions))
+                .collect(Collectors.toList());
     }
 
     private Tuple3<Integer, Integer, Integer> positionForGravity(Tuple3<Integer, Integer, Integer> moonPosition, List<Tuple3<Integer, Integer, Integer>> moonsPositions) {
