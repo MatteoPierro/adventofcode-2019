@@ -4,6 +4,7 @@ import org.jooq.lambda.tuple.Tuple3;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
@@ -76,5 +77,39 @@ class NBodyProblemTest {
             delta = -1;
         }
         return delta;
+    }
+
+    @Test
+    void moonIsEqualsWhenHasSamePositionAndVelocity() {
+        assertThat(new Moon(tuple(1, 0, 1), tuple(1, 5, 6))).isEqualTo(new Moon(tuple(1, 0, 1), tuple(1, 5, 6)));
+        assertThat(new Moon(tuple(1, 0, 1), tuple(1, 5, 6))).isNotEqualTo(new Moon(tuple(1, 0, 1), tuple(7, 8, 9)));
+    }
+
+    private static class Moon {
+        private final Tuple3<Integer, Integer, Integer> position;
+        private final Tuple3<Integer, Integer, Integer> velocity;
+
+        public Moon(Tuple3<Integer, Integer, Integer> position) {
+            this(position, tuple(0, 0, 0));
+        }
+
+        private Moon(Tuple3<Integer, Integer, Integer> position, Tuple3<Integer, Integer, Integer> velocity) {
+            this.position = position;
+            this.velocity = velocity;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Moon)) return false;
+            Moon moon = (Moon) o;
+            return Objects.equals(position, moon.position) &&
+                    Objects.equals(velocity, moon.velocity);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(position, velocity);
+        }
     }
 }
