@@ -7,76 +7,47 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jooq.lambda.tuple.Tuple.tuple;
 
 class NBodyProblemTest {
 
     @Test
-    void updateMoonPositionAccordingToGravity() {
-        Tuple3<Integer, Integer, Integer> moonPosition = tuple(-1, 0, 2);
-        List<Tuple3<Integer, Integer, Integer>> moonsPositions = List.of(
-                moonPosition.clone(),
-                tuple(2, -10, -7),
-                tuple(4, -8, 8),
-                tuple(3, 5, -1)
-        );
-        Tuple3<Integer, Integer, Integer> newPosition = positionForGravity(moonPosition, moonsPositions);
-        assertThat(asList(newPosition)).containsExactly(tuple(2, -1, 1));
-    }
-
-    @Test
     void updateAllMoonsPositionsAccordingToGravity() {
-        List<Tuple3<Integer, Integer, Integer>> moonsPositions = List.of(
-                tuple(-1, 0, 2),
-                tuple(2, -10, -7),
-                tuple(4, -8, 8),
-                tuple(3, 5, -1)
+        List<Moon> moonsPositions = List.of(
+                new Moon(tuple(-1, 0, 2)),
+                new Moon(tuple(2, -10, -7)),
+                new Moon(tuple(4, -8, 8)),
+                new Moon(tuple(3, 5, -1))
         );
-        List<Tuple3<Integer, Integer, Integer>> newPositions = positionsForGravity(moonsPositions);
-        assertThat(newPositions).containsExactly(
-                tuple(2, -1, 1),
-                tuple(3, -7, -4),
-                tuple(1, -7, 5),
-                tuple(2, 2, 0)
+        List<Moon> newMoonsState = step(moonsPositions);
+        assertThat(newMoonsState).containsExactly(
+                new Moon(tuple(2, -1, 1), tuple(3, -1, -1)),
+                new Moon(tuple(3, -7, -4), tuple(1, 3, 3)),
+                new Moon(tuple(1, -7, 5), tuple(-3, 1, -3)),
+                new Moon(tuple(2, 2, 0), tuple(-1, -3, 1))
         );
     }
 
-    private List<Tuple3<Integer, Integer, Integer>> positionsForGravity(List<Tuple3<Integer, Integer, Integer>> moonsPositions) {
-        return moonsPositions.stream()
-                .map(Tuple3::clone)
-                .map(moon -> positionForGravity(moon, moonsPositions))
+    private List<Moon> step(List<Moon> moons) {
+        return moons.stream()
+                .map(moon -> positionForGravity(moon, moons))
                 .collect(Collectors.toList());
     }
 
-    private Tuple3<Integer, Integer, Integer> positionForGravity(Tuple3<Integer, Integer, Integer> moonPosition, List<Tuple3<Integer, Integer, Integer>> moonsPositions) {
-        Tuple3<Integer, Integer, Integer> oldMoonPosition = moonPosition.clone();
+    private Moon positionForGravity(Moon moon, List<Moon> moons) {
         int dX = 0;
         int dY = 0;
         int dZ = 0;
-        for (Tuple3<Integer, Integer, Integer> anotherMoonsPosition : moonsPositions) {
-            dX += delta(anotherMoonsPosition.v1, moonPosition.v1);
-            dY += delta(anotherMoonsPosition.v2, moonPosition.v2);
-            dZ += delta(anotherMoonsPosition.v3, moonPosition.v3);
+
+        for (Moon anotherMoon : moons) {
+            Tuple3<Integer, Integer, Integer> distance = anotherMoon.distanceTo(moon);
+            dX += distance.v1;
+            dY += distance.v2;
+            dZ += distance.v3;
         }
 
-        return tuple(
-                oldMoonPosition.v1 + dX,
-                oldMoonPosition.v2 + dY,
-                oldMoonPosition.v3 + dZ
-        );
-    }
-
-    private int delta(Integer p1, Integer p2) {
-        int delta = 0;
-        if (p1 > p2) {
-            delta = 1;
-        }
-        if (p1 < p2) {
-            delta = -1;
-        }
-        return delta;
+        return moon.move(tuple(dX, dY, dZ));
     }
 
     @Test
@@ -93,7 +64,7 @@ class NBodyProblemTest {
             this(position, tuple(0, 0, 0));
         }
 
-        private Moon(Tuple3<Integer, Integer, Integer> position, Tuple3<Integer, Integer, Integer> velocity) {
+        public Moon(Tuple3<Integer, Integer, Integer> position, Tuple3<Integer, Integer, Integer> velocity) {
             this.position = position;
             this.velocity = velocity;
         }
@@ -110,6 +81,50 @@ class NBodyProblemTest {
         @Override
         public int hashCode() {
             return Objects.hash(position, velocity);
+        }
+
+        public Moon move(Tuple3<Integer, Integer, Integer> gravityContribution) {
+            Tuple3<Integer, Integer, Integer> newPosition = tuple(
+                    position.v1 + gravityContribution.v1 + velocity.v1,
+                    position.v2 + gravityContribution.v2 + velocity.v2,
+                    position.v3 + gravityContribution.v3 + velocity.v3
+            );
+
+            Tuple3<Integer, Integer, Integer> newVelocity = tuple(
+                    gravityContribution.v1 + velocity.v1,
+                    gravityContribution.v2 + velocity.v2,
+                    gravityContribution.v3 + velocity.v3
+            );
+
+            return new Moon(newPosition, newVelocity);
+        }
+
+        public Moon clone() {
+            return new Moon(position, velocity);
+        }
+
+        public Tuple3<Integer, Integer, Integer> distanceTo(Moon moon) {
+            return tuple(
+                    delta(position.v1, moon.position.v1),
+                    delta(position.v2, moon.position.v2),
+                    delta(position.v3, moon.position.v3)
+            );
+        }
+
+        private int delta(Integer p1, Integer p2) {
+            int delta = 0;
+            if (p1 > p2) {
+                delta = 1;
+            }
+            if (p1 < p2) {
+                delta = -1;
+            }
+            return delta;
+        }
+
+        @Override
+        public String toString() {
+            return "position " + position.toString() + " velocity " + velocity.toString();
         }
     }
 }
