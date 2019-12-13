@@ -27,7 +27,7 @@ public class Computer {
         return Integer.parseInt(results.get(results.size() - 1));
     }
 
-    private List<String> execute(String[] instructions, ComputerListener listener) {
+    public List<String> execute(String[] instructions, ComputerListener listener) {
         Memory memory = new Memory(instructions);
         return execute(instructions, listener, memory);
     }
