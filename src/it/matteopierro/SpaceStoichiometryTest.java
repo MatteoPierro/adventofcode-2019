@@ -14,6 +14,8 @@ import static org.jooq.lambda.tuple.Tuple.tuple;
 
 class SpaceStoichiometryTest {
 
+    private final Stoichiometry stoichiometry = new Stoichiometry();
+
     //10 ORE => 10 A
     //1 ORE => 1 B
     //7 A, 1 B => 1 C
@@ -31,7 +33,7 @@ class SpaceStoichiometryTest {
                 tuple(of(tuple(7, "A"), tuple(1, "E")), tuple(1, "FUEL"))
         );
 
-        assertThat(orePerReactions(reactions)).isEqualTo(31);
+        assertThat(stoichiometry.orePerFuel(reactions)).isEqualTo(31);
     }
 
 
@@ -54,7 +56,7 @@ class SpaceStoichiometryTest {
                 tuple(of(tuple(2, "AB"), tuple(3, "BC"), tuple(4, "CA")), tuple(1, "FUEL"))
         );
 
-        assertThat(orePerReactions(reactions)).isEqualTo(165);
+        assertThat(stoichiometry.orePerFuel(reactions)).isEqualTo(165);
     }
 
     @Test
@@ -69,7 +71,7 @@ class SpaceStoichiometryTest {
                 "165 ORE => 2 GPVTF\n" +
                 "3 DCFZ, 7 NZVS, 5 HKGWZ, 10 PSHF => 8 KHKGT";
 
-        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(13312);
+        assertThat(stoichiometry.orePerFuel(parseReactions(rawReactions))).isEqualTo(13312);
     }
 
     @Test
@@ -87,7 +89,7 @@ class SpaceStoichiometryTest {
                 "1 VJHF, 6 MNCFX => 4 RFSQX\n" +
                 "176 ORE => 6 VJHF";
 
-        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(180697);
+        assertThat(stoichiometry.orePerFuel(parseReactions(rawReactions))).isEqualTo(180697);
     }
 
     @Test
@@ -110,64 +112,14 @@ class SpaceStoichiometryTest {
                 "7 XCVML => 6 RJRHP\n" +
                 "5 BHXH, 4 VRPVC => 5 LTCX";
 
-        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(2210736);
+        assertThat(stoichiometry.orePerFuel(parseReactions(rawReactions))).isEqualTo(2210736);
     }
 
     @Test
     void firstPuzzle() throws IOException {
         String rawReactions = Files.readString(Paths.get("./input_day14"));
 
-        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(431448);
-    }
-
-    private long orePerReactions(List<Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>>> reactions) {
-        List<Tuple2<Integer, String>> elementNeededForFuel = findReactionFor("FUEL", reactions).v1;
-        ArrayDeque<Tuple2<Integer, String>> elementsToCreate = new ArrayDeque<>();
-        Map<String, Integer> elementsLeft = new HashMap<>();
-        elementNeededForFuel.forEach(elementsToCreate::push);
-        long numberOfOre = 0;
-        while (!elementsToCreate.isEmpty()) {
-            Tuple2<Integer, String> element = elementsToCreate.pop();
-            if (element.v2.equals("ORE")) {
-                numberOfOre += element.v1;
-                continue;
-            }
-
-            int quantityRequired = quantityRequired(elementsLeft, element);
-            if (quantityRequired == 0) continue;
-
-            Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>> reaction = findReactionFor(element.v2, reactions);
-            List<Tuple2<Integer, String>> newElements = reaction.v1;
-            if (reaction.v2.v1 >= quantityRequired) {
-                Integer remaining = reaction.v2.v1 - quantityRequired;
-                elementsLeft.put(reaction.v2.v2, elementsLeft.getOrDefault(reaction.v2.v2, 0) + remaining);
-                newElements.forEach(elementsToCreate::push);
-                continue;
-            }
-
-            int quantityProduced = 0;
-            while (quantityProduced < quantityRequired) {
-                newElements.forEach(elementsToCreate::push);
-                quantityProduced += reaction.v2.v1;
-            }
-
-            if (quantityProduced > quantityRequired) {
-                Integer remaining = quantityProduced - quantityRequired;
-                elementsLeft.put(reaction.v2.v2, elementsLeft.getOrDefault(reaction.v2.v2, 0) + remaining);
-            }
-        }
-        return numberOfOre;
-    }
-
-    private int quantityRequired(Map<String, Integer> elementsLeft, Tuple2<Integer, String> element) {
-        int quantityRequired = element.v1;
-        Integer remaining = elementsLeft.getOrDefault(element.v2, 0);
-        if (remaining >= quantityRequired) {
-            elementsLeft.put(element.v2, remaining - quantityRequired);
-            return 0;
-        }
-        elementsLeft.remove(element.v2);
-        return quantityRequired - remaining;
+        assertThat(stoichiometry.orePerFuel(parseReactions(rawReactions))).isEqualTo(431448);
     }
 
     @Test
@@ -181,16 +133,9 @@ class SpaceStoichiometryTest {
                 tuple(of(tuple(7, "A"), tuple(1, "B")), tuple(1, "FUEL"))
         );
 
-        assertThat(of(findReactionFor("FUEL", reactions))).containsExactly(
+        assertThat(of(stoichiometry.findReactionFor("FUEL", reactions))).containsExactly(
                 tuple(of(tuple(7, "A"), tuple(1, "B")), tuple(1, "FUEL"))
         );
-    }
-
-    private Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>> findReactionFor(String element, List<Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>>> reactions) {
-        return reactions.stream()
-                .filter(t-> t.v2.v2.equals(element))
-                .findFirst()
-                .orElseThrow();
     }
 
     @Test
@@ -222,5 +167,65 @@ class SpaceStoichiometryTest {
     private Tuple2<Integer, String> toElement(String s) {
         String[] rawProduct = s.split(" ");
         return tuple(Integer.parseInt(rawProduct[0]), rawProduct[1]);
+    }
+
+    public class Stoichiometry {
+
+        long orePerFuel(List<Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>>> reactions) {
+            List<Tuple2<Integer, String>> elementNeededForFuel = findReactionFor("FUEL", reactions).v1;
+            ArrayDeque<Tuple2<Integer, String>> elementsToCreate = new ArrayDeque<Tuple2<Integer, String>>();
+            Map<String, Integer> elementsLeft = new HashMap<String, Integer>();
+            elementNeededForFuel.forEach(elementsToCreate::push);
+            long numberOfOre = 0;
+            while (!elementsToCreate.isEmpty()) {
+                Tuple2<Integer, String> element = elementsToCreate.pop();
+                if (element.v2.equals("ORE")) {
+                    numberOfOre += element.v1;
+                    continue;
+                }
+
+                int quantityRequired = quantityRequired(elementsLeft, element);
+                if (quantityRequired == 0) continue;
+
+                Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>> reaction = findReactionFor(element.v2, reactions);
+                List<Tuple2<Integer, String>> newElements = reaction.v1;
+                if (reaction.v2.v1 >= quantityRequired) {
+                    Integer remaining = reaction.v2.v1 - quantityRequired;
+                    elementsLeft.put(reaction.v2.v2, elementsLeft.getOrDefault(reaction.v2.v2, 0) + remaining);
+                    newElements.forEach(elementsToCreate::push);
+                    continue;
+                }
+
+                int quantityProduced = 0;
+                while (quantityProduced < quantityRequired) {
+                    newElements.forEach(elementsToCreate::push);
+                    quantityProduced += reaction.v2.v1;
+                }
+
+                if (quantityProduced > quantityRequired) {
+                    Integer remaining = quantityProduced - quantityRequired;
+                    elementsLeft.put(reaction.v2.v2, elementsLeft.getOrDefault(reaction.v2.v2, 0) + remaining);
+                }
+            }
+            return numberOfOre;
+        }
+
+        private Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>> findReactionFor(String element, List<Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>>> reactions) {
+            return reactions.stream()
+                    .filter(t-> t.v2.v2.equals(element))
+                    .findFirst()
+                    .orElseThrow();
+        }
+
+        private int quantityRequired(Map<String, Integer> elementsLeft, Tuple2<Integer, String> element) {
+            int quantityRequired = element.v1;
+            Integer remaining = elementsLeft.getOrDefault(element.v2, 0);
+            if (remaining >= quantityRequired) {
+                elementsLeft.put(element.v2, remaining - quantityRequired);
+                return 0;
+            }
+            elementsLeft.remove(element.v2);
+            return quantityRequired - remaining;
+        }
     }
 }
