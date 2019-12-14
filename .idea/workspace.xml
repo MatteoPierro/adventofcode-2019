@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/CarePackageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/CarePackageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/Computer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,38 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CarePackageTest.secondPuzzle">
-    <configuration name="CarePackageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CarePackageTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CarePackageTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CarePackageTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SpaceStoichiometryTest">
     <configuration name="CarePackageTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -114,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NBodyProblemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceStoichiometryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -123,13 +90,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NBodyProblemTest.secondExamplePreviousTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceStoichiometryTest.findReactionToGenerateOneElement" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -138,8 +105,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.NBodyProblemTest" />
-      <option name="METHOD_NAME" value="secondExamplePreviousTime" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
+      <option name="METHOD_NAME" value="findReactionToGenerateOneElement" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpaceStoichiometryTest.numberOfOre" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
+      <option name="METHOD_NAME" value="numberOfOre" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpaceStoichiometryTest.numberOfOreSecondExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
+      <option name="METHOD_NAME" value="numberOfOreSecondExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpaceStoichiometryTest" />
+        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreSecondExample" />
+        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOre" />
+        <item itemvalue="JUnit.SpaceStoichiometryTest.findReactionToGenerateOneElement" />
         <item itemvalue="JUnit.CarePackageTest.secondPuzzle" />
-        <item itemvalue="JUnit.CarePackageTest.firstPuzzle" />
-        <item itemvalue="JUnit.CarePackageTest" />
-        <item itemvalue="JUnit.NBodyProblemTest" />
-        <item itemvalue="JUnit.NBodyProblemTest.secondExamplePreviousTime" />
       </list>
     </recent_temporary>
   </component>
@@ -491,15 +490,5 @@
     <MESSAGE value="solve second challenge day 12" />
     <MESSAGE value="solve first challenge day 12" />
     <option name="LAST_COMMIT_MESSAGE" value="solve first challenge day 12" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="asteroids.contains(coordinates)" language="JAVA" />
-        <watch expression="asteroid.v2 - target.v2" language="JAVA" />
-        <watch expression="target.v1 - candidate.v1" language="JAVA" />
-        <watch expression="target.v2 - candidate.v2" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
