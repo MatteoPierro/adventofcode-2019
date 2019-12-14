@@ -506,4 +506,15 @@
     <MESSAGE value="solve first puzzle day 14" />
     <option name="LAST_COMMIT_MESSAGE" value="solve first puzzle day 14" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/SpaceStoichiometryTest.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
