@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SpaceStoichiometryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SpaceStoichiometryTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,22 +66,6 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.SpaceStoichiometryTest">
-    <configuration name="CarePackageTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CarePackageTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SpaceStoichiometryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -96,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpaceStoichiometryTest.findReactionToGenerateOneElement" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceStoichiometryTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -106,13 +91,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
-      <option name="METHOD_NAME" value="findReactionToGenerateOneElement" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpaceStoichiometryTest.numberOfOre" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceStoichiometryTest.numberOfOreFifthExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -122,13 +107,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
-      <option name="METHOD_NAME" value="numberOfOre" />
+      <option name="METHOD_NAME" value="numberOfOreFifthExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpaceStoichiometryTest.numberOfOreSecondExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SpaceStoichiometryTest.numberOfOreForthExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -138,7 +123,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
-      <option name="METHOD_NAME" value="numberOfOreSecondExample" />
+      <option name="METHOD_NAME" value="numberOfOreForthExample" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpaceStoichiometryTest.numberOfOreThirdExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
+      <option name="METHOD_NAME" value="numberOfOreThirdExample" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,10 +148,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SpaceStoichiometryTest" />
-        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreSecondExample" />
-        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOre" />
-        <item itemvalue="JUnit.SpaceStoichiometryTest.findReactionToGenerateOneElement" />
-        <item itemvalue="JUnit.CarePackageTest.secondPuzzle" />
+        <item itemvalue="JUnit.SpaceStoichiometryTest.firstPuzzle" />
+        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreFifthExample" />
+        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreForthExample" />
+        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreThirdExample" />
       </list>
     </recent_temporary>
   </component>
@@ -445,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576221119597</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="calculate ore">
+      <created>1576316908885</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1576316908885</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -464,7 +472,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="implement long numbers" />
     <MESSAGE value="introduce adjust relative base instruction" />
     <MESSAGE value="extract Memory class" />
     <MESSAGE value="fix relative mode" />
@@ -489,6 +496,7 @@
     <MESSAGE value="calculate velocity" />
     <MESSAGE value="solve second challenge day 12" />
     <MESSAGE value="solve first challenge day 12" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve first challenge day 12" />
+    <MESSAGE value="calculate ore" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculate ore" />
   </component>
 </project>

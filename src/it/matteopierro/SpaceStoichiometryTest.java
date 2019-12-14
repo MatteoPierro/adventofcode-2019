@@ -3,10 +3,10 @@ package it.matteopierro;
 import org.jooq.lambda.tuple.Tuple2;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 import static java.util.List.of;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,6 +55,69 @@ class SpaceStoichiometryTest {
         );
 
         assertThat(orePerReactions(reactions)).isEqualTo(165);
+    }
+
+    @Test
+    void numberOfOreThirdExample() {
+        String rawReactions = "157 ORE => 5 NZVS\n" +
+                "165 ORE => 6 DCFZ\n" +
+                "44 XJWVT, 5 KHKGT, 1 QDVJ, 29 NZVS, 9 GPVTF, 48 HKGWZ => 1 FUEL\n" +
+                "12 HKGWZ, 1 GPVTF, 8 PSHF => 9 QDVJ\n" +
+                "179 ORE => 7 PSHF\n" +
+                "177 ORE => 5 HKGWZ\n" +
+                "7 DCFZ, 7 PSHF => 2 XJWVT\n" +
+                "165 ORE => 2 GPVTF\n" +
+                "3 DCFZ, 7 NZVS, 5 HKGWZ, 10 PSHF => 8 KHKGT";
+
+        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(13312);
+    }
+
+    @Test
+    void numberOfOreForthExample() {
+        String rawReactions = "2 VPVL, 7 FWMGM, 2 CXFTF, 11 MNCFX => 1 STKFG\n" +
+                "17 NVRVD, 3 JNWZP => 8 VPVL\n" +
+                "53 STKFG, 6 MNCFX, 46 VJHF, 81 HVMC, 68 CXFTF, 25 GNMV => 1 FUEL\n" +
+                "22 VJHF, 37 MNCFX => 5 FWMGM\n" +
+                "139 ORE => 4 NVRVD\n" +
+                "144 ORE => 7 JNWZP\n" +
+                "5 MNCFX, 7 RFSQX, 2 FWMGM, 2 VPVL, 19 CXFTF => 3 HVMC\n" +
+                "5 VJHF, 7 MNCFX, 9 VPVL, 37 CXFTF => 6 GNMV\n" +
+                "145 ORE => 6 MNCFX\n" +
+                "1 NVRVD => 8 CXFTF\n" +
+                "1 VJHF, 6 MNCFX => 4 RFSQX\n" +
+                "176 ORE => 6 VJHF";
+
+        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(180697);
+    }
+
+    @Test
+    void numberOfOreFifthExample() {
+        String rawReactions = "171 ORE => 8 CNZTR\n" +
+                "7 ZLQW, 3 BMBT, 9 XCVML, 26 XMNCP, 1 WPTQ, 2 MZWV, 1 RJRHP => 4 PLWSL\n" +
+                "114 ORE => 4 BHXH\n" +
+                "14 VRPVC => 6 BMBT\n" +
+                "6 BHXH, 18 KTJDG, 12 WPTQ, 7 PLWSL, 31 FHTLT, 37 ZDVW => 1 FUEL\n" +
+                "6 WPTQ, 2 BMBT, 8 ZLQW, 18 KTJDG, 1 XMNCP, 6 MZWV, 1 RJRHP => 6 FHTLT\n" +
+                "15 XDBXC, 2 LTCX, 1 VRPVC => 6 ZLQW\n" +
+                "13 WPTQ, 10 LTCX, 3 RJRHP, 14 XMNCP, 2 MZWV, 1 ZLQW => 1 ZDVW\n" +
+                "5 BMBT => 4 WPTQ\n" +
+                "189 ORE => 9 KTJDG\n" +
+                "1 MZWV, 17 XDBXC, 3 XCVML => 2 XMNCP\n" +
+                "12 VRPVC, 27 CNZTR => 2 XDBXC\n" +
+                "15 KTJDG, 12 BHXH => 5 XCVML\n" +
+                "3 BHXH, 2 VRPVC => 7 MZWV\n" +
+                "121 ORE => 7 VRPVC\n" +
+                "7 XCVML => 6 RJRHP\n" +
+                "5 BHXH, 4 VRPVC => 5 LTCX";
+
+        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(2210736);
+    }
+
+    @Test
+    void firstPuzzle() throws IOException {
+        String rawReactions = Files.readString(Paths.get("./input_day14"));
+
+        assertThat(orePerReactions(parseReactions(rawReactions))).isEqualTo(431448);
     }
 
     private long orePerReactions(List<Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>>> reactions) {
@@ -128,5 +191,36 @@ class SpaceStoichiometryTest {
                 .filter(t-> t.v2.v2.equals(element))
                 .findFirst()
                 .orElseThrow();
+    }
+
+    @Test
+    void parseReaction() {
+        assertThat(of(parseReaction("3 A, 4 B => 1 AB"))).containsExactly(
+          tuple(of(tuple(3, "A"), tuple(4, "B")), tuple(1, "AB"))
+        );
+    }
+
+    private List<Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>>> parseReactions(String rawReactions) {
+        List<Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>>> reactions = new ArrayList<>();
+        for (String rawReaction : rawReactions.split("\n")) {
+               reactions.add(parseReaction(rawReaction));
+        }
+        return reactions;
+    }
+
+    private Tuple2<List<Tuple2<Integer, String>>, Tuple2<Integer, String>> parseReaction(String input) {
+        String[] reaction = input.split(" => ");
+        String[] rawReagents = reaction[0].split(", ");
+        List<Tuple2<Integer, String>> reagents = new ArrayList<>();
+        for (String rawReagent : rawReagents) {
+            reagents.add(toElement(rawReagent));
+        }
+
+        return tuple(reagents, toElement(reaction[1]));
+    }
+
+    private Tuple2<Integer, String> toElement(String s) {
+        String[] rawProduct = s.split(" ");
+        return tuple(Integer.parseInt(rawProduct[0]), rawProduct[1]);
     }
 }
