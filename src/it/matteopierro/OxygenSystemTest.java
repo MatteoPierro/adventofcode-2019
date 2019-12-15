@@ -6,9 +6,7 @@ import org.jooq.lambda.tuple.Tuple2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -101,6 +99,8 @@ class OxygenSystemTest {
         private Tuple2<Integer, Integer> currentPosition = tuple(0, 0);
         private Direction currentDirection = Direction.NORTH;
         private List<Direction> alreadyTriedDirections = new ArrayList<>();
+        private Set<Tuple2<Integer, Integer>> alreadyExploredPositions = new HashSet<>();
+        private Set<Tuple2<Integer, Integer>> walls = new HashSet<>();
 
         @Override
         public String onReadRequested() {
@@ -111,15 +111,18 @@ class OxygenSystemTest {
         public void onStoreRequested(String result) {
             super.onStoreRequested(result);
             if (WALL.equals(result)) {
+                walls.add(currentPosition);
                 alreadyTriedDirections.add(currentDirection);
                 currentDirection = Stream.of(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST)
+                .filter(d -> !d.equals(currentDirection))
                 .filter(d -> !alreadyTriedDirections.contains(d))
                 .findFirst()
-                .get();
+                .orElse(currentDirection);
             }
 
             if (SUCCESS.equals(result)) {
                 alreadyTriedDirections = new ArrayList<>();
+                alreadyExploredPositions.add(currentPosition);
                 currentPosition = currentDirection.move(currentPosition);
                 currentDirection = Direction.NORTH;
             }
