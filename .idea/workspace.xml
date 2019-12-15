@@ -68,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OxygenSystemTest.findAnotherWallInSouth">
+  <component name="RunManager" selected="JUnit.OxygenSystemTest.returnToTheOrigin">
     <configuration name="OxygenSystemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -132,7 +132,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="it.matteopierro in day2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OxygenSystemTest.returnToTheOrigin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -141,18 +141,20 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
+      <option name="METHOD_NAME" value="returnToTheOrigin" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OxygenSystemTest.returnToTheOrigin" />
         <item itemvalue="JUnit.OxygenSystemTest.findAnotherWallInSouth" />
         <item itemvalue="JUnit.OxygenSystemTest" />
         <item itemvalue="JUnit.OxygenSystemTest.findAnotherWallInEast" />
         <item itemvalue="JUnit.OxygenSystemTest.findAnotherWallInNorth" />
-        <item itemvalue="JUnit.it.matteopierro in day2" />
       </list>
     </recent_temporary>
   </component>
@@ -482,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576398747479</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="rotate all directions">
+      <created>1576399759944</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1576399759944</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -501,7 +510,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="test copy itself" />
     <MESSAGE value="resolve first puzzle day9" />
     <MESSAGE value="remove global relativeBase" />
     <MESSAGE value="remove duplication" />
@@ -526,7 +534,8 @@
     <MESSAGE value="first rotation" />
     <MESSAGE value="turn east" />
     <MESSAGE value="introduce directions" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce directions" />
+    <MESSAGE value="rotate all directions" />
+    <option name="LAST_COMMIT_MESSAGE" value="rotate all directions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

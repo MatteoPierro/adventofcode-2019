@@ -66,6 +66,17 @@ class OxygenSystemTest {
         assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(-1, 0));
     }
 
+    @Test
+    void returnToTheOrigin() {
+        move(Droid.NORTH, Droid.WALL);
+        move(Droid.EAST, Droid.SUCCESS);
+        move(Droid.NORTH, Droid.WALL);
+        move(Droid.EAST, Droid.WALL);
+        move(Droid.SOUTH, Droid.WALL);
+        move(Droid.WEST, Droid.SUCCESS);
+        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(0, 0));
+    }
+
     private void move(String direction, String found) {
         assertThat(droid.onReadRequested()).isEqualTo(direction);
         droid.onStoreRequested(found);
