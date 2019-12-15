@@ -31,15 +31,25 @@ class OxygenSystemTest {
     }
 
     @Test
-    void moveToEastWhenNorthHasWall() {
+    void tryToMoveEastWhenNorthHasWall() {
         assertThat(droid.onReadRequested()).isEqualTo(Droid.NORTH);
         droid.onStoreRequested(Droid.WALL);
         assertThat(droid.onReadRequested()).isEqualTo(Droid.EAST);
     }
 
+    @Test
+    void moveEastWhenThereAreNoWall() {
+        assertThat(droid.onReadRequested()).isEqualTo(Droid.NORTH);
+        droid.onStoreRequested(Droid.WALL);
+        assertThat(droid.onReadRequested()).isEqualTo(Droid.EAST);
+        droid.onStoreRequested(Droid.SUCCESS);
+        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(1, 0));
+    }
+
     private class Droid extends ComputerListener {
 
         private static final String WALL = "0";
+        private static final String SUCCESS = "1";
 
         private static final String NORTH = "1";
         private static final String EAST = "4";
@@ -56,6 +66,10 @@ class OxygenSystemTest {
             super.onStoreRequested(result);
             if (WALL.equals(result)) {
                 currentDirection = EAST;
+            }
+
+            if (SUCCESS.equals(result)) {
+                currentPosition = tuple(1, 0);
             }
         }
 
