@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/it/matteopierro/robot/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SpaceStoichiometryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SpaceStoichiometryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SpacePoliceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SpacePoliceTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +50,9 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="it.matteopierro" />
     </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="it.matteopierro.robot" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/.idea" />
     </key>
@@ -65,7 +69,70 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SpaceStoichiometryTest">
+  <component name="RunManager" selected="JUnit.OxygenSystemTest">
+    <configuration name="OxygenSystemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OxygenSystemTest.doNotChangePositionWhenHitsWalls" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
+      <option name="METHOD_NAME" value="doNotChangePositionWhenHitsWalls" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OxygenSystemTest.moveToEastWhenNorthHasWall" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
+      <option name="METHOD_NAME" value="moveToEastWhenNorthHasWall" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OxygenSystemTest.sendMovementCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
+      <option name="METHOD_NAME" value="sendMovementCommand" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpaceStoichiometryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -81,77 +148,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpaceStoichiometryTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpaceStoichiometryTest.numberOfOreFifthExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
-      <option name="METHOD_NAME" value="numberOfOreFifthExample" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpaceStoichiometryTest.numberOfOreForthExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
-      <option name="METHOD_NAME" value="numberOfOreForthExample" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpaceStoichiometryTest.numberOfOreThirdExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpaceStoichiometryTest" />
-      <option name="METHOD_NAME" value="numberOfOreThirdExample" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OxygenSystemTest" />
+        <item itemvalue="JUnit.OxygenSystemTest.moveToEastWhenNorthHasWall" />
+        <item itemvalue="JUnit.OxygenSystemTest.doNotChangePositionWhenHitsWalls" />
+        <item itemvalue="JUnit.OxygenSystemTest.sendMovementCommand" />
         <item itemvalue="JUnit.SpaceStoichiometryTest" />
-        <item itemvalue="JUnit.SpaceStoichiometryTest.firstPuzzle" />
-        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreFifthExample" />
-        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreForthExample" />
-        <item itemvalue="JUnit.SpaceStoichiometryTest.numberOfOreThirdExample" />
       </list>
     </recent_temporary>
   </component>
