@@ -1,16 +1,18 @@
 package it.matteopierro;
 
+import it.matteopierro.computer.Computer;
 import it.matteopierro.computer.ComputerListener;
+import it.matteopierro.oxygenSystem.Node;
 import it.matteopierro.robot.Direction;
 import org.jooq.lambda.tuple.Tuple2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.jooq.lambda.tuple.Tuple.tuple;
+import java.util.stream.Collectors;
 
 class OxygenSystemTest {
 
@@ -22,62 +24,10 @@ class OxygenSystemTest {
     }
 
     @Test
-    void sendMovementCommand() {
-        assertThat(droid.onReadRequested()).isEqualTo(Droid.NORTH);
-        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(0, 0));
-    }
+    void firstPuzzle() throws IOException {
+        String program = Files.readString(Paths.get("./input_day15"));
 
-    @Test
-    void doNotChangePositionWhenHitsWalls() {
-        move(Droid.NORTH, Droid.WALL);
-        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(0, 0));
-    }
-
-    @Test
-    void tryToMoveEastWhenNorthHasWall() {
-        move(Droid.NORTH, Droid.WALL);
-        assertThat(droid.onReadRequested()).isEqualTo(Droid.EAST);
-    }
-
-    @Test
-    void moveEastWhenThereAreNoWall() {
-        move(Droid.NORTH, Droid.WALL);
-        move(Droid.EAST, Droid.SUCCESS);
-        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(-1, 0));
-    }
-
-    @Test
-    void findAnotherWallInNorth() {
-        move(Droid.NORTH, Droid.WALL);
-        move(Droid.EAST, Droid.SUCCESS);
-        move(Droid.NORTH, Droid.WALL);
-        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(-1, 0));
-    }
-
-    @Test
-    void findAnotherWallInSouth() {
-        move(Droid.NORTH, Droid.WALL);
-        move(Droid.EAST, Droid.SUCCESS);
-        move(Droid.NORTH, Droid.WALL);
-        move(Droid.EAST, Droid.WALL);
-        move(Droid.SOUTH, Droid.WALL);
-        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(-1, 0));
-    }
-
-    @Test
-    void returnToTheOrigin() {
-        move(Droid.NORTH, Droid.WALL);
-        move(Droid.EAST, Droid.SUCCESS);
-        move(Droid.NORTH, Droid.WALL);
-        move(Droid.EAST, Droid.WALL);
-        move(Droid.SOUTH, Droid.WALL);
-        move(Droid.WEST, Droid.SUCCESS);
-        assertThat((Iterable<?>) droid.currentPosition()).isEqualTo(tuple(0, 0));
-    }
-
-    private void move(String direction, String found) {
-        assertThat(droid.onReadRequested()).isEqualTo(direction);
-        droid.onStoreRequested(found);
+        new Computer().execute(program, droid);
     }
 
     private static class Droid extends ComputerListener {
@@ -95,41 +45,42 @@ class OxygenSystemTest {
 
         private static final String WALL = "0";
         private static final String SUCCESS = "1";
+        public static final String OXYGEN_SYSTEM = "2";
 
-        private Tuple2<Integer, Integer> currentPosition = tuple(0, 0);
-        private Direction currentDirection = Direction.NORTH;
-        private List<Direction> alreadyTriedDirections = new ArrayList<>();
-        private Set<Tuple2<Integer, Integer>> alreadyExploredPositions = new HashSet<>();
-        private Set<Tuple2<Integer, Integer>> walls = new HashSet<>();
+        private Node currentNode;
+        private Queue<Node> nodeQueue = new LinkedList<>();
+        public Set<Tuple2<Integer, Integer>> alreadyExploredPosition = new HashSet<>();
+
+        public Droid() {
+            Node root = new Node();
+            List<Node> children = root.children();
+            children.forEach(c -> alreadyExploredPosition.add(c.position()));
+            nodeQueue.addAll(children);
+        }
 
         @Override
         public String onReadRequested() {
-            return DIRECTION_TO_COMMAND.get(currentDirection);
+            currentNode = nodeQueue.remove();
+            return DIRECTION_TO_COMMAND.get(currentNode.direction());
         }
 
         @Override
         public void onStoreRequested(String result) {
             super.onStoreRequested(result);
-            if (WALL.equals(result)) {
-                walls.add(currentPosition);
-                alreadyTriedDirections.add(currentDirection);
-                currentDirection = Stream.of(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST)
-                .filter(d -> !d.equals(currentDirection))
-                .filter(d -> !alreadyTriedDirections.contains(d))
-                .findFirst()
-                .orElse(currentDirection);
-            }
-
             if (SUCCESS.equals(result)) {
-                alreadyTriedDirections = new ArrayList<>();
-                alreadyExploredPositions.add(currentPosition);
-                currentPosition = currentDirection.move(currentPosition);
-                currentDirection = Direction.NORTH;
+                List<Node> children = currentNode.children()
+                                      .stream()
+                                      .filter(c -> !alreadyExploredPosition.contains(c.position()))
+                                      .collect(Collectors.toList());
+                children.forEach(c-> alreadyExploredPosition.add(c.position()));
+                nodeQueue.addAll(children);
             }
-        }
 
-        public Tuple2<Integer, Integer> currentPosition() {
-            return currentPosition;
+            if (OXYGEN_SYSTEM.equals(result)) {
+                System.out.println("oxygen system");
+                System.out.println(currentNode.distanceToRoot());
+                System.exit(0);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ import java.util.Map;
 import static org.jooq.lambda.tuple.Tuple.tuple;
 
 public enum Direction {
-    NORTH(0, 1), EAST(-1, 0), WEST(1, 0), SOUTH(0, -1);
+    NORTH(0, 1), EAST(1, 0), WEST(-1, 0), SOUTH(0, -1);
 
     private static final Map<Direction, Direction> LEFT_ROTATIONS = Map.of(
             NORTH, EAST,

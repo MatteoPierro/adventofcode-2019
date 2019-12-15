@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/NodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/NodeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/robot/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/robot/Direction.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.NodeTest">
+  <component name="RunManager" selected="JUnit.OxygenSystemTest.firstPuzzle">
     <configuration name="NodeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -83,7 +87,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeTest.returnToRootAfterExploringAllTheDirections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NodeTest.childrenOfNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -93,13 +97,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro.oxygenSystem" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.oxygenSystem.NodeTest" />
-      <option name="METHOD_NAME" value="returnToRootAfterExploringAllTheDirections" />
+      <option name="METHOD_NAME" value="childrenOfNode" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeTest.rootHasDistanceOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NodeTest.childrenOfRoot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -109,13 +113,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro.oxygenSystem" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.oxygenSystem.NodeTest" />
-      <option name="METHOD_NAME" value="rootHasDistanceOne" />
+      <option name="METHOD_NAME" value="childrenOfRoot" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeTest.secondLayerHasDistanceTwo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NodeTest.testPriorityQueue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -125,13 +129,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro.oxygenSystem" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.oxygenSystem.NodeTest" />
-      <option name="METHOD_NAME" value="secondLayerHasDistanceTwo" />
+      <option name="METHOD_NAME" value="testPriorityQueue" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OxygenSystemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OxygenSystemTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -141,18 +145,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OxygenSystemTest.firstPuzzle" />
+        <item itemvalue="JUnit.NodeTest.testPriorityQueue" />
+        <item itemvalue="JUnit.NodeTest.childrenOfNode" />
+        <item itemvalue="JUnit.NodeTest.childrenOfRoot" />
         <item itemvalue="JUnit.NodeTest" />
-        <item itemvalue="JUnit.NodeTest.returnToRootAfterExploringAllTheDirections" />
-        <item itemvalue="JUnit.NodeTest.secondLayerHasDistanceTwo" />
-        <item itemvalue="JUnit.NodeTest.rootHasDistanceOne" />
-        <item itemvalue="JUnit.OxygenSystemTest" />
       </list>
     </recent_temporary>
   </component>
@@ -503,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576403922627</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="test node">
+      <created>1576404370930</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1576404370930</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="remove duplication" />
     <MESSAGE value="find all asteroids" />
     <MESSAGE value="attempt of implement the line of sight" />
     <MESSAGE value="solve first puzzle day 10" />
@@ -547,7 +558,8 @@
     <MESSAGE value="rotate all directions" />
     <MESSAGE value="return to the origin" />
     <MESSAGE value="introduce Node" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce Node" />
+    <MESSAGE value="test node" />
+    <option name="LAST_COMMIT_MESSAGE" value="test node" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -557,7 +569,18 @@
           <line>185</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="DIRECTION_TO_COMMAND.get(currentNode.direction())" language="JAVA" />
+        <watch expression="currentNode.position" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

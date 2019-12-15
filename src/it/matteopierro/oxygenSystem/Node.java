@@ -1,12 +1,13 @@
 package it.matteopierro.oxygenSystem;
 
 import it.matteopierro.robot.Direction;
+import org.jooq.lambda.tuple.Tuple2;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.jooq.lambda.tuple.Tuple.tuple;
 
 public class Node {
 
@@ -18,15 +19,23 @@ public class Node {
     );
 
     private Node parent;
+    private Direction cameFrom;
     private Set<Direction> visitedDirection = new HashSet<>();
+    private Tuple2<Integer, Integer> position;
 
     public Node() {
-
+        position = tuple(0, 0);
     }
 
     public Node(Node parent, Direction cameFrom) {
         this.parent = parent;
+        this.cameFrom = cameFrom;
+        this.position = cameFrom.move(parent.position);
         this.visitedDirection.add(OPPOSITE_DIRECTION.get(cameFrom));
+    }
+
+    public Direction direction() {
+        return cameFrom;
     }
 
     public Node next() {
@@ -71,5 +80,20 @@ public class Node {
                 "parent=" + parent +
                 ", visitedDirection=" + visitedDirection +
                 '}';
+    }
+
+    public Node parent() {
+        return parent;
+    }
+
+    public List<Node> children() {
+        return Stream.of(Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST)
+                .filter(d -> !visitedDirection.contains(d))
+                .map(d -> new Node(this, d))
+                .collect(Collectors.toList());
+    }
+
+    public Tuple2<Integer, Integer> position() {
+        return this.position;
     }
 }
