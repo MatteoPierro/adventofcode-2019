@@ -68,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OxygenSystemTest">
+  <component name="RunManager" selected="JUnit.OxygenSystemTest.findAnotherWallInSouth">
     <configuration name="OxygenSystemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -84,7 +84,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OxygenSystemTest.doNotChangePositionWhenHitsWalls" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OxygenSystemTest.findAnotherWallInEast" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -94,13 +94,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
-      <option name="METHOD_NAME" value="doNotChangePositionWhenHitsWalls" />
+      <option name="METHOD_NAME" value="findAnotherWallInEast" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OxygenSystemTest.sendMovementCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OxygenSystemTest.findAnotherWallInNorth" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -110,13 +110,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
-      <option name="METHOD_NAME" value="sendMovementCommand" />
+      <option name="METHOD_NAME" value="findAnotherWallInNorth" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OxygenSystemTest.tryToMoveEastWhenNorthHasWall" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OxygenSystemTest.findAnotherWallInSouth" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -126,7 +126,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
-      <option name="METHOD_NAME" value="tryToMoveEastWhenNorthHasWall" />
+      <option name="METHOD_NAME" value="findAnotherWallInSouth" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OxygenSystemTest.findAnotherWallInSouth" />
         <item itemvalue="JUnit.OxygenSystemTest" />
+        <item itemvalue="JUnit.OxygenSystemTest.findAnotherWallInEast" />
+        <item itemvalue="JUnit.OxygenSystemTest.findAnotherWallInNorth" />
         <item itemvalue="JUnit.it.matteopierro in day2" />
-        <item itemvalue="JUnit.OxygenSystemTest.tryToMoveEastWhenNorthHasWall" />
-        <item itemvalue="JUnit.OxygenSystemTest.doNotChangePositionWhenHitsWalls" />
-        <item itemvalue="JUnit.OxygenSystemTest.sendMovementCommand" />
       </list>
     </recent_temporary>
   </component>
@@ -475,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576398184576</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="introduce directions">
+      <created>1576398747479</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1576398747479</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +501,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="output 16 DigitOutput" />
     <MESSAGE value="test copy itself" />
     <MESSAGE value="resolve first puzzle day9" />
     <MESSAGE value="remove global relativeBase" />
@@ -519,7 +525,8 @@
     <MESSAGE value="solve first puzzle day 14" />
     <MESSAGE value="first rotation" />
     <MESSAGE value="turn east" />
-    <option name="LAST_COMMIT_MESSAGE" value="turn east" />
+    <MESSAGE value="introduce directions" />
+    <option name="LAST_COMMIT_MESSAGE" value="introduce directions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
