@@ -4,6 +4,7 @@ import it.matteopierro.robot.Direction;
 
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -48,5 +49,27 @@ public class Node {
             currentParent = currentParent.parent;
         }
         return distance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Node)) return false;
+        Node node = (Node) o;
+        return Objects.equals(parent, node.parent) &&
+                Objects.equals(visitedDirection, node.visitedDirection);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parent, visitedDirection);
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "parent=" + parent +
+                ", visitedDirection=" + visitedDirection +
+                '}';
     }
 }
