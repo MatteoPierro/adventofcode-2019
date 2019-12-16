@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/NodeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/oxygenSystem/NodeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/robot/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/robot/Direction.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,65 +67,66 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OxygenSystemTest.firstPuzzle">
-    <configuration name="NodeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FlawedFrequencyTransmissionTest.firstPuzzle">
+    <configuration name="FlawedFrequencyTransmissionTest.createNewSignal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.matteopierro.oxygenSystem.*" />
+          <option name="PATTERN" value="it.matteopierro.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro.oxygenSystem" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.oxygenSystem.NodeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NodeTest.childrenOfNode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.oxygenSystem.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro.oxygenSystem" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.oxygenSystem.NodeTest" />
-      <option name="METHOD_NAME" value="childrenOfNode" />
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
+      <option name="METHOD_NAME" value="createNewSignal" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeTest.childrenOfRoot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlawedFrequencyTransmissionTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.matteopierro.oxygenSystem.*" />
+          <option name="PATTERN" value="it.matteopierro.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro.oxygenSystem" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.oxygenSystem.NodeTest" />
-      <option name="METHOD_NAME" value="childrenOfRoot" />
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeTest.testPriorityQueue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlawedFrequencyTransmissionTest.largeExamples" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="it.matteopierro.oxygenSystem.*" />
+          <option name="PATTERN" value="it.matteopierro.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro.oxygenSystem" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.oxygenSystem.NodeTest" />
-      <option name="METHOD_NAME" value="testPriorityQueue" />
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
+      <option name="METHOD_NAME" value="largeExamples" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlawedFrequencyTransmissionTest.repeatSequenceSkippingTheFirst" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
+      <option name="METHOD_NAME" value="repeatSequenceSkippingTheFirst" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -153,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.firstPuzzle" />
+        <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.largeExamples" />
+        <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.createNewSignal" />
+        <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.repeatSequenceSkippingTheFirst" />
         <item itemvalue="JUnit.OxygenSystemTest.firstPuzzle" />
-        <item itemvalue="JUnit.NodeTest.testPriorityQueue" />
-        <item itemvalue="JUnit.NodeTest.childrenOfNode" />
-        <item itemvalue="JUnit.NodeTest.childrenOfRoot" />
-        <item itemvalue="JUnit.NodeTest" />
       </list>
     </recent_temporary>
   </component>
