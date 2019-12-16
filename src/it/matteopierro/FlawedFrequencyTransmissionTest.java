@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,7 +52,7 @@ class FlawedFrequencyTransmissionTest {
     private String newSignal(String input) {
         var result = new StringBuffer();
         char[] inputNumbers = input.toCharArray();
-        LinkedList<Integer> numbers = new LinkedList<>();
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < inputNumbers.length; i++) {
             numbers.add(Integer.parseInt(inputNumbers[i] + ""));
         }
@@ -65,12 +65,12 @@ class FlawedFrequencyTransmissionTest {
         return result.toString();
     }
 
-    private String newDigit(LinkedList<Integer> numbers, List<Integer> sequence) {
+    private String newDigit(List<Integer> numbers, List<Integer> sequence) {
         String result = String.valueOf(compute(sequence, numbers));
         return result.substring(result.length() - 1);
     }
 
-    private long compute(List<Integer> sequence, LinkedList<Integer> numbers) {
+    private long compute(List<Integer> sequence, List<Integer> numbers) {
         long result = 0;
         for (int i = 0; i < sequence.size(); i++) {
             Integer digit = sequence.get(i);
@@ -95,7 +95,7 @@ class FlawedFrequencyTransmissionTest {
     }
 
     private List<Integer> repeatBase(int element, int numberOfTime) {
-        List<Integer> result = new LinkedList<>();
+        List<Integer> result = new ArrayList<>();
         for (int i = 0; i < numberOfTime; i++) {
             result.add(element);
         }
