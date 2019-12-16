@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/FlawedFrequencyTransmissionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/FlawedFrequencyTransmissionTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +133,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OxygenSystemTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlawedFrequencyTransmissionTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -141,8 +142,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -151,10 +152,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.firstPuzzle" />
+        <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.secondPuzzle" />
         <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.largeExamples" />
         <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.createNewSignal" />
         <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.repeatSequenceSkippingTheFirst" />
-        <item itemvalue="JUnit.OxygenSystemTest.firstPuzzle" />
       </list>
     </recent_temporary>
   </component>
@@ -168,13 +169,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00001" summary="solution day3">
-      <created>1575446521935</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1575446521935</updated>
     </task>
     <task id="LOCAL-00002" summary="solution day3">
       <created>1575485395216</created>
@@ -512,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576404370930</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="second puzzle day 16">
+      <created>1576515845458</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1576515845458</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,7 +532,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="find all asteroids" />
     <MESSAGE value="attempt of implement the line of sight" />
     <MESSAGE value="solve first puzzle day 10" />
     <MESSAGE value="find asteroids to vaporize" />
@@ -556,7 +556,8 @@
     <MESSAGE value="return to the origin" />
     <MESSAGE value="introduce Node" />
     <MESSAGE value="test node" />
-    <option name="LAST_COMMIT_MESSAGE" value="test node" />
+    <MESSAGE value="second puzzle day 16" />
+    <option name="LAST_COMMIT_MESSAGE" value="second puzzle day 16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
