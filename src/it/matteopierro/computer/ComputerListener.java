@@ -34,6 +34,10 @@ public class ComputerListener {
         });
     }
 
+    public ComputerListener(List<String> input) {
+        this.inputs = new LinkedBlockingQueue<>(input);
+    }
+
     public String onReadRequested() {
         try {
             return inputs.take();

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SetAndForgetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SetAndForgetTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/computer/ComputerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,23 +69,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SetAndForgetTest.firstPuzzle">
-    <configuration name="FlawedFrequencyTransmissionTest.createNewSignal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
-      <option name="METHOD_NAME" value="createNewSignal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SetAndForgetTest.secondPuzzle">
     <configuration name="FlawedFrequencyTransmissionTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -95,22 +81,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
       <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlawedFrequencyTransmissionTest.largeExamples" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.FlawedFrequencyTransmissionTest" />
-      <option name="METHOD_NAME" value="largeExamples" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,13 +118,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SetAndForgetTest.functionA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SetAndForgetTest" />
+      <option name="METHOD_NAME" value="functionA" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SetAndForgetTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SetAndForgetTest" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SetAndForgetTest.secondPuzzle" />
+        <item itemvalue="JUnit.SetAndForgetTest.functionA" />
         <item itemvalue="JUnit.SetAndForgetTest.firstPuzzle" />
         <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.firstPuzzle" />
         <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.secondPuzzle" />
-        <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.largeExamples" />
-        <item itemvalue="JUnit.FlawedFrequencyTransmissionTest.createNewSignal" />
       </list>
     </recent_temporary>
   </component>
