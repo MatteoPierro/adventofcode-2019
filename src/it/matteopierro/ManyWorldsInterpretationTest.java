@@ -55,9 +55,46 @@ class ManyWorldsInterpretationTest {
                         "#b.A.@.a#\n" +
                         "#########";
 
-        Maze maze = new Maze(input);
+        assertThat(calculateSteps(input)).isEqualTo(8);
+    }
 
-        assertThat(maze.stepsToCatchKeys()).isEqualTo(8);
+    @Test
+    void calculateStepsSecondExample() {
+        String input =
+                "#########\n" +
+                        "#b.....@#\n" +
+                        "#########";
+
+        assertThat(calculateSteps(input)).isEqualTo(6);
+    }
+
+    @Test
+    void calculateStepsThirdExample() {
+        String input =
+                        "########################\n" +
+                        "#f.D.E.e.C.b.A.@.a.B.c.#\n" +
+                        "######################.#\n" +
+                        "#d.....................#\n" +
+                        "########################";
+
+        assertThat(calculateSteps(input)).isEqualTo(6);
+    }
+
+    @Test
+    void calculateStepsLargerExample() {
+        String input =
+                "########################\n" +
+                        "#...............b.C.D.f#\n" +
+                        "#.######################\n" +
+                        "#.....@.a.B.c.d.A.e.F.g#\n" +
+                        "########################";
+
+        assertThat(calculateSteps(input)).isEqualTo(6);
+    }
+
+    private int calculateSteps(String input) {
+        Maze maze = new Maze(input);
+        return maze.stepsToCatchKeys();
     }
 
     private class Maze {
