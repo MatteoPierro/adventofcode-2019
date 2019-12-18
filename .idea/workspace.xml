@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/ManyWorldsInterpretationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/ManyWorldsInterpretationTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +65,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExample">
+  <component name="RunManager" selected="JUnit.ManyWorldsInterpretationTest">
+    <configuration name="ManyWorldsInterpretationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ManyWorldsInterpretationTest.calculateStepsLargerExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -85,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManyWorldsInterpretationTest.calculateStepsSecondExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberThree" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -95,7 +107,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
-      <option name="METHOD_NAME" value="calculateStepsSecondExample" />
+      <option name="METHOD_NAME" value="calculateStepsLargerExampleNumberThree" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberTwo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
+      <option name="METHOD_NAME" value="calculateStepsLargerExampleNumberTwo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -117,45 +145,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManyWorldsInterpretationTest.catchAllKeysShortExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
-      <option name="METHOD_NAME" value="catchAllKeysShortExample" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ManyWorldsInterpretationTest.findMazeElementPositions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
-      <option name="METHOD_NAME" value="findMazeElementPositions" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ManyWorldsInterpretationTest" />
+        <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberTwo" />
+        <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberThree" />
         <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExample" />
         <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsThirdExample" />
-        <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsSecondExample" />
-        <item itemvalue="JUnit.ManyWorldsInterpretationTest.catchAllKeysShortExample" />
-        <item itemvalue="JUnit.ManyWorldsInterpretationTest.findMazeElementPositions" />
       </list>
     </recent_temporary>
   </component>
@@ -169,13 +165,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00006" summary="calculate Permutations">
-      <created>1575702679571</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1575702679571</updated>
     </task>
     <task id="LOCAL-00007" summary="complete first challenge day 7">
       <created>1575704398335</created>
@@ -513,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576695475283</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="first attempt">
+      <created>1576696281969</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1576696281969</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -532,7 +528,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="implement first part of the robot" />
     <MESSAGE value="introduce Directions" />
     <MESSAGE value="resolve first puzzle" />
     <MESSAGE value="solve second puzzle challenge" />
@@ -557,7 +552,8 @@
     <MESSAGE value="second puzzle day 17" />
     <MESSAGE value="build a Maze" />
     <MESSAGE value="first implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="first implementation" />
+    <MESSAGE value="first attempt" />
+    <option name="LAST_COMMIT_MESSAGE" value="first attempt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
