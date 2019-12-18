@@ -8,8 +8,12 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultUndirectedGraph;
 import org.jooq.lambda.tuple.Tuple2;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static com.google.common.collect.Sets.difference;
@@ -91,6 +95,7 @@ class ManyWorldsInterpretationTest {
     }
 
     @Test
+    @Disabled
     void calculateStepsLargerExampleNumberTwo() {
         String input =
                 "#################\n" +
@@ -117,6 +122,14 @@ class ManyWorldsInterpretationTest {
                         "########################";
 
         assertThat(calculateSteps(input)).isEqualTo(81);
+    }
+
+    @Test
+    @Disabled
+    void firstPuzzle() throws IOException {
+        String input = Files.readString(Paths.get("./input_day18"));
+
+        assertThat(calculateSteps(input)).isEqualTo(4520);
     }
 
     private int calculateSteps(String input) {
