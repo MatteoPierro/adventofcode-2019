@@ -1,14 +1,22 @@
 package it.matteopierro;
 
+import com.google.common.collect.Sets;
+import org.jgrapht.Graph;
+import org.jgrapht.alg.connectivity.ConnectivityInspector;
+import org.jgrapht.alg.interfaces.ShortestPathAlgorithm;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultUndirectedGraph;
 import org.jooq.lambda.tuple.Tuple2;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Stream;
 
+import static com.google.common.collect.Sets.difference;
 import static java.util.Collections.singleton;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jooq.lambda.tuple.Tuple.tuple;
 
@@ -18,17 +26,17 @@ class ManyWorldsInterpretationTest {
     void findMazeElementPositions() {
         String input =
                 "#########\n" +
-                "#b.A.@.a#\n" +
-                "#########";
+                        "#b.A.@.a#\n" +
+                        "#########";
 
         Maze maze = new Maze(input);
 
-        assertThat(maze.keys().keySet()).containsExactlyInAnyOrder('b', 'a');
-        assertThat(singleton(maze.keys().get('a'))).containsExactly(tuple(7, 1));
-        assertThat(singleton(maze.keys().get('b'))).containsExactly(tuple(1, 1));
-        assertThat(maze.doors().keySet()).containsExactlyInAnyOrder('A');
-        assertThat(singleton(maze.doors().get('A'))).containsExactly(tuple(3, 1));
-        assertThat(singleton(maze.keys().get('a'))).containsExactly(tuple(7, 1));
+        assertThat(maze.keys().keySet()).containsExactlyInAnyOrder("b", "a");
+        assertThat(singleton(maze.keys().get("a"))).containsExactly(tuple(7, 1));
+        assertThat(singleton(maze.keys().get("b"))).containsExactly(tuple(1, 1));
+        assertThat(maze.doors().keySet()).containsExactlyInAnyOrder("A");
+        assertThat(singleton(maze.doors().get("A"))).containsExactly(tuple(3, 1));
+        assertThat(singleton(maze.keys().get("a"))).containsExactly(tuple(7, 1));
         assertThat(singleton(maze.entrance())).containsExactly(tuple(5, 1));
         assertThat(maze.tiles()).containsExactlyInAnyOrder(
                 tuple(1, 1),
@@ -40,9 +48,21 @@ class ManyWorldsInterpretationTest {
                 tuple(7, 1));
     }
 
+    @Test
+    void catchAllKeysShortExample() {
+        String input =
+                "#########\n" +
+                        "#b.A.@.a#\n" +
+                        "#########";
+
+        Maze maze = new Maze(input);
+
+        assertThat(maze.stepsToCatchKeys()).isEqualTo(8);
+    }
+
     private class Maze {
-        private Map<Character, Tuple2<Integer, Integer>> keys = new HashMap<>();
-        private Map<Character, Tuple2<Integer, Integer>> doors = new HashMap<>();
+        private Map<String, Tuple2<Integer, Integer>> keys = new HashMap<>();
+        private Map<String, Tuple2<Integer, Integer>> doors = new HashMap<>();
         private Set<Tuple2<Integer, Integer>> tiles = new HashSet<>();
         private Tuple2<Integer, Integer> entrance;
 
@@ -52,13 +72,13 @@ class ManyWorldsInterpretationTest {
                 char[] line = lines[y].toCharArray();
                 for (int x = 0; x < line.length; x++) {
                     if (line[x] >= 'a' && line[x] <= 'z') {
-                        keys.put(line[x], tuple(x, y));
+                        keys.put(String.valueOf(line[x]), tuple(x, y));
                     }
                     if (line[x] == '@') {
                         entrance = tuple(x, y);
                     }
                     if (line[x] >= 'A' && line[x] <= 'Z') {
-                        doors.put(line[x], tuple(x, y));
+                        doors.put(String.valueOf(line[x]), tuple(x, y));
                     }
                     if (line[x] != '#') {
                         tiles.add(tuple(x, y));
@@ -67,7 +87,7 @@ class ManyWorldsInterpretationTest {
             }
         }
 
-        public Map<Character, Tuple2<Integer, Integer>> keys() {
+        public Map<String, Tuple2<Integer, Integer>> keys() {
             return keys;
         }
 
@@ -75,12 +95,90 @@ class ManyWorldsInterpretationTest {
             return entrance;
         }
 
-        public Map<Character, Tuple2<Integer, Integer>> doors() {
+        public Map<String, Tuple2<Integer, Integer>> doors() {
             return doors;
         }
 
         public Set<Tuple2<Integer, Integer>> tiles() {
             return tiles;
+        }
+
+        public int stepsToCatchKeys() {
+            return stepsToCatchKeys(entrance, keys.keySet());
+        }
+
+        public int stepsToCatchKeys(Tuple2<Integer, Integer> location, Set<String> remainingKeys) {
+            if (remainingKeys.isEmpty()) {
+                return 0;
+            }
+            var graph = graph(difference(keys.keySet(), remainingKeys));
+
+            var reachableKeys = reachableKeys(remainingKeys);
+            var dijkstra = new DijkstraShortestPath<>(graph).getPaths(location);
+            return reachableKeys.stream()
+                    .mapToInt(key -> distanceToKey(dijkstra, key)
+                            + stepsToCatchKeys(keys.get(key), Sets.difference(remainingKeys, Set.of(key))))
+                    .min()
+                    .orElse(0);
+        }
+
+        public int distanceToKey(ShortestPathAlgorithm.SingleSourcePaths<Tuple2<Integer, Integer>, DefaultEdge> dijkstra, String key) {
+            return dijkstra.getPath(keys.get(key)).getLength();
+        }
+
+        private Set<String> reachableKeys(Set<String> remainingKeys) {
+            var graph = graph(difference(keys.keySet(), remainingKeys));
+            var connectivity = new ConnectivityInspector<>(graph);
+            var reachable = remainingKeys.stream()
+                    .filter(key -> connectivity.pathExists(entrance, keys.get(key)))
+                    .collect(toSet());
+
+            var dijkstra = new DijkstraShortestPath<>(graph).getPaths(entrance);
+            var it1 = reachable.iterator();
+            while (it1.hasNext()) {
+                var key1 = it1.next();
+                for (String key2 : reachable) {
+                    if (key1.equals(key2)) {
+                        continue;
+                    }
+                    if (dijkstra.getPath(keys.get(key1)).getVertexList().contains(keys.get(key2))) {
+                        it1.remove(); // Key 1 is reachable only through Key 2
+                        break;
+                    }
+                }
+            }
+
+            return reachable;
+        }
+
+        private Graph<Tuple2<Integer, Integer>, DefaultEdge> graph(Set<String> gotKeys) {
+            Set<Tuple2<Integer, Integer>> closedPositions = closedPosition(gotKeys);
+            Graph<Tuple2<Integer, Integer>, DefaultEdge> graph = new DefaultUndirectedGraph<>(DefaultEdge.class);
+            tiles.forEach(graph::addVertex);
+            tiles.stream()
+                    .filter(tile -> !closedPositions.contains(tile))
+                    .forEach(tile ->
+                            adjacentPositions(tile).forEach(adjacent -> graph.addEdge(tile, adjacent))
+                    );
+            return graph;
+        }
+
+        private Set<Tuple2<Integer, Integer>> closedPosition(Set<String> gotKeys) {
+            Set<Tuple2<Integer, Integer>> closedPositions = new HashSet<>();
+            for (String door : doors.keySet()) {
+                if (gotKeys.contains(door.toLowerCase())) continue;
+
+                closedPositions.add(doors.get(door));
+            }
+
+            return closedPositions;
+        }
+
+        private List<Tuple2<Integer, Integer>> adjacentPositions(Tuple2<Integer, Integer> doorPosition) {
+            return Stream.of(tuple(1, 0), tuple(0, 1), tuple(-1, 0), tuple(0, -1))
+                    .map(t -> tuple(doorPosition.v1 + t.v1, doorPosition.v2 + t.v2))
+                    .filter(tiles::contains)
+                    .collect(toList());
         }
     }
 }
