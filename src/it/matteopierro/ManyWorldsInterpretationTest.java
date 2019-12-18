@@ -2,6 +2,7 @@ package it.matteopierro;
 
 import it.matteopierro.robot.Direction;
 import org.jgrapht.Graph;
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.interfaces.ShortestPathAlgorithm;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 import static com.google.common.collect.Sets.difference;
 import static java.util.Collections.singleton;
@@ -132,16 +135,29 @@ class ManyWorldsInterpretationTest {
         assertThat(calculateSteps(input)).isEqualTo(4520);
     }
 
+    @Test
+    @Disabled
+    void secondPuzzle() throws IOException {
+        String input = Files.readString(Paths.get("./input_day18"));
+
+        assertThat(calculateStepsComplex(input)).isEqualTo(1540);
+    }
+
     private int calculateSteps(String input) {
         Vault vault = new Vault(input);
         return vault.stepsToCatchKeys();
     }
 
+    private int calculateStepsComplex(String input) {
+        Vault vault = new ComplexVault(input);
+        return vault.stepsToCatchKeys();
+    }
+
     private class Vault {
-        private final Map<String, Tuple2<Integer, Integer>> keys = new HashMap<>();
+        protected final Map<String, Tuple2<Integer, Integer>> keys = new HashMap<>();
         private final Map<String, Tuple2<Integer, Integer>> doors = new HashMap<>();
-        private final Set<Tuple2<Integer, Integer>> tiles = new HashSet<>();
-        private Tuple2<Integer, Integer> entrance;
+        protected final Set<Tuple2<Integer, Integer>> tiles = new HashSet<>();
+        protected Tuple2<Integer, Integer> entrance;
 
         private final Map<Problem, Integer> solvedProblems = new HashMap<>();
 
@@ -197,7 +213,7 @@ class ManyWorldsInterpretationTest {
             }
 
             Graph<Tuple2<Integer, Integer>, DefaultEdge> graph = graph(remainingKeys);
-            var reachableKeys = reachableKeys(remainingKeys, graph);
+            var reachableKeys = reachableKeys(location, remainingKeys, graph);
             var dijkstra = new DijkstraShortestPath<>(graph).getPaths(location);
             var result = reachableKeys.stream()
                     .mapToInt(key -> pathLength(dijkstra, key)
@@ -212,13 +228,13 @@ class ManyWorldsInterpretationTest {
             return dijkstra.getPath(keys.get(key)).getLength();
         }
 
-        private Set<String> reachableKeys(Set<String> remainingKeys, Graph<Tuple2<Integer, Integer>, DefaultEdge> graph) {
+        protected Set<String> reachableKeys(Tuple2<Integer, Integer> location, Set<String> remainingKeys, Graph<Tuple2<Integer, Integer>, DefaultEdge> graph) {
             var connectivity = new ConnectivityInspector<>(graph);
             var reachable = remainingKeys.stream()
-                    .filter(key -> connectivity.pathExists(entrance, keys.get(key)))
+                    .filter(key -> connectivity.pathExists(location, keys.get(key)))
                     .collect(toSet());
 
-            var dijkstra = new DijkstraShortestPath<>(graph).getPaths(entrance);
+            var dijkstra = new DijkstraShortestPath<>(graph).getPaths(location);
 
             var it1 = reachable.iterator();
             while (it1.hasNext()) {
@@ -238,10 +254,12 @@ class ManyWorldsInterpretationTest {
         }
 
         private boolean isContainedInThePath(ShortestPathAlgorithm.SingleSourcePaths<Tuple2<Integer, Integer>, DefaultEdge> dijkstra, String key1, String key2) {
-            return dijkstra.getPath(keys.get(key1)).getVertexList().contains(keys.get(key2));
+            GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = dijkstra.getPath(keys.get(key1));
+            List<Tuple2<Integer, Integer>> vertexList = path.getVertexList();
+            return vertexList.contains(keys.get(key2));
         }
 
-        private Graph<Tuple2<Integer, Integer>, DefaultEdge> graph(Set<String> remainingKeys) {
+        protected Graph<Tuple2<Integer, Integer>, DefaultEdge> graph(Set<String> remainingKeys) {
             Graph<Tuple2<Integer, Integer>, DefaultEdge> graph = new DefaultUndirectedGraph<>(DefaultEdge.class);
             tiles.forEach(graph::addVertex);
             tiles.forEach(point ->
@@ -288,6 +306,124 @@ class ManyWorldsInterpretationTest {
         @Override
         public int hashCode() {
             return Objects.hash(point, remainingKeys);
+        }
+    }
+
+    public class ComplexVault extends Vault {
+
+        private final Tuple2<Integer, Integer> entrance1;
+        private final Tuple2<Integer, Integer> entrance2;
+        private final Tuple2<Integer, Integer> entrance3;
+        private final Tuple2<Integer, Integer> entrance4;
+
+        private ComplexVault(String input) {
+            super(input);
+            tiles.remove(Direction.NORTH.move(entrance));
+            tiles.remove(Direction.SOUTH.move(entrance));
+            tiles.remove(Direction.EAST.move(entrance));
+            tiles.remove(Direction.WEST.move(entrance));
+            tiles.remove(entrance);
+            entrance1 = tuple(entrance.v1 - 1, entrance.v2 - 1);
+            entrance2 = tuple(entrance.v1 - 1, entrance.v2 + 1);
+            entrance3 = tuple(entrance.v1 + 1, entrance.v2 - 1);
+            entrance4 = tuple(entrance.v1 + 1, entrance.v2 + 1);
+        }
+
+        private final Map<ComplexProblem, Long> resolvedProblems = new ConcurrentHashMap<>();
+
+        @Override
+        public int stepsToCatchKeys() {
+            ComplexProblem problem = new ComplexProblem(entrance1, entrance2,
+                    entrance3, entrance4, keys.keySet());
+            return (int) stepsToCatchKeys(problem);
+        }
+
+        private long stepsToCatchKeys(ComplexProblem problem) {
+            if (problem.remainingKeys.isEmpty()) {
+                return 0;
+            }
+            if (resolvedProblems.containsKey(problem)) {
+                return resolvedProblems.get(problem);
+            }
+
+            var graph = graph(problem.remainingKeys);
+
+            var reachable1 = reachableKeys(problem.robot1, problem.remainingKeys, graph);
+            var reachable2 = reachableKeys(problem.robot2, problem.remainingKeys, graph);
+            var reachable3 = reachableKeys(problem.robot3, problem.remainingKeys, graph);
+            var reachable4 = reachableKeys(problem.robot4, problem.remainingKeys, graph);
+
+            var dijkstra1 = new DijkstraShortestPath<>(graph).getPaths(problem.robot1);
+            var dijkstra2 = new DijkstraShortestPath<>(graph).getPaths(problem.robot2);
+            var dijkstra3 = new DijkstraShortestPath<>(graph).getPaths(problem.robot3);
+            var dijkstra4 = new DijkstraShortestPath<>(graph).getPaths(problem.robot4);
+
+            Function<String, ComplexProblem> input1 = key ->
+                    new ComplexProblem(keys.get(key), problem.robot2, problem.robot3, problem.robot4, difference(problem.remainingKeys, Set.of(key)));
+            Function<String, ComplexProblem> input2 = key ->
+                    new ComplexProblem(problem.robot1, keys.get(key), problem.robot3, problem.robot4, difference(problem.remainingKeys, Set.of(key)));
+            Function<String, ComplexProblem> input3 = key ->
+                    new ComplexProblem(problem.robot1, problem.robot2, keys.get(key), problem.robot4, difference(problem.remainingKeys, Set.of(key)));
+            Function<String, ComplexProblem> input4 = key ->
+                    new ComplexProblem(problem.robot1, problem.robot2, problem.robot3, keys.get(key), difference(problem.remainingKeys, Set.of(key)));
+
+            var result1 = reachable1.stream()
+                    .mapToLong(key -> dijkstra1.getPath(keys.get(key)).getLength() + stepsToCatchKeys(input1.apply(key)))
+                    .min()
+                    .orElse(Integer.MAX_VALUE);
+            var result2 = reachable2.stream()
+                    .mapToLong(key -> dijkstra2.getPath(keys.get(key)).getLength() + stepsToCatchKeys(input2.apply(key)))
+                    .min()
+                    .orElse(Integer.MAX_VALUE);
+            var result3 = reachable3.stream()
+                    .mapToLong(key -> dijkstra3.getPath(keys.get(key)).getLength() + stepsToCatchKeys(input3.apply(key)))
+                    .min()
+                    .orElse(Integer.MAX_VALUE);
+            var result4 = reachable4.stream()
+                    .mapToLong(key -> dijkstra4.getPath(keys.get(key)).getLength() + stepsToCatchKeys(input4.apply(key)))
+                    .min()
+                    .orElse(Integer.MAX_VALUE);
+
+            var result = Math.min(Math.min(Math.min(result1, result2), result3), result4);
+            resolvedProblems.put(problem, result);
+            return result;
+        }
+
+        private class ComplexProblem {
+            private final Tuple2<Integer, Integer> robot1;
+            private final Tuple2<Integer, Integer> robot2;
+            private final Tuple2<Integer, Integer> robot3;
+            private final Tuple2<Integer, Integer> robot4;
+            private final Set<String> remainingKeys;
+
+            public ComplexProblem(Tuple2<Integer, Integer> robot1,
+                                  Tuple2<Integer, Integer> robot2,
+                                  Tuple2<Integer, Integer> robot3,
+                                  Tuple2<Integer, Integer> robot4,
+                                  Set<String> remainingKeys) {
+                this.robot1 = robot1;
+                this.robot2 = robot2;
+                this.robot3 = robot3;
+                this.robot4 = robot4;
+                this.remainingKeys = remainingKeys;
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                ComplexProblem that = (ComplexProblem) o;
+                return Objects.equals(robot1, that.robot1) &&
+                        Objects.equals(robot2, that.robot2) &&
+                        Objects.equals(robot3, that.robot3) &&
+                        Objects.equals(robot4, that.robot4) &&
+                        Objects.equals(remainingKeys, that.remainingKeys);
+            }
+
+            @Override
+            public int hashCode() {
+                return Objects.hash(robot1, robot2, robot3, robot4, remainingKeys);
+            }
         }
     }
 }

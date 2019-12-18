@@ -68,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ManyWorldsInterpretationTest.firstPuzzle">
+  <component name="RunManager" selected="JUnit.ManyWorldsInterpretationTest.secondPuzzle">
     <configuration name="ManyWorldsInterpretationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -80,22 +80,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ManyWorldsInterpretationTest.calculateStepsLargerExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
-      <option name="METHOD_NAME" value="calculateStepsLargerExample" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,13 +132,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ManyWorldsInterpretationTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ManyWorldsInterpretationTest.secondPuzzle" />
+        <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberTwo" />
         <item itemvalue="JUnit.ManyWorldsInterpretationTest.firstPuzzle" />
         <item itemvalue="JUnit.ManyWorldsInterpretationTest" />
-        <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberTwo" />
         <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberThree" />
-        <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExample" />
       </list>
     </recent_temporary>
   </component>
