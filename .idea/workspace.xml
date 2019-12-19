@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/it/matteopierro/TractorBeamTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/TractorBeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/TractorBeamTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,39 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TractorBeamTest.firstPuzzle">
-    <configuration name="ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberTwo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
-      <option name="METHOD_NAME" value="calculateStepsLargerExampleNumberTwo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ManyWorldsInterpretationTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.ManyWorldsInterpretationTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TractorBeamTest.name">
     <configuration name="TractorBeamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -132,6 +100,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TractorBeamTest.findFirstPointWith100" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
+      <option name="METHOD_NAME" value="findFirstPointWith100" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TractorBeamTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -148,13 +132,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TractorBeamTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
+      <option name="METHOD_NAME" value="name" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TractorBeamTest.printBeam" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
+      <option name="METHOD_NAME" value="printBeam" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TractorBeamTest.firstPuzzle" />
+        <item itemvalue="JUnit.TractorBeamTest.name" />
+        <item itemvalue="JUnit.TractorBeamTest.findFirstPointWith100" />
         <item itemvalue="JUnit.TractorBeamTest" />
-        <item itemvalue="JUnit.TractorBeamTest.combination" />
-        <item itemvalue="JUnit.ManyWorldsInterpretationTest.secondPuzzle" />
-        <item itemvalue="JUnit.ManyWorldsInterpretationTest.calculateStepsLargerExampleNumberTwo" />
+        <item itemvalue="JUnit.TractorBeamTest.printBeam" />
+        <item itemvalue="JUnit.TractorBeamTest.firstPuzzle" />
       </list>
     </recent_temporary>
   </component>
@@ -168,13 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00007" summary="complete first challenge day 7">
-      <created>1575704398335</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1575704398335</updated>
     </task>
     <task id="LOCAL-00008" summary="use listener to pass inputs between amplifiers">
       <created>1575747425387</created>
@@ -512,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576696281969</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="solve first puzzle day19">
+      <created>1576749802212</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1576749802212</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,7 +547,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="introduce Directions" />
     <MESSAGE value="resolve first puzzle" />
     <MESSAGE value="solve second puzzle challenge" />
     <MESSAGE value="calculate Gravity position" />
@@ -556,7 +571,8 @@
     <MESSAGE value="build a Maze" />
     <MESSAGE value="first implementation" />
     <MESSAGE value="first attempt" />
-    <option name="LAST_COMMIT_MESSAGE" value="first attempt" />
+    <MESSAGE value="solve first puzzle day19" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve first puzzle day19" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -570,16 +586,6 @@
           <url>file://$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java</url>
           <line>68</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/TractorBeamTest.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/TractorBeamTest.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
