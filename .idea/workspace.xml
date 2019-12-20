@@ -68,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DonutMazeTest">
+  <component name="RunManager" selected="JUnit.DonutMazeTest.firstPuzzle">
     <configuration name="DonutMazeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -166,10 +166,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DonutMazeTest" />
         <item itemvalue="JUnit.DonutMazeTest.firstPuzzle" />
         <item itemvalue="JUnit.DonutMazeTest.secondExample" />
         <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
+        <item itemvalue="JUnit.DonutMazeTest" />
         <item itemvalue="JUnit.TractorBeamTest.name" />
       </list>
     </recent_temporary>
@@ -184,20 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00011" summary="solve second challenge day7">
-      <created>1575748609859</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1575748609859</updated>
-    </task>
-    <task id="LOCAL-00012" summary="solve first challenge day8">
-      <created>1575789222967</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1575789222967</updated>
     </task>
     <task id="LOCAL-00013" summary="implement decode image">
       <created>1575805365687</created>
@@ -528,7 +514,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576833380256</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="resolve second example">
+      <created>1576833571757</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1576833571757</updated>
+    </task>
+    <task id="LOCAL-00061" summary="solve first puzzle">
+      <created>1576833661579</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1576833661579</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -547,8 +547,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="refactor position for gravity" />
-    <MESSAGE value="calculate position based on gravity for each moon" />
     <MESSAGE value="introduce Moon" />
     <MESSAGE value="calculate velocity" />
     <MESSAGE value="solve second challenge day 12" />
@@ -572,7 +570,9 @@
     <MESSAGE value="solve attempt second puzzle day19" />
     <MESSAGE value="find tiles" />
     <MESSAGE value="solve first example" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve first example" />
+    <MESSAGE value="resolve second example" />
+    <MESSAGE value="solve first puzzle" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve first puzzle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

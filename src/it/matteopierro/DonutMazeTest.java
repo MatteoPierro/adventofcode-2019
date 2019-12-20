@@ -1,5 +1,6 @@
 package it.matteopierro;
 
+import com.google.common.collect.Sets;
 import it.matteopierro.robot.Direction;
 import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,6 +64,9 @@ class DonutMazeTest {
         assertThat(maze.adjacentPoints(tuple(2, 8))).containsExactlyInAnyOrder(tuple(3, 8), tuple(9, 6));
         var shortestPath = maze.shortestPath();
         assertThat(shortestPath.getLength()).isEqualTo(23);
+        assertThat(maze.outerPortalsPositions).containsExactlyInAnyOrder(tuple(2,15), tuple(2, 13), tuple(2, 8));
+        assertThat(maze.innerPortalsPositions).contains(tuple(9, 6));
+        assertThat(maze.innerPortalsPositions).hasSize(3);
 //        assertThat(shortestPath.getEdgeList()).containsExactly();
     }
 
@@ -109,6 +114,8 @@ class DonutMazeTest {
         var maze = new Maze(input);
 
         assertThat(maze.shortestPath().getLength()).isEqualTo(58);
+        assertThat(maze.outerPortalsPositions.size()).isEqualTo(10);
+        assertThat(maze.outerPortals()).containsExactlyInAnyOrder("DI", "JO", "YN", "BU", "JP", "CP", "VT", "AS", "LF", "QG");
     }
 
     @Test
@@ -118,6 +125,8 @@ class DonutMazeTest {
         var maze = new Maze(input);
 
         assertThat(maze.shortestPath().getLength()).isEqualTo(422);
+        assertThat(maze.outerPortalsPositions.size()).isEqualTo(27);
+        assertThat(maze.innerPortalsPositions.size()).isEqualTo(27);
     }
 
     private class Maze {
@@ -126,9 +135,15 @@ class DonutMazeTest {
         public final Set<Tuple2<Integer, Integer>> tiles = new HashSet<>();
         public final Map<String, List<Tuple2<Integer, Integer>>> portals = new HashMap<>();
         public final Map<Tuple2<Integer, Integer>, String> reversePortals = new HashMap<>();
+        private final int maxX;
+        private final int maxY;
+        private final Set<Tuple2<Integer, Integer>> outerPortalsPositions;
+        private final Set<Tuple2<Integer, Integer>> innerPortalsPositions;
 
         public Maze(String input) {
             String[] lines = input.split("\n");
+            maxY = lines.length - 3;
+            maxX = lines[0].length() - 3;
             for (int y = 0; y < lines.length; y++) {
                 char[] line = lines[y].toCharArray();
                 for (int x = 0; x < line.length; x++) {
@@ -162,6 +177,10 @@ class DonutMazeTest {
                     }
                 }
             }
+            outerPortalsPositions = outerPortalPositions();
+            innerPortalsPositions = new HashSet<>(Sets.difference(reversePortals.keySet(), outerPortalsPositions));
+            outerPortalsPositions.remove(portals.get("AA").get(0));
+            outerPortalsPositions.remove(portals.get("ZZ").get(0));
         }
 
         public void addPortal(String mark, Tuple2<Integer, Integer> position) {
@@ -209,8 +228,39 @@ class DonutMazeTest {
         }
 
         public GraphPath<Tuple2<Integer, Integer>, DefaultEdge> shortestPath() {
-            Graph<Tuple2<Integer, Integer>, DefaultEdge> graph = graph();
-            return new DijkstraShortestPath<>(graph).getPath(startingPoint(), endPoint());
+            return shortestPath(startingPoint(), endPoint());
         }
+
+        public GraphPath<Tuple2<Integer, Integer>, DefaultEdge> shortestPath(Tuple2<Integer, Integer> source, Tuple2<Integer, Integer> destination) {
+            Graph<Tuple2<Integer, Integer>, DefaultEdge> graph = graph();
+            return new DijkstraShortestPath<>(graph).getPath(source, destination);
+        }
+
+        private Set<Tuple2<Integer, Integer>> outerPortalPositions() {
+            var result = new HashSet<Tuple2<Integer, Integer>>();
+
+            for (Tuple2<Integer, Integer> portal : reversePortals.keySet()) {
+                if (portal.v1 == 2) {
+                    result.add(portal);
+                }
+                if (portal.v1 == maxX) {
+                    result.add(portal);
+                }
+                if (portal.v2 == 2) {
+                    result.add(portal);
+                }
+                if (portal.v2 == maxY) {
+                    result.add(portal);
+                }
+            }
+
+            return result;
+        }
+
+        private List<String> outerPortals() {
+            return outerPortalsPositions.stream().map(reversePortals::get).collect(Collectors.toList());
+        }
+
+
     }
 }
