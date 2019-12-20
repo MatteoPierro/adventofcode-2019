@@ -167,9 +167,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TractorBeamTest.name" />
+        <item itemvalue="JUnit.TractorBeamTest.printBeam" />
         <item itemvalue="JUnit.TractorBeamTest.findFirstPointWith100" />
         <item itemvalue="JUnit.TractorBeamTest" />
-        <item itemvalue="JUnit.TractorBeamTest.printBeam" />
         <item itemvalue="JUnit.TractorBeamTest.firstPuzzle" />
       </list>
     </recent_temporary>
@@ -184,13 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00008" summary="use listener to pass inputs between amplifiers">
-      <created>1575747425387</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1575747425387</updated>
     </task>
     <task id="LOCAL-00009" summary="move to multithread implementation">
       <created>1575747825651</created>
@@ -528,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576749802212</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="solve attempt second puzzle day19">
+      <created>1576754782516</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1576754782516</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -547,7 +547,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="resolve first puzzle" />
     <MESSAGE value="solve second puzzle challenge" />
     <MESSAGE value="calculate Gravity position" />
     <MESSAGE value="refactor position for gravity" />
@@ -572,7 +571,8 @@
     <MESSAGE value="first implementation" />
     <MESSAGE value="first attempt" />
     <MESSAGE value="solve first puzzle day19" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve first puzzle day19" />
+    <MESSAGE value="solve attempt second puzzle day19" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve attempt second puzzle day19" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

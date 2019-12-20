@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jooq.lambda.tuple.Tuple.tuple;
@@ -44,11 +43,9 @@ class TractorBeamTest {
     }
 
     @Test
-    void printBeam() throws IOException {
-        Computer computer = new Computer();
-        String program = Files.readString(Paths.get("./input_day19"));
-        for (int y = 0; y < 50; y++) {
-            printline(computer, program, y, 50);
+    void printBeam() {
+        for (int y = 900; y <= 1047; y++) {
+            println(y, 1000);
             System.out.println();
         }
     }
@@ -61,7 +58,7 @@ class TractorBeamTest {
     }
 
     @Test
-    void name() {
+    void secondPuzzle() {
         Tuple2<Integer, Integer> firstPointWith100 = tuple(353, 597);
         String result = execute(firstPointWith100.v1, firstPointWith100.v2 + 99);
         assertThat(result).isEqualTo("0");
@@ -75,9 +72,10 @@ class TractorBeamTest {
         Tuple2<Integer, Integer> leftDown = findLeftDown(startingPosition);
         assertThat(leftDown.v1).isEqualTo(619);
         assertThat(leftDown.v2).isEqualTo(1047);
-        assertThat(execute(leftDown.v1, leftDown.v2 - 99)).isEqualTo("1");
+        assertThat(execute(leftDown.v1, leftDown.v2 - 99)).isEqualTo("1");//number to compute
         assertThat(execute(leftDown.v1 + 99, leftDown.v2)).isEqualTo("1");
         assertThat(execute(leftDown.v1 + 99, leftDown.v2 - 99)).isEqualTo("1");
+        assertThat(leftDown.v1 * 10000L + (leftDown.v2 - 99)).isEqualTo(6190948L);
     }
 
     private Tuple2<Integer, Integer> findLeftDown(Tuple2<Integer, Integer> startingPoint) {
@@ -95,7 +93,7 @@ class TractorBeamTest {
     }
 
     private Tuple2<Integer, Integer> firstLineWith100() {
-        int y = 597;
+        int y = 3;
         while (true) {
             int x = firstBeam(y);
             String result = execute(x + 99, y);
@@ -127,31 +125,28 @@ class TractorBeamTest {
         }
     }
 
-    private void printline(Computer computer, String program, int y, int maxX) {
+    private void print(String result) {
+        if (result.equals("1")) {
+            System.out.print("#");
+        }
+        if (result.equals("0")) {
+            System.out.print(".");
+        }
+    }
+
+    private void println(int y, int maxX) {
         for (int x = 0; x < maxX; x++) {
             List<String> results = computer.execute(program, String.valueOf(x), String.valueOf(y));
             String result = results.get(results.size() - 1);
-            if (result.equals("1")) {
-                System.out.print("#");
-            }
-            if (result.equals("0")) {
-                System.out.print(".");
-            }
+            print(result);
         }
     }
 
     @Test
-    void combination() {
+    void combinations() {
         List<Tuple2<Integer, Integer>> points = points();
 
         assertThat(points).hasSize(2500);
-    }
-
-    List<String> inputs() {
-        return points()
-                .stream()
-                .flatMap(t -> Seq.of(String.valueOf(t.v1), String.valueOf(t.v2)))
-                .collect(Collectors.toList());
     }
 
     private List<Tuple2<Integer, Integer>> points() {
