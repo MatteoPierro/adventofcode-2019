@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -168,20 +167,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00015" summary="implement long numbers">
-      <created>1575891322057</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1575891322057</updated>
-    </task>
-    <task id="LOCAL-00016" summary="introduce adjust relative base instruction">
-      <created>1575909476905</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1575909476905</updated>
     </task>
     <task id="LOCAL-00017" summary="extract Memory class">
       <created>1575910441584</created>
@@ -512,7 +497,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576860178015</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="second attempt to resolve part 2">
+      <created>1576878248190</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1576878248190</updated>
+    </task>
+    <task id="LOCAL-00065" summary="third attempt to resolve part 2">
+      <created>1576879179791</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1576879179791</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,8 +530,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="solve second challenge day 12" />
-    <MESSAGE value="solve first challenge day 12" />
     <MESSAGE value="calculate ore" />
     <MESSAGE value="solve first puzzle day 14" />
     <MESSAGE value="first rotation" />
@@ -556,7 +553,9 @@
     <MESSAGE value="solve first puzzle" />
     <MESSAGE value="calculate inner and outer portals" />
     <MESSAGE value="first attempt to resolve part 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="first attempt to resolve part 2" />
+    <MESSAGE value="second attempt to resolve part 2" />
+    <MESSAGE value="third attempt to resolve part 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="third attempt to resolve part 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -578,18 +577,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
-          <line>321</line>
+          <line>320</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
-          <line>346</line>
+          <line>344</line>
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
-          <line>325</line>
-          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

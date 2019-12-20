@@ -8,6 +8,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultUndirectedGraph;
 import org.jooq.lambda.tuple.Tuple2;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -130,7 +131,6 @@ class DonutMazeTest {
         assertThat(maze.shortestPath().getLength()).isEqualTo(422);
         assertThat(maze.outerPortalsPositions.size()).isEqualTo(27);
         assertThat(maze.innerPortalsPositions.size()).isEqualTo(27);
-        assertThat(new InceptionMaze(input).shortestPathLength()).isEqualTo(MAX_VALUE);
     }
 
     private class Maze {
@@ -272,6 +272,8 @@ class DonutMazeTest {
 
     private class InceptionMaze extends Maze{
         private int level;
+        private boolean removeOuter = false;
+        private boolean removeInner = false;
 
         public InceptionMaze(String input) {
             super(input);
@@ -280,7 +282,7 @@ class DonutMazeTest {
 
         public int shortestPathLength() {
             List<Problem> problems = new ArrayList<>();
-            problems.add(new Problem(0, startingPoint(), new ArrayList<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+            problems.add(new Problem(0, startingPoint(), new ArrayList<>(), new HashSet<>()));
 
             while (!problems.isEmpty()) {
                 var problem = problems.get(0);
@@ -288,8 +290,6 @@ class DonutMazeTest {
                 level = problem.level;
                 var currentPosition = problem.currentPosition;
                 var currentPath = problem.path;
-                var inDoors = problem.inDoors;
-                var outDoors = problem.outDoors;
                 if (level == 0) {
                     var path = shortestPath(currentPosition, endPoint());
                     if (path != null) {
@@ -298,8 +298,9 @@ class DonutMazeTest {
                 }
                 Set<Tuple2<Integer, Integer>> currentUsed = problem.usedPositions;
                 for (Tuple2<Integer, Integer> position : innerPortalsPositions) {
-                    if (inDoors.contains(reversePortals.get(position))) continue; //don't reuse ports
                     if (currentPosition.equals(position)) continue;
+                    if (reversePortals.get(currentPosition).equals(reversePortals.get(position))) continue;
+                    removeOuter = true;
                     GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
                     if (path == null) continue;
 //                    if (isLoop(currentUsed, path, currentPosition)) continue;
@@ -317,14 +318,13 @@ class DonutMazeTest {
                     var symbol = reversePortals.get(position);
                     List<Tuple2<Integer, Integer>> portal = portals.get(symbol);
                     var newPosition = portal.get(0).equals(position) ? portal.get(1) : portal.get(0);
-                    HashSet<String> newInDoors = new HashSet<>(inDoors);
-                    newInDoors.add(symbol);
-                    problems.add(new Problem(level + 1, newPosition, newPath, newUsedPositions, newInDoors, outDoors));
+                    problems.add(new Problem(level + 1, newPosition, newPath, newUsedPositions));
                 }
-
+                removeOuter = false;
                 for (Tuple2<Integer, Integer> position : outerPortalsPositions) {
                     if (currentPosition.equals(position)) continue;
                     if (reversePortals.get(currentPosition).equals(reversePortals.get(position))) continue;
+                    removeInner = true;
                     GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
                     if (path == null) continue;
 //                    if (isLoop(currentUsed, path, currentPosition)) continue;
@@ -342,10 +342,9 @@ class DonutMazeTest {
                     var symbol = reversePortals.get(position);
                     List<Tuple2<Integer, Integer>> portal = portals.get(symbol);
                     var newPosition = portal.get(0).equals(position) ? portal.get(1) : portal.get(0);
-                    HashSet<String> newOutDoors = new HashSet<>(outDoors);
-                    newOutDoors.add(symbol);
-                    problems.add(new Problem(level - 1, newPosition, newPath, newUsedPositions, inDoors, newOutDoors));
+                    problems.add(new Problem(level - 1, newPosition, newPath, newUsedPositions));
                 }
+                removeInner = false;
             }
 
             return MAX_VALUE;
@@ -378,6 +377,12 @@ class DonutMazeTest {
                 ts.remove(startingPoint());
                 ts.remove(endPoint());
             }
+            if (removeInner) {
+                ts.removeAll(innerPortalsPositions);
+            }
+            if (removeOuter) {
+                ts.removeAll(outerPortalsPositions);
+            }
             return ts;
         }
 
@@ -387,21 +392,18 @@ class DonutMazeTest {
             private final Tuple2<Integer, Integer> currentPosition;
             private final List<Tuple2<Integer, Integer>> path;
             private final HashSet<Tuple2<Integer, Integer>> usedPositions;
-            private final HashSet<String> inDoors;
-            private final HashSet<String> outDoors;
 
-            public Problem(int level, Tuple2<Integer, Integer> currentPosition, List<Tuple2<Integer, Integer>> path, HashSet<Tuple2<Integer, Integer>> usedPositions, HashSet<String> inDoors, HashSet<String> outDoors) {
+            public Problem(int level, Tuple2<Integer, Integer> currentPosition, List<Tuple2<Integer, Integer>> path, HashSet<Tuple2<Integer, Integer>> usedPositions) {
                 this.level = level;
                 this.currentPosition = currentPosition;
                 this.path = path;
                 this.usedPositions = usedPositions;
-                this.inDoors = inDoors;
-                this.outDoors = outDoors;
             }
         }
     }
 
     @Test
+    @Disabled
     void exampleSecondPart() {
         var input = "             Z L X W       C                 \n" +
                 "             Z P Q B       K                 \n" +
