@@ -9,6 +9,9 @@ import org.jgrapht.graph.DefaultUndirectedGraph;
 import org.jooq.lambda.tuple.Tuple2;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static java.util.stream.Collectors.toSet;
@@ -106,6 +109,15 @@ class DonutMazeTest {
         var maze = new Maze(input);
 
         assertThat(maze.shortestPath().getLength()).isEqualTo(58);
+    }
+
+    @Test
+    void firstPuzzle() throws IOException {
+        String input = Files.readString(Paths.get("./input_day20"));
+
+        var maze = new Maze(input);
+
+        assertThat(maze.shortestPath().getLength()).isEqualTo(422);
     }
 
     private class Maze {
