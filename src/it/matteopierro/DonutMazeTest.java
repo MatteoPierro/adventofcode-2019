@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.lang.Integer.MAX_VALUE;
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jooq.lambda.tuple.Tuple.tuple;
@@ -67,6 +68,7 @@ class DonutMazeTest {
         assertThat(maze.outerPortalsPositions).containsExactlyInAnyOrder(tuple(2,15), tuple(2, 13), tuple(2, 8));
         assertThat(maze.innerPortalsPositions).contains(tuple(9, 6));
         assertThat(maze.innerPortalsPositions).hasSize(3);
+        assertThat(new InceptionMaze(input).shortestPathLength()).isEqualTo(26);
 //        assertThat(shortestPath.getEdgeList()).containsExactly();
     }
 
@@ -116,6 +118,7 @@ class DonutMazeTest {
         assertThat(maze.shortestPath().getLength()).isEqualTo(58);
         assertThat(maze.outerPortalsPositions.size()).isEqualTo(10);
         assertThat(maze.outerPortals()).containsExactlyInAnyOrder("DI", "JO", "YN", "BU", "JP", "CP", "VT", "AS", "LF", "QG");
+        assertThat(new InceptionMaze(input).shortestPathLength()).isEqualTo(MAX_VALUE);
     }
 
     @Test
@@ -135,10 +138,10 @@ class DonutMazeTest {
         public final Set<Tuple2<Integer, Integer>> tiles = new HashSet<>();
         public final Map<String, List<Tuple2<Integer, Integer>>> portals = new HashMap<>();
         public final Map<Tuple2<Integer, Integer>, String> reversePortals = new HashMap<>();
-        private final int maxX;
-        private final int maxY;
-        private final Set<Tuple2<Integer, Integer>> outerPortalsPositions;
-        private final Set<Tuple2<Integer, Integer>> innerPortalsPositions;
+        public final int maxX;
+        public final int maxY;
+        public final Set<Tuple2<Integer, Integer>> outerPortalsPositions;
+        public final Set<Tuple2<Integer, Integer>> innerPortalsPositions;
 
         public Maze(String input) {
             String[] lines = input.split("\n");
@@ -197,10 +200,14 @@ class DonutMazeTest {
         public Graph<Tuple2<Integer, Integer>, DefaultEdge> graph() {
             Graph<Tuple2<Integer, Integer>, DefaultEdge> graph = new DefaultUndirectedGraph<>(DefaultEdge.class);
             tiles.forEach(graph::addVertex);
-            tiles.forEach(tile ->
+            tiles().forEach(tile ->
                     adjacentPoints(tile).forEach(a -> graph.addEdge(tile, a))
             );
             return graph;
+        }
+
+        public Set<Tuple2<Integer, Integer>> tiles() {
+            return tiles;
         }
 
         public Tuple2<Integer, Integer> startingPoint() {
@@ -260,7 +267,44 @@ class DonutMazeTest {
         private List<String> outerPortals() {
             return outerPortalsPositions.stream().map(reversePortals::get).collect(Collectors.toList());
         }
+    }
 
+    private class InceptionMaze extends Maze{
+        private final int level;
 
+        public InceptionMaze(String input) {
+            super(input);
+            this.level = 0;
+        }
+
+        public int shortestPathLength() {
+            return Optional.ofNullable(super.shortestPath())
+                    .map(GraphPath::getLength)
+                    .orElse(MAX_VALUE);
+        }
+
+        @Override
+        public Set<Tuple2<Integer, Integer>> adjacentPoints(Tuple2<Integer, Integer> point) {
+            var points = super.adjacentPoints(point);
+            if (level == 0) {
+                points.removeAll(super.outerPortalsPositions);
+            } else {
+                points.remove(startingPoint());
+                points.remove(endPoint());
+            }
+            return points;
+        }
+
+        @Override
+        public Set<Tuple2<Integer, Integer>> tiles() {
+            HashSet<Tuple2<Integer, Integer>> ts = new HashSet<>(tiles);
+            if (level == 0) {
+                ts.removeAll(super.outerPortalsPositions);
+            } else {
+                ts.remove(startingPoint());
+                ts.remove(endPoint());
+            }
+            return ts;
+        }
     }
 }

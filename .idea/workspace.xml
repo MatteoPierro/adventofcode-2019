@@ -68,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DonutMazeTest.firstPuzzle">
+  <component name="RunManager" selected="JUnit.DonutMazeTest.secondExample">
     <configuration name="DonutMazeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -166,10 +166,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DonutMazeTest.firstPuzzle" />
         <item itemvalue="JUnit.DonutMazeTest.secondExample" />
-        <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
         <item itemvalue="JUnit.DonutMazeTest" />
+        <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
+        <item itemvalue="JUnit.DonutMazeTest.firstPuzzle" />
         <item itemvalue="JUnit.TractorBeamTest.name" />
       </list>
     </recent_temporary>
@@ -184,13 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00013" summary="implement decode image">
-      <created>1575805365687</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1575805365687</updated>
     </task>
     <task id="LOCAL-00014" summary="resolve second puzzle day8">
       <created>1575808777024</created>
@@ -528,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576833661579</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="calculate inner and outer portals">
+      <created>1576854198600</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1576854198601</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -547,7 +547,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="introduce Moon" />
     <MESSAGE value="calculate velocity" />
     <MESSAGE value="solve second challenge day 12" />
     <MESSAGE value="solve first challenge day 12" />
@@ -572,7 +571,8 @@
     <MESSAGE value="solve first example" />
     <MESSAGE value="resolve second example" />
     <MESSAGE value="solve first puzzle" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve first puzzle" />
+    <MESSAGE value="calculate inner and outer portals" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculate inner and outer portals" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
