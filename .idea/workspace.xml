@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="find tiles">
+    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java" afterDir="false" />
     </list>
@@ -68,7 +68,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DonutMazeTest.shouldFindAllTiles">
+  <component name="RunManager" selected="JUnit.DonutMazeTest.secondExample">
+    <configuration name="DonutMazeTest.secondExample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
+      <option name="METHOD_NAME" value="secondExample" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DonutMazeTest.shouldFindAllTiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -81,21 +97,6 @@
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
       <option name="METHOD_NAME" value="shouldFindAllTiles" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TractorBeamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DonutMazeTest.secondExample" />
         <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
         <item itemvalue="JUnit.TractorBeamTest.name" />
         <item itemvalue="JUnit.TractorBeamTest.printBeam" />
         <item itemvalue="JUnit.TractorBeamTest.findFirstPointWith100" />
-        <item itemvalue="JUnit.TractorBeamTest" />
       </list>
     </recent_temporary>
   </component>
@@ -184,13 +185,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00010" summary="find max thruster signal with feedback loop">
-      <created>1575748200129</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1575748200129</updated>
     </task>
     <task id="LOCAL-00011" summary="solve second challenge day7">
       <created>1575748609859</created>
@@ -528,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576824068016</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="solve first example">
+      <created>1576833380256</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1576833380256</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -547,7 +548,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="calculate Gravity position" />
     <MESSAGE value="refactor position for gravity" />
     <MESSAGE value="calculate position based on gravity for each moon" />
     <MESSAGE value="introduce Moon" />
@@ -572,7 +572,8 @@
     <MESSAGE value="solve first puzzle day19" />
     <MESSAGE value="solve attempt second puzzle day19" />
     <MESSAGE value="find tiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="find tiles" />
+    <MESSAGE value="solve first example" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve first example" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
