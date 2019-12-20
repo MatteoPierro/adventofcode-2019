@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/TractorBeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/TractorBeamTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +68,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TractorBeamTest.name">
+  <component name="RunManager" selected="JUnit.DonutMazeTest.shouldFindAllTiles">
+    <configuration name="DonutMazeTest.shouldFindAllTiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
+      <option name="METHOD_NAME" value="shouldFindAllTiles" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TractorBeamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -80,22 +96,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TractorBeamTest.combination" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
-      <option name="METHOD_NAME" value="combination" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
         <item itemvalue="JUnit.TractorBeamTest.name" />
         <item itemvalue="JUnit.TractorBeamTest.printBeam" />
         <item itemvalue="JUnit.TractorBeamTest.findFirstPointWith100" />
         <item itemvalue="JUnit.TractorBeamTest" />
-        <item itemvalue="JUnit.TractorBeamTest.firstPuzzle" />
       </list>
     </recent_temporary>
   </component>
