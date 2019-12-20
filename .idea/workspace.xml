@@ -68,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DonutMazeTest.firstPuzzle">
+  <component name="RunManager" selected="JUnit.DonutMazeTest.exampleSecondPart">
     <configuration name="DonutMazeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -80,6 +80,22 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DonutMazeTest.exampleSecondPart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
+      <option name="METHOD_NAME" value="exampleSecondPart" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,45 +148,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TractorBeamTest.findFirstPointWith100" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
-      <option name="METHOD_NAME" value="findFirstPointWith100" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TractorBeamTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.TractorBeamTest" />
-      <option name="METHOD_NAME" value="name" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DonutMazeTest.exampleSecondPart" />
         <item itemvalue="JUnit.DonutMazeTest.firstPuzzle" />
         <item itemvalue="JUnit.DonutMazeTest.secondExample" />
         <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
         <item itemvalue="JUnit.DonutMazeTest" />
-        <item itemvalue="JUnit.TractorBeamTest.name" />
       </list>
     </recent_temporary>
   </component>
@@ -184,13 +168,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00014" summary="resolve second puzzle day8">
-      <created>1575808777024</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1575808777024</updated>
     </task>
     <task id="LOCAL-00015" summary="implement long numbers">
       <created>1575891322057</created>
@@ -528,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576854198601</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="first attempt to resolve part 2">
+      <created>1576860178014</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1576860178015</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -547,7 +531,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="calculate velocity" />
     <MESSAGE value="solve second challenge day 12" />
     <MESSAGE value="solve first challenge day 12" />
     <MESSAGE value="calculate ore" />
@@ -572,7 +555,8 @@
     <MESSAGE value="resolve second example" />
     <MESSAGE value="solve first puzzle" />
     <MESSAGE value="calculate inner and outer portals" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculate inner and outer portals" />
+    <MESSAGE value="first attempt to resolve part 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="first attempt to resolve part 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -589,18 +573,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
-          <line>292</line>
+          <line>294</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
-          <line>309</line>
-          <option name="timeStamp" value="26" />
+          <line>321</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
-          <line>324</line>
-          <option name="timeStamp" value="27" />
+          <line>346</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
+          <line>325</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -608,7 +597,7 @@
       <configuration name="JUnit">
         <watch expression="path.getVertexList()" language="JAVA" />
         <watch expression="this.reversePortals.get(currentPosition)" language="JAVA" />
-        <watch expression="this.reversePortals.get(innerPortalsPosition)" language="JAVA" />
+        <watch expression="this.reversePortals.get(position)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

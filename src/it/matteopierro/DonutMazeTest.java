@@ -280,7 +280,7 @@ class DonutMazeTest {
 
         public int shortestPathLength() {
             List<Problem> problems = new ArrayList<>();
-            problems.add(new Problem(0, startingPoint(), new ArrayList<>(), new HashSet<>()));
+            problems.add(new Problem(0, startingPoint(), new ArrayList<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
 
             while (!problems.isEmpty()) {
                 var problem = problems.get(0);
@@ -288,6 +288,8 @@ class DonutMazeTest {
                 level = problem.level;
                 var currentPosition = problem.currentPosition;
                 var currentPath = problem.path;
+                var inDoors = problem.inDoors;
+                var outDoors = problem.outDoors;
                 if (level == 0) {
                     var path = shortestPath(currentPosition, endPoint());
                     if (path != null) {
@@ -295,26 +297,16 @@ class DonutMazeTest {
                     }
                 }
                 Set<Tuple2<Integer, Integer>> currentUsed = problem.usedPositions;
-                for (Tuple2<Integer, Integer> innerPortalsPosition : innerPortalsPositions) {
-                    GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, innerPortalsPosition);
-                    if (path == null) continue;
-                    if (isLoop(currentUsed, path, currentPosition)) continue;
-                    if (Sets.difference(innerPortalsPositions, Set.of(innerPortalsPosition)).stream()
-                        .anyMatch(p -> path.getVertexList().contains(p))) continue;
-
-                    var newUsedPositions = new HashSet<>(currentUsed);
-                    newUsedPositions.addAll(path.getVertexList());
-                    newUsedPositions.add(innerPortalsPosition);
-                    var newPath = new ArrayList<>(currentPath);
-                    newPath.addAll(path.getVertexList());
-                    problems.add(new Problem(level + 1, innerPortalsPosition, newPath, newUsedPositions));
-                }
-
-                for (Tuple2<Integer, Integer> position : outerPortalsPositions) {
+                for (Tuple2<Integer, Integer> position : innerPortalsPositions) {
+                    if (inDoors.contains(reversePortals.get(position))) continue; //don't reuse ports
+                    if (currentPosition.equals(position)) continue;
                     GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
                     if (path == null) continue;
-                    if (isLoop(currentUsed, path, currentPosition)) continue;
-                    if (Sets.difference(outerPortalsPositions, Set.of(position)).stream()
+//                    if (isLoop(currentUsed, path, currentPosition)) continue;
+                    if (Sets.difference(innerPortalsPositions, Set.of(currentPosition, position)).stream()
+                        .anyMatch(p -> path.getVertexList().contains(p))) continue;
+
+                    if (Sets.difference(outerPortalsPositions, Set.of(currentPosition)).stream() //no outdoors here
                             .anyMatch(p -> path.getVertexList().contains(p))) continue;
 
                     var newUsedPositions = new HashSet<>(currentUsed);
@@ -322,7 +314,37 @@ class DonutMazeTest {
                     newUsedPositions.add(position);
                     var newPath = new ArrayList<>(currentPath);
                     newPath.addAll(path.getVertexList());
-                    problems.add(new Problem(level - 1, position, newPath, newUsedPositions));
+                    var symbol = reversePortals.get(position);
+                    List<Tuple2<Integer, Integer>> portal = portals.get(symbol);
+                    var newPosition = portal.get(0).equals(position) ? portal.get(1) : portal.get(0);
+                    HashSet<String> newInDoors = new HashSet<>(inDoors);
+                    newInDoors.add(symbol);
+                    problems.add(new Problem(level + 1, newPosition, newPath, newUsedPositions, newInDoors, outDoors));
+                }
+
+                for (Tuple2<Integer, Integer> position : outerPortalsPositions) {
+                    if (currentPosition.equals(position)) continue;
+                    if (reversePortals.get(currentPosition).equals(reversePortals.get(position))) continue;
+                    GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
+                    if (path == null) continue;
+//                    if (isLoop(currentUsed, path, currentPosition)) continue;
+                    if (Sets.difference(outerPortalsPositions, Set.of(currentPosition, position)).stream()
+                            .anyMatch(p -> path.getVertexList().contains(p))) continue;
+
+                    if (Sets.difference(innerPortalsPositions, Set.of(currentPosition)).stream() //no indoors here
+                            .anyMatch(p -> path.getVertexList().contains(p))) continue;
+
+                    var newUsedPositions = new HashSet<>(currentUsed);
+                    newUsedPositions.addAll(path.getVertexList());
+                    newUsedPositions.add(position);
+                    var newPath = new ArrayList<>(currentPath);
+                    newPath.addAll(path.getVertexList());
+                    var symbol = reversePortals.get(position);
+                    List<Tuple2<Integer, Integer>> portal = portals.get(symbol);
+                    var newPosition = portal.get(0).equals(position) ? portal.get(1) : portal.get(0);
+                    HashSet<String> newOutDoors = new HashSet<>(outDoors);
+                    newOutDoors.add(symbol);
+                    problems.add(new Problem(level - 1, newPosition, newPath, newUsedPositions, inDoors, newOutDoors));
                 }
             }
 
@@ -365,13 +387,62 @@ class DonutMazeTest {
             private final Tuple2<Integer, Integer> currentPosition;
             private final List<Tuple2<Integer, Integer>> path;
             private final HashSet<Tuple2<Integer, Integer>> usedPositions;
+            private final HashSet<String> inDoors;
+            private final HashSet<String> outDoors;
 
-            public Problem(int level, Tuple2<Integer, Integer> currentPosition, List<Tuple2<Integer, Integer>> path, HashSet<Tuple2<Integer, Integer>> usedPositions) {
+            public Problem(int level, Tuple2<Integer, Integer> currentPosition, List<Tuple2<Integer, Integer>> path, HashSet<Tuple2<Integer, Integer>> usedPositions, HashSet<String> inDoors, HashSet<String> outDoors) {
                 this.level = level;
                 this.currentPosition = currentPosition;
                 this.path = path;
                 this.usedPositions = usedPositions;
+                this.inDoors = inDoors;
+                this.outDoors = outDoors;
             }
         }
+    }
+
+    @Test
+    void exampleSecondPart() {
+        var input = "             Z L X W       C                 \n" +
+                "             Z P Q B       K                 \n" +
+                "  ###########.#.#.#.#######.###############  \n" +
+                "  #...#.......#.#.......#.#.......#.#.#...#  \n" +
+                "  ###.#.#.#.#.#.#.#.###.#.#.#######.#.#.###  \n" +
+                "  #.#...#.#.#...#.#.#...#...#...#.#.......#  \n" +
+                "  #.###.#######.###.###.#.###.###.#.#######  \n" +
+                "  #...#.......#.#...#...#.............#...#  \n" +
+                "  #.#########.#######.#.#######.#######.###  \n" +
+                "  #...#.#    F       R I       Z    #.#.#.#  \n" +
+                "  #.###.#    D       E C       H    #.#.#.#  \n" +
+                "  #.#...#                           #...#.#  \n" +
+                "  #.###.#                           #.###.#  \n" +
+                "  #.#....OA                       WB..#.#..ZH\n" +
+                "  #.###.#                           #.#.#.#  \n" +
+                "CJ......#                           #.....#  \n" +
+                "  #######                           #######  \n" +
+                "  #.#....CK                         #......IC\n" +
+                "  #.###.#                           #.###.#  \n" +
+                "  #.....#                           #...#.#  \n" +
+                "  ###.###                           #.#.#.#  \n" +
+                "XF....#.#                         RF..#.#.#  \n" +
+                "  #####.#                           #######  \n" +
+                "  #......CJ                       NM..#...#  \n" +
+                "  ###.#.#                           #.###.#  \n" +
+                "RE....#.#                           #......RF\n" +
+                "  ###.###        X   X       L      #.#.#.#  \n" +
+                "  #.....#        F   Q       P      #.#.#.#  \n" +
+                "  ###.###########.###.#######.#########.###  \n" +
+                "  #.....#...#.....#.......#...#.....#.#...#  \n" +
+                "  #####.#.###.#######.#######.###.###.#.#.#  \n" +
+                "  #.......#.......#.#.#.#.#...#...#...#.#.#  \n" +
+                "  #####.###.#####.#.#.#.#.###.###.#.###.###  \n" +
+                "  #.......#.....#.#...#...............#...#  \n" +
+                "  #############.#.#.###.###################  \n" +
+                "               A O F   N                     \n" +
+                "               A A D   M                     ";
+
+        var maze = new InceptionMaze(input);
+
+        assertThat(maze.shortestPathLength()).isEqualTo(-1);
     }
 }
