@@ -129,8 +129,15 @@ class DonutMazeTest {
         var maze = new Maze(input);
 
         assertThat(maze.shortestPath().getLength()).isEqualTo(422);
-        assertThat(maze.outerPortalsPositions.size()).isEqualTo(27);
-        assertThat(maze.innerPortalsPositions.size()).isEqualTo(27);
+    }
+
+    @Test
+    void secondPuzzle() throws IOException {
+        String input = Files.readString(Paths.get("./input_day20"));
+
+        var maze = new InceptionMaze(input);
+
+        assertThat(maze.shortestPathLength()).isEqualTo(422);
     }
 
     private class Maze {
@@ -274,6 +281,7 @@ class DonutMazeTest {
         private int level;
         private boolean removeOuter = false;
         private boolean removeInner = false;
+        private Tuple2<Integer, Integer> currentPosition;
 
         public InceptionMaze(String input) {
             super(input);
@@ -284,16 +292,17 @@ class DonutMazeTest {
             List<Problem> problems = new ArrayList<>();
             problems.add(new Problem(0, startingPoint(), new ArrayList<>(), new HashSet<>()));
 
+            List<Integer> solutions = new ArrayList<>();
             while (!problems.isEmpty()) {
-                var problem = problems.get(0);
-                problems.remove(0);//better Linked List?
+                var problem = problems.remove(0);//better Linked List?
                 level = problem.level;
-                var currentPosition = problem.currentPosition;
+                currentPosition = problem.currentPosition;
                 var currentPath = problem.path;
+                if (level > 10) continue;
                 if (level == 0) {
                     var path = shortestPath(currentPosition, endPoint());
                     if (path != null) {
-                        return currentPath.size() + path.getLength();
+                        solutions.add(currentPath.size() + path.getLength());
                     }
                 }
                 Set<Tuple2<Integer, Integer>> currentUsed = problem.usedPositions;
@@ -303,12 +312,9 @@ class DonutMazeTest {
                     removeOuter = true;
                     GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
                     if (path == null) continue;
-//                    if (isLoop(currentUsed, path, currentPosition)) continue;
                     if (Sets.difference(innerPortalsPositions, Set.of(currentPosition, position)).stream()
                         .anyMatch(p -> path.getVertexList().contains(p))) continue;
 
-                    if (Sets.difference(outerPortalsPositions, Set.of(currentPosition)).stream() //no outdoors here
-                            .anyMatch(p -> path.getVertexList().contains(p))) continue;
 
                     var newUsedPositions = new HashSet<>(currentUsed);
                     newUsedPositions.addAll(path.getVertexList());
@@ -327,11 +333,7 @@ class DonutMazeTest {
                     removeInner = true;
                     GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
                     if (path == null) continue;
-//                    if (isLoop(currentUsed, path, currentPosition)) continue;
                     if (Sets.difference(outerPortalsPositions, Set.of(currentPosition, position)).stream()
-                            .anyMatch(p -> path.getVertexList().contains(p))) continue;
-
-                    if (Sets.difference(innerPortalsPositions, Set.of(currentPosition)).stream() //no indoors here
                             .anyMatch(p -> path.getVertexList().contains(p))) continue;
 
                     var newUsedPositions = new HashSet<>(currentUsed);
@@ -347,7 +349,7 @@ class DonutMazeTest {
                 removeInner = false;
             }
 
-            return MAX_VALUE;
+            return solutions.stream().min(Integer::compareTo).orElse(MAX_VALUE);
         }
 
         public boolean isLoop(Set<Tuple2<Integer, Integer>> currentUsed, GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path, Tuple2<Integer, Integer> currentPosition) {
@@ -364,6 +366,12 @@ class DonutMazeTest {
             } else {
                 points.remove(startingPoint());
                 points.remove(endPoint());
+            }
+            if (removeInner) {
+                points.removeAll(innerPortalsPositions);
+            }
+            if (removeOuter) {
+                points.removeAll(outerPortalsPositions);
             }
             return points;
         }
@@ -383,6 +391,7 @@ class DonutMazeTest {
             if (removeOuter) {
                 ts.removeAll(outerPortalsPositions);
             }
+            ts.add(currentPosition);
             return ts;
         }
 
@@ -445,6 +454,6 @@ class DonutMazeTest {
 
         var maze = new InceptionMaze(input);
 
-        assertThat(maze.shortestPathLength()).isEqualTo(-1);
+        assertThat(maze.shortestPathLength()).isEqualTo(396);
     }
 }
