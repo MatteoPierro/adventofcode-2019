@@ -68,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DonutMazeTest.secondExample">
+  <component name="RunManager" selected="JUnit.DonutMazeTest.firstPuzzle">
     <configuration name="DonutMazeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -166,10 +166,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DonutMazeTest.secondExample" />
-        <item itemvalue="JUnit.DonutMazeTest" />
-        <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
         <item itemvalue="JUnit.DonutMazeTest.firstPuzzle" />
+        <item itemvalue="JUnit.DonutMazeTest.secondExample" />
+        <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
+        <item itemvalue="JUnit.DonutMazeTest" />
         <item itemvalue="JUnit.TractorBeamTest.name" />
       </list>
     </recent_temporary>
@@ -587,12 +587,28 @@
           <line>68</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
+          <line>292</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
+          <line>309</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java</url>
+          <line>324</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="DIRECTION_TO_COMMAND.get(currentNode.direction())" language="JAVA" />
-        <watch expression="currentNode.position" language="JAVA" />
+        <watch expression="path.getVertexList()" language="JAVA" />
+        <watch expression="this.reversePortals.get(currentPosition)" language="JAVA" />
+        <watch expression="this.reversePortals.get(innerPortalsPosition)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
