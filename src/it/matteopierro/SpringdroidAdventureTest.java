@@ -2,6 +2,7 @@ package it.matteopierro;
 
 import it.matteopierro.computer.Computer;
 import it.matteopierro.computer.ComputerListener;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -14,10 +15,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SpringdroidAdventureTest {
 
+    private String program;
+
+    @BeforeEach
+    void setUp() throws IOException {
+        program = Files.readString(Paths.get("./input_day21"));
+    }
+
     @Test
-    void firstPuzzle() throws IOException {
-        var program = Files.readString(Paths.get("./input_day21"));
-        var springDroidProgram = List.of(
+    void firstPuzzle() {
+        var program = List.of(
                 "OR A J",  // J = A
                 "AND B J", // J = A && B
                 "AND C J", // J = A && B && C
@@ -26,10 +33,29 @@ public class SpringdroidAdventureTest {
                 "WALK"
         );
 
-        SpringdroidAdventure listener = new SpringdroidAdventure(springDroidProgram);
-        int result = new Computer().execute(program, listener);
+        assertThat(execute(program)).isEqualTo(19350938);
+    }
 
-        assertThat(result).isEqualTo(19350938);
+    @Test
+    void secondPuzzle() {
+        var program = List.of(
+                "OR A J",  // J = A
+                "AND B J", // J = A && B
+                "AND C J", // J = A && B && C
+                "NOT J J", // J = !(A && B && C)
+                "AND D J", // J = !(A && B && C) && D
+                "OR E T", // T = E
+                "OR H T", // T = E || H
+                "AND T J", // J = !(A && B && C) && D && (E || H)
+                "RUN"
+        );
+
+        assertThat(execute(program)).isEqualTo(1142986901);
+    }
+
+    private int execute(List<String> program) {
+        SpringdroidAdventure listener = new SpringdroidAdventure(program);
+        return new Computer().execute(this.program, listener);
     }
 
     private class SpringdroidAdventure extends ComputerListener {
