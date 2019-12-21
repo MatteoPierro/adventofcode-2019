@@ -1,6 +1,7 @@
 package it.matteopierro;
 
 import com.google.common.collect.Sets;
+import it.matteopierro.graph.InfiniteUndirectedGraph;
 import it.matteopierro.robot.Direction;
 import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
@@ -8,7 +9,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultUndirectedGraph;
 import org.jooq.lambda.tuple.Tuple2;
-import org.junit.jupiter.api.Disabled;
+import org.jooq.lambda.tuple.Tuple3;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -17,7 +18,6 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.lang.Integer.MAX_VALUE;
 import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jooq.lambda.tuple.Tuple.tuple;
@@ -66,7 +66,7 @@ class DonutMazeTest {
         assertThat(maze.adjacentPoints(tuple(2, 8))).containsExactlyInAnyOrder(tuple(3, 8), tuple(9, 6));
         var shortestPath = maze.shortestPath();
         assertThat(shortestPath.getLength()).isEqualTo(23);
-        assertThat(maze.outerPortalsPositions).containsExactlyInAnyOrder(tuple(2,15), tuple(2, 13), tuple(2, 8));
+        assertThat(maze.outerPortalsPositions).containsExactlyInAnyOrder(tuple(2, 15), tuple(2, 13), tuple(2, 8));
         assertThat(maze.innerPortalsPositions).contains(tuple(9, 6));
         assertThat(maze.innerPortalsPositions).hasSize(3);
         assertThat(new InceptionMaze(input).shortestPathLength()).isEqualTo(26);
@@ -77,49 +77,48 @@ class DonutMazeTest {
     void secondExample() {
         var input =
                 "                   A               \n" +
-                "                   A               \n" +
-                "  #################.#############  \n" +
-                "  #.#...#...................#.#.#  \n" +
-                "  #.#.#.###.###.###.#########.#.#  \n" +
-                "  #.#.#.......#...#.....#.#.#...#  \n" +
-                "  #.#########.###.#####.#.#.###.#  \n" +
-                "  #.............#.#.....#.......#  \n" +
-                "  ###.###########.###.#####.#.#.#  \n" +
-                "  #.....#        A   C    #.#.#.#  \n" +
-                "  #######        S   P    #####.#  \n" +
-                "  #.#...#                 #......VT\n" +
-                "  #.#.#.#                 #.#####  \n" +
-                "  #...#.#               YN....#.#  \n" +
-                "  #.###.#                 #####.#  \n" +
-                "DI....#.#                 #.....#  \n" +
-                "  #####.#                 #.###.#  \n" +
-                "ZZ......#               QG....#..AS\n" +
-                "  ###.###                 #######  \n" +
-                "JO..#.#.#                 #.....#  \n" +
-                "  #.#.#.#                 ###.#.#  \n" +
-                "  #...#..DI             BU....#..LF\n" +
-                "  #####.#                 #.#####  \n" +
-                "YN......#               VT..#....QG\n" +
-                "  #.###.#                 #.###.#  \n" +
-                "  #.#...#                 #.....#  \n" +
-                "  ###.###    J L     J    #.#.###  \n" +
-                "  #.....#    O F     P    #.#...#  \n" +
-                "  #.###.#####.#.#####.#####.###.#  \n" +
-                "  #...#.#.#...#.....#.....#.#...#  \n" +
-                "  #.#####.###.###.#.#.#########.#  \n" +
-                "  #...#.#.....#...#.#.#.#.....#.#  \n" +
-                "  #.###.#####.###.###.#.#.#######  \n" +
-                "  #.#.........#...#.............#  \n" +
-                "  #########.###.###.#############  \n" +
-                "           B   J   C               \n" +
-                "           U   P   P               ";
+                        "                   A               \n" +
+                        "  #################.#############  \n" +
+                        "  #.#...#...................#.#.#  \n" +
+                        "  #.#.#.###.###.###.#########.#.#  \n" +
+                        "  #.#.#.......#...#.....#.#.#...#  \n" +
+                        "  #.#########.###.#####.#.#.###.#  \n" +
+                        "  #.............#.#.....#.......#  \n" +
+                        "  ###.###########.###.#####.#.#.#  \n" +
+                        "  #.....#        A   C    #.#.#.#  \n" +
+                        "  #######        S   P    #####.#  \n" +
+                        "  #.#...#                 #......VT\n" +
+                        "  #.#.#.#                 #.#####  \n" +
+                        "  #...#.#               YN....#.#  \n" +
+                        "  #.###.#                 #####.#  \n" +
+                        "DI....#.#                 #.....#  \n" +
+                        "  #####.#                 #.###.#  \n" +
+                        "ZZ......#               QG....#..AS\n" +
+                        "  ###.###                 #######  \n" +
+                        "JO..#.#.#                 #.....#  \n" +
+                        "  #.#.#.#                 ###.#.#  \n" +
+                        "  #...#..DI             BU....#..LF\n" +
+                        "  #####.#                 #.#####  \n" +
+                        "YN......#               VT..#....QG\n" +
+                        "  #.###.#                 #.###.#  \n" +
+                        "  #.#...#                 #.....#  \n" +
+                        "  ###.###    J L     J    #.#.###  \n" +
+                        "  #.....#    O F     P    #.#...#  \n" +
+                        "  #.###.#####.#.#####.#####.###.#  \n" +
+                        "  #...#.#.#...#.....#.....#.#...#  \n" +
+                        "  #.#####.###.###.#.#.#########.#  \n" +
+                        "  #...#.#.....#...#.#.#.#.....#.#  \n" +
+                        "  #.###.#####.###.###.#.#.#######  \n" +
+                        "  #.#.........#...#.............#  \n" +
+                        "  #########.###.###.#############  \n" +
+                        "           B   J   C               \n" +
+                        "           U   P   P               ";
 
         var maze = new Maze(input);
 
         assertThat(maze.shortestPath().getLength()).isEqualTo(58);
         assertThat(maze.outerPortalsPositions.size()).isEqualTo(10);
         assertThat(maze.outerPortals()).containsExactlyInAnyOrder("DI", "JO", "YN", "BU", "JP", "CP", "VT", "AS", "LF", "QG");
-        assertThat(new InceptionMaze(input).shortestPathLength()).isEqualTo(MAX_VALUE);
     }
 
     @Test
@@ -132,12 +131,57 @@ class DonutMazeTest {
     }
 
     @Test
+    void exampleSecondPart() {
+        var input = "             Z L X W       C                 \n" +
+                "             Z P Q B       K                 \n" +
+                "  ###########.#.#.#.#######.###############  \n" +
+                "  #...#.......#.#.......#.#.......#.#.#...#  \n" +
+                "  ###.#.#.#.#.#.#.#.###.#.#.#######.#.#.###  \n" +
+                "  #.#...#.#.#...#.#.#...#...#...#.#.......#  \n" +
+                "  #.###.#######.###.###.#.###.###.#.#######  \n" +
+                "  #...#.......#.#...#...#.............#...#  \n" +
+                "  #.#########.#######.#.#######.#######.###  \n" +
+                "  #...#.#    F       R I       Z    #.#.#.#  \n" +
+                "  #.###.#    D       E C       H    #.#.#.#  \n" +
+                "  #.#...#                           #...#.#  \n" +
+                "  #.###.#                           #.###.#  \n" +
+                "  #.#....OA                       WB..#.#..ZH\n" +
+                "  #.###.#                           #.#.#.#  \n" +
+                "CJ......#                           #.....#  \n" +
+                "  #######                           #######  \n" +
+                "  #.#....CK                         #......IC\n" +
+                "  #.###.#                           #.###.#  \n" +
+                "  #.....#                           #...#.#  \n" +
+                "  ###.###                           #.#.#.#  \n" +
+                "XF....#.#                         RF..#.#.#  \n" +
+                "  #####.#                           #######  \n" +
+                "  #......CJ                       NM..#...#  \n" +
+                "  ###.#.#                           #.###.#  \n" +
+                "RE....#.#                           #......RF\n" +
+                "  ###.###        X   X       L      #.#.#.#  \n" +
+                "  #.....#        F   Q       P      #.#.#.#  \n" +
+                "  ###.###########.###.#######.#########.###  \n" +
+                "  #.....#...#.....#.......#...#.....#.#...#  \n" +
+                "  #####.#.###.#######.#######.###.###.#.#.#  \n" +
+                "  #.......#.......#.#.#.#.#...#...#...#.#.#  \n" +
+                "  #####.###.#####.#.#.#.#.###.###.#.###.###  \n" +
+                "  #.......#.....#.#...#...............#...#  \n" +
+                "  #############.#.#.###.###################  \n" +
+                "               A O F   N                     \n" +
+                "               A A D   M                     ";
+
+        var maze = new InceptionMaze(input);
+
+        assertThat(maze.shortestPathLength()).isEqualTo(396);
+    }
+
+    @Test
     void secondPuzzle() throws IOException {
         String input = Files.readString(Paths.get("./input_day20"));
 
         var maze = new InceptionMaze(input);
 
-        assertThat(maze.shortestPathLength()).isEqualTo(422);
+        assertThat(maze.shortestPathLength()).isEqualTo(5040);
     }
 
     private class Maze {
@@ -164,7 +208,7 @@ class DonutMazeTest {
                     }
                     if (isLetter(element)) {
                         if (x > 0 && isLetter(line[x - 1])) {
-                            if (x+1 < line.length && line[x + 1] == '.') {
+                            if (x + 1 < line.length && line[x + 1] == '.') {
                                 String mark = line[x - 1] + "" + element;
                                 Tuple2<Integer, Integer> position = tuple(x + 1, y);
                                 addPortal(mark, position);
@@ -277,183 +321,69 @@ class DonutMazeTest {
         }
     }
 
-    private class InceptionMaze extends Maze{
-        private int level;
-        private boolean removeOuter = false;
-        private boolean removeInner = false;
-        private Tuple2<Integer, Integer> currentPosition;
-
+    private class InceptionMaze extends Maze {
         public InceptionMaze(String input) {
             super(input);
-            this.level = 0;
         }
 
         public int shortestPathLength() {
-            List<Problem> problems = new ArrayList<>();
-            problems.add(new Problem(0, startingPoint(), new ArrayList<>(), new HashSet<>()));
+            var start = tuple(startingPoint().v1, startingPoint().v2, 0);
+            var end = tuple(endPoint().v1, endPoint().v2, 0);
+            var graph = new Graph();
+            return new DijkstraShortestPath<>(graph).getPath(start, end).getLength();
+        }
 
-            List<Integer> solutions = new ArrayList<>();
-            while (!problems.isEmpty()) {
-                var problem = problems.remove(0);//better Linked List?
-                level = problem.level;
-                currentPosition = problem.currentPosition;
-                var currentPath = problem.path;
-                if (level > 10) continue;
-                if (level == 0) {
-                    var path = shortestPath(currentPosition, endPoint());
-                    if (path != null) {
-                        solutions.add(currentPath.size() + path.getLength());
-                    }
+        private class Graph extends InfiniteUndirectedGraph<Tuple3<Integer, Integer, Integer>> {
+            @Override
+            public Set<Tuple3<Integer, Integer, Integer>> adjacentVertices(Tuple3<Integer, Integer, Integer> vertex) {
+                var adjacent = new HashSet<Tuple3<Integer, Integer, Integer>>();
+
+                addDirectlyConnectedAdjacent(vertex, adjacent);
+
+                Tuple2<Integer, Integer> tile = tuple(vertex.v1, vertex.v2);
+                if (innerPortalsPositions.contains(tile)) {
+                    Tuple2<Integer, Integer> reverse = reverseOf(tile);
+                    adjacent.add(new Tuple3<>(reverse.v1, reverse.v2, vertex.v3 + 1));
                 }
-                Set<Tuple2<Integer, Integer>> currentUsed = problem.usedPositions;
-                for (Tuple2<Integer, Integer> position : innerPortalsPositions) {
-                    if (currentPosition.equals(position)) continue;
-                    if (reversePortals.get(currentPosition).equals(reversePortals.get(position))) continue;
-                    removeOuter = true;
-                    GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
-                    if (path == null) continue;
-                    if (Sets.difference(innerPortalsPositions, Set.of(currentPosition, position)).stream()
-                        .anyMatch(p -> path.getVertexList().contains(p))) continue;
 
-
-                    var newUsedPositions = new HashSet<>(currentUsed);
-                    newUsedPositions.addAll(path.getVertexList());
-                    newUsedPositions.add(position);
-                    var newPath = new ArrayList<>(currentPath);
-                    newPath.addAll(path.getVertexList());
-                    var symbol = reversePortals.get(position);
-                    List<Tuple2<Integer, Integer>> portal = portals.get(symbol);
-                    var newPosition = portal.get(0).equals(position) ? portal.get(1) : portal.get(0);
-                    problems.add(new Problem(level + 1, newPosition, newPath, newUsedPositions));
+                if (outerPortalsPositions.contains(tile)) {
+                    Tuple2<Integer, Integer> reverse = reverseOf(tile);
+                    adjacent.add(new Tuple3<>(reverse.v1, reverse.v2, vertex.v3 - 1));
                 }
-                removeOuter = false;
-                for (Tuple2<Integer, Integer> position : outerPortalsPositions) {
-                    if (currentPosition.equals(position)) continue;
-                    if (reversePortals.get(currentPosition).equals(reversePortals.get(position))) continue;
-                    removeInner = true;
-                    GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path = shortestPath(currentPosition, position);
-                    if (path == null) continue;
-                    if (Sets.difference(outerPortalsPositions, Set.of(currentPosition, position)).stream()
-                            .anyMatch(p -> path.getVertexList().contains(p))) continue;
 
-                    var newUsedPositions = new HashSet<>(currentUsed);
-                    newUsedPositions.addAll(path.getVertexList());
-                    newUsedPositions.add(position);
-                    var newPath = new ArrayList<>(currentPath);
-                    newPath.addAll(path.getVertexList());
-                    var symbol = reversePortals.get(position);
-                    List<Tuple2<Integer, Integer>> portal = portals.get(symbol);
-                    var newPosition = portal.get(0).equals(position) ? portal.get(1) : portal.get(0);
-                    problems.add(new Problem(level - 1, newPosition, newPath, newUsedPositions));
+                return adjacent;
+            }
+
+            private void addDirectlyConnectedAdjacent(Tuple3<Integer, Integer, Integer> vertex, HashSet<Tuple3<Integer, Integer, Integer>> adjacent) {
+                Arrays.stream(Direction.values())
+                        .map(d -> d.move(tuple(vertex.v1, vertex.v2)))
+                        .map(t -> tuple(t.v1, t.v2, vertex.v3))
+                        .filter(this::containsVertex)
+                        .forEach(adjacent::add);
+            }
+
+            private Tuple2<Integer, Integer> reverseOf(Tuple2<Integer, Integer> tile) {
+                var symbol = reversePortals.get(tile);
+                var portal = portals.get(symbol);
+                return portal.get(0).equals(tile) ? portal.get(1) : portal.get(0);
+            }
+
+            @Override
+            public boolean containsVertex(Tuple3<Integer, Integer, Integer> vertex) {
+                if (isOuterPortal(tuple(vertex.v1, vertex.v2)) && isAtLevelZero(vertex)) {
+                    return false;
                 }
-                removeInner = false;
+
+                return tiles.contains(tuple(vertex.v1, vertex.v2));
             }
 
-            return solutions.stream().min(Integer::compareTo).orElse(MAX_VALUE);
-        }
-
-        public boolean isLoop(Set<Tuple2<Integer, Integer>> currentUsed, GraphPath<Tuple2<Integer, Integer>, DefaultEdge> path, Tuple2<Integer, Integer> currentPosition) {
-            return path.getVertexList().stream()
-                    .filter(t -> !t.equals(currentPosition))
-                    .anyMatch(currentUsed::contains);
-        }
-
-        @Override
-        public Set<Tuple2<Integer, Integer>> adjacentPoints(Tuple2<Integer, Integer> point) {
-            var points = super.adjacentPoints(point);
-            if (level == 0) {
-                points.removeAll(super.outerPortalsPositions);
-            } else {
-                points.remove(startingPoint());
-                points.remove(endPoint());
+            private boolean isOuterPortal(Tuple2<Integer, Integer> tile) {
+                return outerPortalsPositions.contains(tile);
             }
-            if (removeInner) {
-                points.removeAll(innerPortalsPositions);
-            }
-            if (removeOuter) {
-                points.removeAll(outerPortalsPositions);
-            }
-            return points;
-        }
 
-        @Override
-        public Set<Tuple2<Integer, Integer>> tiles() {
-            HashSet<Tuple2<Integer, Integer>> ts = new HashSet<>(tiles);
-            if (level == 0) {
-                ts.removeAll(super.outerPortalsPositions);
-            } else {
-                ts.remove(startingPoint());
-                ts.remove(endPoint());
-            }
-            if (removeInner) {
-                ts.removeAll(innerPortalsPositions);
-            }
-            if (removeOuter) {
-                ts.removeAll(outerPortalsPositions);
-            }
-            ts.add(currentPosition);
-            return ts;
-        }
-
-        private class Problem {
-
-            private final int level;
-            private final Tuple2<Integer, Integer> currentPosition;
-            private final List<Tuple2<Integer, Integer>> path;
-            private final HashSet<Tuple2<Integer, Integer>> usedPositions;
-
-            public Problem(int level, Tuple2<Integer, Integer> currentPosition, List<Tuple2<Integer, Integer>> path, HashSet<Tuple2<Integer, Integer>> usedPositions) {
-                this.level = level;
-                this.currentPosition = currentPosition;
-                this.path = path;
-                this.usedPositions = usedPositions;
+            private boolean isAtLevelZero(Tuple3<Integer, Integer, Integer> vertex) {
+                return vertex.v3 == 0;
             }
         }
-    }
-
-    @Test
-    @Disabled
-    void exampleSecondPart() {
-        var input = "             Z L X W       C                 \n" +
-                "             Z P Q B       K                 \n" +
-                "  ###########.#.#.#.#######.###############  \n" +
-                "  #...#.......#.#.......#.#.......#.#.#...#  \n" +
-                "  ###.#.#.#.#.#.#.#.###.#.#.#######.#.#.###  \n" +
-                "  #.#...#.#.#...#.#.#...#...#...#.#.......#  \n" +
-                "  #.###.#######.###.###.#.###.###.#.#######  \n" +
-                "  #...#.......#.#...#...#.............#...#  \n" +
-                "  #.#########.#######.#.#######.#######.###  \n" +
-                "  #...#.#    F       R I       Z    #.#.#.#  \n" +
-                "  #.###.#    D       E C       H    #.#.#.#  \n" +
-                "  #.#...#                           #...#.#  \n" +
-                "  #.###.#                           #.###.#  \n" +
-                "  #.#....OA                       WB..#.#..ZH\n" +
-                "  #.###.#                           #.#.#.#  \n" +
-                "CJ......#                           #.....#  \n" +
-                "  #######                           #######  \n" +
-                "  #.#....CK                         #......IC\n" +
-                "  #.###.#                           #.###.#  \n" +
-                "  #.....#                           #...#.#  \n" +
-                "  ###.###                           #.#.#.#  \n" +
-                "XF....#.#                         RF..#.#.#  \n" +
-                "  #####.#                           #######  \n" +
-                "  #......CJ                       NM..#...#  \n" +
-                "  ###.#.#                           #.###.#  \n" +
-                "RE....#.#                           #......RF\n" +
-                "  ###.###        X   X       L      #.#.#.#  \n" +
-                "  #.....#        F   Q       P      #.#.#.#  \n" +
-                "  ###.###########.###.#######.#########.###  \n" +
-                "  #.....#...#.....#.......#...#.....#.#...#  \n" +
-                "  #####.#.###.#######.#######.###.###.#.#.#  \n" +
-                "  #.......#.......#.#.#.#.#...#...#...#.#.#  \n" +
-                "  #####.###.#####.#.#.#.#.###.###.#.###.###  \n" +
-                "  #.......#.....#.#...#...............#...#  \n" +
-                "  #############.#.#.###.###################  \n" +
-                "               A O F   N                     \n" +
-                "               A A D   M                     ";
-
-        var maze = new InceptionMaze(input);
-
-        assertThat(maze.shortestPathLength()).isEqualTo(396);
     }
 }

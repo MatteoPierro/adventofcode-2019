@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/DonutMazeTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,6 +48,9 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="it.matteopierro" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="it.matteopierro.graph" />
+    </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="it.matteopierro.robot" />
     </key>
@@ -68,7 +70,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DonutMazeTest.exampleSecondPart">
+  <component name="RunManager" selected="JUnit.DonutMazeTest">
+    <configuration name="DonutMazeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DonutMazeTest.exampleSecondPart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -80,22 +97,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
       <option name="METHOD_NAME" value="exampleSecondPart" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DonutMazeTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.DonutMazeTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -151,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DonutMazeTest.exampleSecondPart" />
+        <item itemvalue="JUnit.DonutMazeTest" />
         <item itemvalue="JUnit.DonutMazeTest.secondPuzzle" />
-        <item itemvalue="JUnit.DonutMazeTest.firstPuzzle" />
         <item itemvalue="JUnit.DonutMazeTest.secondExample" />
         <item itemvalue="JUnit.DonutMazeTest.shouldFindAllTiles" />
+        <item itemvalue="JUnit.DonutMazeTest.exampleSecondPart" />
       </list>
     </recent_temporary>
   </component>
