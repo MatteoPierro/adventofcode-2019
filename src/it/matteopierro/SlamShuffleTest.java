@@ -5,6 +5,7 @@ import org.jooq.lambda.Seq;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,6 +47,14 @@ class SlamShuffleTest {
         assertThat(newDeck.size()).isEqualTo(10007);
     }
 
+    @Test
+    void shouldIncrementCutTheDeck() {
+        List<Integer> deck = Seq.range(0, 10).toList();
+        var shuffle = new IncrementShuffle(3);
+        List<Integer> newDeck = shuffle.shuffle(deck);
+        assertThat(newDeck).containsExactly(0,7,4,1,8,5,2,9,6,3);
+    }
+
     interface Shuffle {
         List<Integer> shuffle(List<Integer> deck);
     }
@@ -75,6 +84,36 @@ class SlamShuffleTest {
             ArrayList<Integer> result = new ArrayList<>(deck.subList(size, deck.size()));
             result.addAll(deck.subList(0, size));
             return result;
+        }
+    }
+
+    private class IncrementShuffle implements Shuffle {
+        private final int increment;
+
+        public IncrementShuffle(int increment) {
+            this.increment = increment;
+        }
+
+        @Override
+        public List<Integer> shuffle(List<Integer> deck) {
+            ArrayList<Integer> newDeck = new ArrayList<>(Collections.nCopies(deck.size(), -1));
+
+            var inc = increment;
+            var i = 0;
+            var offset = 0;
+            for (Integer card : deck) {
+                if ((inc * i) + offset >= deck.size()) {
+                    i = 0;
+                    if (offset == 0) {
+                        offset = increment;
+                    }
+                    offset--;
+                }
+                newDeck.set((inc * i) + offset, card);
+                i++;
+            }
+
+            return newDeck;
         }
     }
 }
