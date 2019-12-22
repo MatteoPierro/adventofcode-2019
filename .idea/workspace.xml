@@ -71,8 +71,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldParseShuffles">
-    <configuration name="SlamShuffleTest.shouldComposeShuffle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SlamShuffleTest.firstPuzzle">
+    <configuration name="SlamShuffleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -82,13 +82,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldComposeShuffle" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.shouldComposeShuffle2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlamShuffleTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -98,7 +97,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldComposeShuffle2" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -120,7 +119,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.shouldIncrementCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlamShuffleTest.shouldNegativelyCutTheDeck2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -130,7 +129,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldIncrementCutTheDeck" />
+      <option name="METHOD_NAME" value="shouldNegativelyCutTheDeck2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -154,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SlamShuffleTest.firstPuzzle" />
+        <item itemvalue="JUnit.SlamShuffleTest" />
+        <item itemvalue="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck2" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldParseShuffles" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldComposeShuffle3" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldComposeShuffle2" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldComposeShuffle" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldIncrementCutTheDeck" />
       </list>
     </recent_temporary>
   </component>
@@ -172,13 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00023" summary="remove duplication">
-      <created>1575926047902</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1575926047902</updated>
     </task>
     <task id="LOCAL-00024" summary="find all asteroids">
       <created>1575960192795</created>
@@ -516,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577007381474</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="parse shuffle commands">
+      <created>1577009510723</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1577009510723</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -535,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="return to the origin" />
     <MESSAGE value="introduce Node" />
     <MESSAGE value="test node" />
     <MESSAGE value="second puzzle day 16" />
@@ -560,7 +558,8 @@
     <MESSAGE value="implement positive cut shuffle" />
     <MESSAGE value="implement negative cut shuffle" />
     <MESSAGE value="implement increment deck" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement increment deck" />
+    <MESSAGE value="parse shuffle commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="parse shuffle commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -577,7 +576,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
-          <line>168</line>
+          <line>196</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>

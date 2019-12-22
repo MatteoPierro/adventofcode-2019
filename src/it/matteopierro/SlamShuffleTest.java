@@ -4,9 +4,10 @@ import com.google.common.collect.Lists;
 import org.jooq.lambda.Seq;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,6 +46,14 @@ class SlamShuffleTest {
         assertThat(newDeck.get(newDeck.size() - 2)).isEqualTo(10001);
         assertThat(newDeck.get(newDeck.size() - 1)).isEqualTo(10002);
         assertThat(newDeck.size()).isEqualTo(10007);
+    }
+
+    @Test
+    void shouldNegativelyCutTheDeck2() {
+        List<Integer> deck = Seq.range(0, 10).toList();
+        var shuffle = new CutShuffle(-4);
+        List<Integer> newDeck = shuffle.shuffle(deck);
+        assertThat(newDeck).containsExactly(6, 7, 8, 9, 0, 1, 2, 3, 4, 5);
     }
 
     @Test
@@ -119,6 +128,25 @@ class SlamShuffleTest {
         List<Integer> deck = Seq.range(0, 10).toList();
 
         assertThat(composeShuffle.shuffle(deck)).isEqualTo(deck);
+    }
+
+    @Test
+    void firstPuzzle() throws IOException {
+        String input = Files.readString(Paths.get("./input_day22"));
+        Shuffle shuffle = new ShuffleParser().parse(input);
+        List<Integer> deck = Seq.range(0, 10007).toList();
+        List<Integer> result = shuffle.shuffle(deck);
+        assertThat(find(result, 2019)).isEqualTo(6526);
+    }
+
+    private int find(List<Integer> result, int number) {
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).equals(2019)) {
+                return i;
+            }
+        }
+
+        throw new RuntimeException("Number " + number + " not found!");
     }
 
     interface Shuffle {
