@@ -15,7 +15,7 @@ class SlamShuffleTest {
     @Test
     void shouldReverseTheDeck() {
         List<Integer> deck = Seq.range(0, 10007).toList();
-        var shuffle = new ReverseShuffle();
+        var shuffle = new NewStackShuffle();
         assertThat(shuffle.shuffle(deck).get(0)).isEqualTo(10006);
     }
 
@@ -52,14 +52,80 @@ class SlamShuffleTest {
         List<Integer> deck = Seq.range(0, 10).toList();
         var shuffle = new IncrementShuffle(3);
         List<Integer> newDeck = shuffle.shuffle(deck);
-        assertThat(newDeck).containsExactly(0,7,4,1,8,5,2,9,6,3);
+        assertThat(newDeck).containsExactly(0, 7, 4, 1, 8, 5, 2, 9, 6, 3);
+    }
+
+    @Test
+    void shouldComposeShuffle() {
+        var composeShuffle = new CompositeShuffle();
+        composeShuffle.add(new IncrementShuffle(7));
+        composeShuffle.add(new NewStackShuffle());
+        composeShuffle.add(new NewStackShuffle());
+
+        List<Integer> deck = Seq.range(0, 10).toList();
+
+        assertThat(composeShuffle.shuffle(deck)).containsExactly(0, 3, 6, 9, 2, 5, 8, 1, 4, 7);
+    }
+
+    @Test
+    void shouldComposeShuffle2() {
+        var composeShuffle = new CompositeShuffle();
+        composeShuffle.add(new CutShuffle(6));
+        composeShuffle.add(new IncrementShuffle(7));
+        composeShuffle.add(new NewStackShuffle());
+
+        List<Integer> deck = Seq.range(0, 10).toList();
+
+        assertThat(composeShuffle.shuffle(deck)).containsExactly(3, 0, 7, 4, 1, 8, 5, 2, 9, 6);
+    }
+
+    @Test
+    void shouldComposeShuffle3() {
+        var composeShuffle = new CompositeShuffle();
+        composeShuffle.add(new IncrementShuffle(7));
+        composeShuffle.add(new IncrementShuffle(9));
+        composeShuffle.add(new CutShuffle(-2));
+
+        List<Integer> deck = Seq.range(0, 10).toList();
+
+        assertThat(composeShuffle.shuffle(deck)).containsExactly(6, 3, 0, 7, 4, 1, 8, 5, 2, 9);
+    }
+
+    @Test
+    void shouldParseShuffles() {
+        var shuffle = new ShuffleParser().parse(
+                "deal into new stack\n" +
+                        "cut -2\n" +
+                        "deal with increment 7\n" +
+                        "cut 8\n" +
+                        "cut -4\n" +
+                        "deal with increment 7\n" +
+                        "cut 3\n" +
+                        "deal with increment 9\n" +
+                        "deal with increment 3\n" +
+                        "cut -1");
+
+        List<Integer> deck = Seq.range(0, 10).toList();
+
+        assertThat(shuffle.shuffle(deck)).containsExactly(9, 2, 5, 8, 1, 4, 7, 0, 3, 6);
+    }
+
+    @Test
+    void shouldReturnTheOriginalOrderWithDoubleShuffle() {
+        var composeShuffle = new CompositeShuffle();
+        composeShuffle.add(new NewStackShuffle());
+        composeShuffle.add(new NewStackShuffle());
+
+        List<Integer> deck = Seq.range(0, 10).toList();
+
+        assertThat(composeShuffle.shuffle(deck)).isEqualTo(deck);
     }
 
     interface Shuffle {
         List<Integer> shuffle(List<Integer> deck);
     }
 
-    class ReverseShuffle implements Shuffle {
+    class NewStackShuffle implements Shuffle {
 
         @Override
         public List<Integer> shuffle(List<Integer> deck) {
@@ -76,7 +142,7 @@ class SlamShuffleTest {
 
         @Override
         public List<Integer> shuffle(List<Integer> deck) {
-            int size = this.size >= 0 ? this.size : (deck.size() + this.size) ;
+            int size = this.size >= 0 ? this.size : (deck.size() + this.size);
             return shuffle(deck, size);
         }
 
@@ -98,22 +164,56 @@ class SlamShuffleTest {
         public List<Integer> shuffle(List<Integer> deck) {
             ArrayList<Integer> newDeck = new ArrayList<>(Collections.nCopies(deck.size(), -1));
 
-            var inc = increment;
             var i = 0;
-            var offset = 0;
             for (Integer card : deck) {
-                if ((inc * i) + offset >= deck.size()) {
-                    i = 0;
-                    if (offset == 0) {
-                        offset = increment;
-                    }
-                    offset--;
-                }
-                newDeck.set((inc * i) + offset, card);
-                i++;
+                newDeck.set(i % deck.size(), card);
+                i += increment;
             }
 
             return newDeck;
+        }
+    }
+
+    private class CompositeShuffle implements Shuffle {
+        private final List<Shuffle> shuffles = new ArrayList<>();
+
+        @Override
+        public List<Integer> shuffle(List<Integer> deck) {
+            List<Integer> result = new ArrayList<>(deck);
+
+            for (Shuffle shuffle : shuffles) {
+                result = shuffle.shuffle(result);
+            }
+
+            return result;
+        }
+
+        public void add(Shuffle shuffle) {
+            shuffles.add(shuffle);
+        }
+    }
+
+    private class ShuffleParser {
+        public Shuffle parse(String shuffles) {
+            var result = new CompositeShuffle();
+
+            for (String shuffle : shuffles.split("\n")) {
+                if (shuffle.contains("new stack")) {
+                    result.add(new NewStackShuffle());
+                }
+                if (shuffle.contains("cut")) {
+                    String[] tokens = shuffle.split(" ");
+                    int cut = Integer.parseInt(tokens[tokens.length - 1]);
+                    result.add(new CutShuffle(cut));
+                }
+                if (shuffle.contains("increment")) {
+                    String[] tokens = shuffle.split(" ");
+                    int increment = Integer.parseInt(tokens[tokens.length - 1]);
+                    result.add(new IncrementShuffle(increment));
+                }
+            }
+
+            return result;
         }
     }
 }

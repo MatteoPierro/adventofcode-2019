@@ -71,8 +71,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldIncrementCutTheDeck">
-    <configuration name="SlamShuffleTest.shouldCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldParseShuffles">
+    <configuration name="SlamShuffleTest.shouldComposeShuffle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -82,7 +82,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldCutTheDeck" />
+      <option name="METHOD_NAME" value="shouldComposeShuffle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SlamShuffleTest.shouldComposeShuffle2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
+      <option name="METHOD_NAME" value="shouldComposeShuffle2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SlamShuffleTest.shouldComposeShuffle3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
+      <option name="METHOD_NAME" value="shouldComposeShuffle3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -104,7 +136,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.shouldNegativelyCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlamShuffleTest.shouldParseShuffles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -114,50 +146,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldNegativelyCutTheDeck" />
+      <option name="METHOD_NAME" value="shouldParseShuffles" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SlamShuffleTest.shouldReverseTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldReverseTheDeck" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SpringdroidAdventureTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpringdroidAdventureTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SlamShuffleTest.shouldParseShuffles" />
+        <item itemvalue="JUnit.SlamShuffleTest.shouldComposeShuffle3" />
+        <item itemvalue="JUnit.SlamShuffleTest.shouldComposeShuffle2" />
+        <item itemvalue="JUnit.SlamShuffleTest.shouldComposeShuffle" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldIncrementCutTheDeck" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldCutTheDeck" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldReverseTheDeck" />
-        <item itemvalue="JUnit.SpringdroidAdventureTest" />
       </list>
     </recent_temporary>
   </component>
@@ -171,13 +172,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00022" summary="remove global relativeBase">
-      <created>1575925362231</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1575925362231</updated>
     </task>
     <task id="LOCAL-00023" summary="remove duplication">
       <created>1575926047902</created>
@@ -515,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577005666956</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="implement increment deck">
+      <created>1577007381474</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1577007381474</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="rotate all directions" />
     <MESSAGE value="return to the origin" />
     <MESSAGE value="introduce Node" />
     <MESSAGE value="test node" />
@@ -559,7 +559,8 @@
     <MESSAGE value="introduce ReverseShuffle" />
     <MESSAGE value="implement positive cut shuffle" />
     <MESSAGE value="implement negative cut shuffle" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement negative cut shuffle" />
+    <MESSAGE value="implement increment deck" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement increment deck" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -576,8 +577,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="40" />
+          <line>168</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
