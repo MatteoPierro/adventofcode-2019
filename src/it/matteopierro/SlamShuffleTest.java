@@ -2,6 +2,7 @@ package it.matteopierro;
 
 import com.google.common.collect.Lists;
 import org.jooq.lambda.Seq;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -18,6 +19,8 @@ class SlamShuffleTest {
         List<Integer> deck = Seq.range(0, 10007).toList();
         var shuffle = new NewStackShuffle();
         assertThat(shuffle.shuffle(deck).get(0)).isEqualTo(10006);
+        assertThat(shuffle.positionsOf(10004, deck.size())).isEqualTo(2);
+        assertThat(shuffle.positionsOf(10005, deck.size())).isEqualTo(1);
     }
 
     @Test
@@ -139,6 +142,13 @@ class SlamShuffleTest {
         assertThat(find(result, 2019)).isEqualTo(6526);
     }
 
+    @Test
+    @Disabled
+    void secondPuzzle() throws IOException {
+        String input = Files.readString(Paths.get("./input_day22"));
+        Shuffle shuffle = new ShuffleParser().parse(input);
+    }
+
     private int find(List<Integer> result, int number) {
         for (int i = 0; i < result.size(); i++) {
             if (result.get(i).equals(2019)) {
@@ -158,6 +168,10 @@ class SlamShuffleTest {
         @Override
         public List<Integer> shuffle(List<Integer> deck) {
             return Lists.reverse(deck);
+        }
+
+        public int positionsOf(int position, int deckSize) {
+            return (deckSize - 1) - position;
         }
     }
 
