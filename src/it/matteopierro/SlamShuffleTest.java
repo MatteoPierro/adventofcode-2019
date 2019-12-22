@@ -31,6 +31,21 @@ class SlamShuffleTest {
         assertThat(newDeck.size()).isEqualTo(10007);
     }
 
+    @Test
+    void shouldNegativelyCutTheDeck() {
+        List<Integer> deck = Seq.range(0, 10007).toList();
+        var shuffle = new CutShuffle(-4);
+        List<Integer> newDeck = shuffle.shuffle(deck);
+        assertThat(newDeck.get(0)).isEqualTo(10003);
+        assertThat(newDeck.get(1)).isEqualTo(10004);
+        assertThat(newDeck.get(2)).isEqualTo(10005);
+        assertThat(newDeck.get(3)).isEqualTo(10006);
+        assertThat(newDeck.get(4)).isEqualTo(0);
+        assertThat(newDeck.get(newDeck.size() - 2)).isEqualTo(10001);
+        assertThat(newDeck.get(newDeck.size() - 1)).isEqualTo(10002);
+        assertThat(newDeck.size()).isEqualTo(10007);
+    }
+
     interface Shuffle {
         List<Integer> shuffle(List<Integer> deck);
     }
@@ -52,6 +67,11 @@ class SlamShuffleTest {
 
         @Override
         public List<Integer> shuffle(List<Integer> deck) {
+            int size = this.size >= 0 ? this.size : (deck.size() + this.size) ;
+            return shuffle(deck, size);
+        }
+
+        public List<Integer> shuffle(List<Integer> deck, int size) {
             ArrayList<Integer> result = new ArrayList<>(deck.subList(size, deck.size()));
             result.addAll(deck.subList(0, size));
             return result;

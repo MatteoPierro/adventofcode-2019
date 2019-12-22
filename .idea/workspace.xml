@@ -71,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldCutTheDeck">
+  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck">
     <configuration name="SlamShuffleTest.shouldCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -83,6 +83,22 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
       <option name="METHOD_NAME" value="shouldCutTheDeck" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SlamShuffleTest.shouldNegativelyCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
+      <option name="METHOD_NAME" value="shouldNegativelyCutTheDeck" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -119,22 +135,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpringdroidAdventureTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SpringdroidAdventureTest" />
-      <option name="METHOD_NAME" value="firstPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SpringdroidAdventureTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -153,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldCutTheDeck" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldReverseTheDeck" />
         <item itemvalue="JUnit.SpringdroidAdventureTest" />
         <item itemvalue="JUnit.SpringdroidAdventureTest.secondPuzzle" />
-        <item itemvalue="JUnit.SpringdroidAdventureTest.firstPuzzle" />
       </list>
     </recent_temporary>
   </component>
@@ -171,13 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00020" summary="test copy itself">
-      <created>1575918157249</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1575918157249</updated>
     </task>
     <task id="LOCAL-00021" summary="resolve first puzzle day9">
       <created>1575924701043</created>
@@ -515,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577004476154</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="implement positive cut shuffle">
+      <created>1577004956782</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1577004956782</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="turn east" />
     <MESSAGE value="introduce directions" />
     <MESSAGE value="rotate all directions" />
     <MESSAGE value="return to the origin" />
@@ -559,7 +558,8 @@
     <MESSAGE value="first puzzle day 21" />
     <MESSAGE value="second puzzle day 21" />
     <MESSAGE value="introduce ReverseShuffle" />
-    <option name="LAST_COMMIT_MESSAGE" value="introduce ReverseShuffle" />
+    <MESSAGE value="implement positive cut shuffle" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement positive cut shuffle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
