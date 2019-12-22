@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/robot/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/robot/Direction.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +72,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SlamShuffleTest.secondPuzzle">
+  <component name="RunManager" selected="JUnit.OxygenSystemTest.firstPuzzle">
+    <configuration name="OxygenSystemTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SlamShuffleTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -135,29 +153,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.shouldNegativelyCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldNegativelyCutTheDeck" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OxygenSystemTest.firstPuzzle" />
         <item itemvalue="JUnit.SlamShuffleTest.secondPuzzle" />
         <item itemvalue="JUnit.SlamShuffleTest.name" />
         <item itemvalue="JUnit.SlamShuffleTest.firstPuzzle" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldIncrementCutTheDeck" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck" />
       </list>
     </recent_temporary>
   </component>
@@ -571,17 +573,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/OxygenSystemTest.java</url>
-          <line>68</line>
+          <line>203</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
-          <line>298</line>
+          <line>296</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
-          <line>280</line>
+          <line>278</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
