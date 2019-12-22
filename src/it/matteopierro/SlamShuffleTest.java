@@ -19,8 +19,8 @@ class SlamShuffleTest {
         List<Integer> deck = Seq.range(0, 10007).toList();
         var shuffle = new NewStackShuffle();
         assertThat(shuffle.shuffle(deck).get(0)).isEqualTo(10006);
-        assertThat(shuffle.positionsOf(10004, deck.size())).isEqualTo(2);
-        assertThat(shuffle.positionsOf(10005, deck.size())).isEqualTo(1);
+        assertThat(shuffle.positionOf(10004, deck.size())).isEqualTo(2);
+        assertThat(shuffle.positionOf(10005, deck.size())).isEqualTo(1);
     }
 
     @Test
@@ -74,6 +74,16 @@ class SlamShuffleTest {
         var shuffle = new IncrementShuffle(3);
         List<Integer> newDeck = shuffle.shuffle(deck);
         assertThat(newDeck).containsExactly(0, 7, 4, 1, 8, 5, 2, 9, 6, 3);
+        assertThat(shuffle.positionOf(0, deck.size())).isEqualTo(0);
+        assertThat(shuffle.positionOf(7, deck.size())).isEqualTo(1);
+        assertThat(shuffle.positionOf(4, deck.size())).isEqualTo(2);
+        assertThat(shuffle.positionOf(1, deck.size())).isEqualTo(3);
+        assertThat(shuffle.positionOf(8, deck.size())).isEqualTo(4);
+        assertThat(shuffle.positionOf(5, deck.size())).isEqualTo(5);
+        assertThat(shuffle.positionOf(2, deck.size())).isEqualTo(6);
+        assertThat(shuffle.positionOf(9, deck.size())).isEqualTo(7);
+        assertThat(shuffle.positionOf(6, deck.size())).isEqualTo(8);
+        assertThat(shuffle.positionOf(3, deck.size())).isEqualTo(9);
     }
 
     @Test
@@ -170,6 +180,8 @@ class SlamShuffleTest {
 
     interface Shuffle {
         List<Integer> shuffle(List<Integer> deck);
+
+        long positionOf(long position, long deckSize);
     }
 
     class NewStackShuffle implements Shuffle {
@@ -179,7 +191,8 @@ class SlamShuffleTest {
             return Lists.reverse(deck);
         }
 
-        public long positionsOf(long position, long deckSize) {
+        @Override
+        public long positionOf(long position, long deckSize) {
             return (deckSize - 1) - position;
         }
     }
@@ -203,6 +216,7 @@ class SlamShuffleTest {
             return result;
         }
 
+        @Override
         public long positionOf(long position, long deckSize) {
             if (size >= 0) {
                 long newPosition = position - size;
@@ -232,6 +246,11 @@ class SlamShuffleTest {
 
             return newDeck;
         }
+
+        @Override
+        public long positionOf(long position, long size) {
+            return position * increment % size;
+        }
     }
 
     private class CompositeShuffle implements Shuffle {
@@ -243,6 +262,17 @@ class SlamShuffleTest {
 
             for (Shuffle shuffle : shuffles) {
                 result = shuffle.shuffle(result);
+            }
+
+            return result;
+        }
+
+        @Override
+        public long positionOf(long position, long deckSize) {
+            long result = position;
+
+            for (Shuffle shuffle : shuffles) {
+                result = shuffle.positionOf(result, deckSize);
             }
 
             return result;
