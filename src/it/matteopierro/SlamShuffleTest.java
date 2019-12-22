@@ -156,9 +156,7 @@ class SlamShuffleTest {
     void firstPuzzle() throws IOException {
         String input = Files.readString(Paths.get("./input_day22"));
         Shuffle shuffle = new ShuffleParser().parse(input);
-        List<Integer> deck = Seq.range(0, 10007).toList();
-        List<Integer> result = shuffle.shuffle(deck);
-        assertThat(find(result, 2019)).isEqualTo(6526);
+        assertThat(shuffle.positionOf(2019, 10007)).isEqualTo(6526);
     }
 
     @Test
@@ -166,6 +164,8 @@ class SlamShuffleTest {
     void secondPuzzle() throws IOException {
         String input = Files.readString(Paths.get("./input_day22"));
         Shuffle shuffle = new ShuffleParser().parse(input);
+        long deckSize = 119315717514047L;
+        assertThat(shuffle.positionOf(2020, deckSize)).isEqualTo(43438952059674L);
     }
 
     private int find(List<Integer> result, int number) {

@@ -71,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldIncrementCutTheDeck">
+  <component name="RunManager" selected="JUnit.SlamShuffleTest.secondPuzzle">
     <configuration name="SlamShuffleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -103,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.shouldCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlamShuffleTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -113,7 +113,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldCutTheDeck" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -153,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SlamShuffleTest.secondPuzzle" />
+        <item itemvalue="JUnit.SlamShuffleTest.firstPuzzle" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldIncrementCutTheDeck" />
         <item itemvalue="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck" />
         <item itemvalue="JUnit.SlamShuffleTest" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldCutTheDeck" />
-        <item itemvalue="JUnit.SlamShuffleTest.firstPuzzle" />
       </list>
     </recent_temporary>
   </component>
@@ -171,13 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00027" summary="find asteroids to vaporize">
-      <created>1576014810268</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1576014810269</updated>
     </task>
     <task id="LOCAL-00028" summary="implement second puzzle day 10">
       <created>1576016650661</created>
@@ -515,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577014519677</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="calculate position in increment without create an array">
+      <created>1577015093597</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1577015093597</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="first puzzle day 17" />
     <MESSAGE value="second puzzle day 17" />
     <MESSAGE value="build a Maze" />
     <MESSAGE value="first implementation" />
@@ -559,7 +558,8 @@
     <MESSAGE value="resolve first puzzle day 22" />
     <MESSAGE value="calculate position in new stack without create an array" />
     <MESSAGE value="calculate position in cut without create an array" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculate position in cut without create an array" />
+    <MESSAGE value="calculate position in increment without create an array" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculate position in increment without create an array" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -576,12 +576,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
-          <line>233</line>
+          <line>242</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
-          <line>215</line>
+          <line>224</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
