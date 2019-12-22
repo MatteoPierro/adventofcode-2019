@@ -71,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldReverseTheDeck">
+  <component name="RunManager" selected="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck">
     <configuration name="SlamShuffleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -103,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlamShuffleTest.shouldCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -113,13 +113,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="METHOD_NAME" value="shouldCutTheDeck" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.shouldNegativelyCutTheDeck2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlamShuffleTest.shouldNegativelyCutTheDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -129,7 +129,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="shouldNegativelyCutTheDeck2" />
+      <option name="METHOD_NAME" value="shouldNegativelyCutTheDeck" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -153,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SlamShuffleTest.shouldReverseTheDeck" />
-        <item itemvalue="JUnit.SlamShuffleTest.secondPuzzle" />
-        <item itemvalue="JUnit.SlamShuffleTest.firstPuzzle" />
+        <item itemvalue="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck" />
         <item itemvalue="JUnit.SlamShuffleTest" />
-        <item itemvalue="JUnit.SlamShuffleTest.shouldNegativelyCutTheDeck2" />
+        <item itemvalue="JUnit.SlamShuffleTest.shouldCutTheDeck" />
+        <item itemvalue="JUnit.SlamShuffleTest.firstPuzzle" />
+        <item itemvalue="JUnit.SlamShuffleTest.shouldReverseTheDeck" />
       </list>
     </recent_temporary>
   </component>
@@ -171,13 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00025" summary="attempt of implement the line of sight">
-      <created>1575994241212</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1575994241212</updated>
     </task>
     <task id="LOCAL-00026" summary="solve first puzzle day 10">
       <created>1576011745300</created>
@@ -515,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577010724947</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="calculate position in new stack without create an array">
+      <created>1577013072715</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1577013072715</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="test node" />
     <MESSAGE value="second puzzle day 16" />
     <MESSAGE value="first puzzle day 17" />
     <MESSAGE value="second puzzle day 17" />
@@ -559,7 +558,8 @@
     <MESSAGE value="implement increment deck" />
     <MESSAGE value="parse shuffle commands" />
     <MESSAGE value="resolve first puzzle day 22" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolve first puzzle day 22" />
+    <MESSAGE value="calculate position in new stack without create an array" />
+    <option name="LAST_COMMIT_MESSAGE" value="calculate position in new stack without create an array" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -576,10 +576,20 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
-          <line>213</line>
+          <line>226</line>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
+          <line>208</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="position + 4" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

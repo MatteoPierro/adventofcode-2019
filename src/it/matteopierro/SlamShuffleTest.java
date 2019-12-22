@@ -34,6 +34,12 @@ class SlamShuffleTest {
         assertThat(newDeck.get(newDeck.size() - 2)).isEqualTo(1);
         assertThat(newDeck.get(newDeck.size() - 1)).isEqualTo(2);
         assertThat(newDeck.size()).isEqualTo(10007);
+        assertThat(shuffle.positionOf(10004, deck.size())).isEqualTo(find(newDeck, 10004));
+        assertThat(shuffle.positionOf(10006, deck.size())).isEqualTo(find(newDeck, 10006));
+        assertThat(shuffle.positionOf(0, deck.size())).isEqualTo(find(newDeck, 0));
+        assertThat(shuffle.positionOf(1, deck.size())).isEqualTo(find(newDeck, 1));
+        assertThat(shuffle.positionOf(2, deck.size())).isEqualTo(find(newDeck, 2));
+        assertThat(shuffle.positionOf(3, deck.size())).isEqualTo(find(newDeck, 3));
     }
 
     @Test
@@ -49,6 +55,9 @@ class SlamShuffleTest {
         assertThat(newDeck.get(newDeck.size() - 2)).isEqualTo(10001);
         assertThat(newDeck.get(newDeck.size() - 1)).isEqualTo(10002);
         assertThat(newDeck.size()).isEqualTo(10007);
+        assertThat(shuffle.positionOf(10003, deck.size())).isEqualTo(find(newDeck, 10003));
+        assertThat(shuffle.positionOf(0, deck.size())).isEqualTo(4);
+        assertThat(shuffle.positionOf(10002, deck.size())).isEqualTo(10006);
     }
 
     @Test
@@ -151,7 +160,7 @@ class SlamShuffleTest {
 
     private int find(List<Integer> result, int number) {
         for (int i = 0; i < result.size(); i++) {
-            if (result.get(i).equals(2019)) {
+            if (result.get(i).equals(number)) {
                 return i;
             }
         }
@@ -170,7 +179,7 @@ class SlamShuffleTest {
             return Lists.reverse(deck);
         }
 
-        public int positionsOf(int position, int deckSize) {
+        public long positionsOf(long position, long deckSize) {
             return (deckSize - 1) - position;
         }
     }
@@ -192,6 +201,15 @@ class SlamShuffleTest {
             ArrayList<Integer> result = new ArrayList<>(deck.subList(size, deck.size()));
             result.addAll(deck.subList(0, size));
             return result;
+        }
+
+        public long positionOf(long position, long deckSize) {
+            if (size >= 0) {
+                long newPosition = position - size;
+                return newPosition >= 0 ? newPosition : deckSize + newPosition;
+            } else {
+                return (position + Math.abs(size)) % deckSize;
+            }
         }
     }
 
