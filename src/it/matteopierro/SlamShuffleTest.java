@@ -2,13 +2,15 @@ package it.matteopierro;
 
 import com.google.common.collect.Lists;
 import org.jooq.lambda.Seq;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -160,12 +162,64 @@ class SlamShuffleTest {
     }
 
     @Test
-    @Disabled
     void secondPuzzle() throws IOException {
         String input = Files.readString(Paths.get("./input_day22"));
-        Shuffle shuffle = new ShuffleParser().parse(input);
-        long deckSize = 119315717514047L;
-        assertThat(shuffle.positionOf(2020, deckSize)).isEqualTo(43438952059674L);
+        assertThat(solveSecond(2020, 119315717514047L, 101741582076661L, input.split("\n")))
+                .isEqualTo(79855812422607L);
+    }
+
+    public long solveSecond(long position, long deckSize, long times, String[] instructions) {
+        var a = BigInteger.ONE;
+        var b = BigInteger.ZERO;
+
+        final var m = BigInteger.valueOf(deckSize);
+
+        for (String instruction : instructions) {
+            if (instruction.equals("deal into new stack")) {
+                // x → -x - 1; ax + b → -ax - b - 1
+                a = a.negate().mod(m);
+                b = b.not().mod(m); // b.not() = -b - 1
+            }
+            if (instruction.contains("cut")) {
+                // x → x - i; ax + b → ax + b - i
+                String[] tokens = instruction.split(" ");
+                int i = Integer.parseInt(tokens[tokens.length - 1]);
+                b = b.subtract(BigInteger.valueOf(i)).mod(m);
+            }
+
+            if (instruction.contains("increment")) {
+                // x → x · i; ax + b → aix + bi
+                String[] tokens = instruction.split(" ");
+                int increment = Integer.parseInt(tokens[tokens.length - 1]);
+                a = a.multiply(BigInteger.valueOf(increment)).mod(m);
+                b = b.multiply(BigInteger.valueOf(increment)).mod(m);
+            }
+        }
+
+        // invert basis function. f^-1(x) = (a^-1)(x - b)
+        a = a.modInverse(m);
+        b = b.negate().multiply(a).mod(m);
+
+        // start exponentiation for function, f^k(x) = cx + d
+        var c = BigInteger.ONE;
+        var d = BigInteger.ZERO;
+        var e = times;
+
+        // exponentiation by squaring. Equivalent to computing
+        // ⌈ a 0 ⌉ k
+        // ⌊ b 1 ⌋
+        while (e > 0) {
+            if ((e & 1) == 1L) {
+                // a(cx + d) + b = acx + (ad + b)
+                c = a.multiply(c).mod(m);
+                d = ((a.multiply(d)).add(b)).mod(m);
+            }
+            e = e >> 1;
+            b = a.multiply(b).add(b).mod(m);
+            a = a.multiply(a).mod(m);
+        }
+
+        return BigInteger.valueOf(position).multiply(c).add(d).mod(m).longValue();
     }
 
     private int find(List<Integer> result, int number) {
