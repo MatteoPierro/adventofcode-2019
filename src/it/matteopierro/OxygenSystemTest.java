@@ -34,6 +34,16 @@ class OxygenSystemTest {
         assertThat(ship.distanceToOxygen()).isEqualTo(208);
     }
 
+    @Test
+    void secondPuzzle() throws Exception {
+        String program = Files.readString(Paths.get("./input_day15"));
+        var droid = new Droid(program);
+        var ship = new ShipState(droid);
+        ship.exploreShip();
+
+        assertThat(ship.longestPathFromOxygen()).isEqualTo(306);
+    }
+
     private static class Droid extends ComputerListener {
         private static final Tuple2<Integer, Integer> STARTING_POSITION = tuple(0, 0);
 
@@ -59,6 +69,16 @@ class OxygenSystemTest {
 
         public Tuple2<Integer, Integer> getLocation() {
             return location;
+        }
+
+        private static String ordinal(Direction direction) {
+            switch (direction) {
+                case NORTH: return "1";
+                case SOUTH: return "2";
+                case WEST: return "3";
+                case EAST: return "4";
+            }
+            throw new UnsupportedOperationException("Unknown direction: " + direction);
         }
 
         @Override
@@ -96,6 +116,28 @@ class OxygenSystemTest {
                     .collect(toSet());
         }
 
+        public int distanceToOxygen() throws InterruptedException {
+            if (oxygen == null) {
+                exploreShip();
+            }
+            return new DijkstraShortestPath<>(graph)
+                    .getPaths(Droid.STARTING_POSITION)
+                    .getPath(oxygen)
+                    .getLength();
+        }
+
+        public int longestPathFromOxygen() throws InterruptedException {
+            if (oxygen == null) {
+                exploreShip();
+            }
+            var paths = new DijkstraShortestPath<>(graph).getPaths(oxygen);
+            return graph.vertexSet().stream()
+                    .filter(vertex -> !vertex.equals(oxygen))
+                    .mapToInt(vertex -> paths.getPath(vertex).getLength())
+                    .max()
+                    .orElse(0);
+        }
+
         private synchronized void exploreShip() throws InterruptedException {
             while (!tilesToVisit.isEmpty()) {
                 // Find the next point we need to explore
@@ -107,11 +149,9 @@ class OxygenSystemTest {
                 }
 
                 // Travel to our exploration point
-                var directions = getDirections(tile).iterator();
                 State state = null;
                 Tuple2<Integer, Integer> previousLocation = null;
-                while (directions.hasNext()) {
-                    var direction = directions.next();
+                for (Direction direction : getDirections(tile)) {
                     previousLocation = droid.getLocation();
                     state = droid.move(direction);
                 }
@@ -134,16 +174,6 @@ class OxygenSystemTest {
                     tilesToVisit.push(direction.move(droid.getLocation()));
                 }
             }
-        }
-
-        synchronized int distanceToOxygen() throws InterruptedException {
-            if (oxygen == null) {
-                exploreShip();
-            }
-            return new DijkstraShortestPath<>(graph)
-                    .getPaths(Droid.STARTING_POSITION)
-                    .getPath(oxygen)
-                    .getLength();
         }
 
         private List<Direction> getDirections(Tuple2<Integer, Integer> tile) {
@@ -176,7 +206,6 @@ class OxygenSystemTest {
         }
     }
 
-
     enum State {
         WALL,
         EMPTY,
@@ -190,15 +219,5 @@ class OxygenSystemTest {
             }
             throw new IllegalArgumentException("Unknown state value: " + value);
         }
-    }
-
-    private static String ordinal(Direction direction) {
-        switch (direction) {
-            case NORTH: return "1";
-            case SOUTH: return "2";
-            case WEST: return "3";
-            case EAST: return "4";
-        }
-        throw new UnsupportedOperationException("Unknown direction: " + direction);
     }
 }
