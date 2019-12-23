@@ -3,6 +3,7 @@ package it.matteopierro;
 import it.matteopierro.computer.Computer;
 import it.matteopierro.computer.ComputerListener;
 import org.jooq.lambda.Seq;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
@@ -67,7 +68,9 @@ class CategorySixTest {
     @Test
     void shouldReturnPacketWithAddress255() throws InterruptedException {
         var result = new LinkedBlockingQueue<Packet>();
-        var sw = new Switch(result);
+        var sw = new Switch();
+        var nat = new Nat(result);
+        sw.attachNat(nat);
 
         new Thread(() -> {
             var packet = new Packet("255", "8", "4");
@@ -82,7 +85,9 @@ class CategorySixTest {
     void firstPuzzle() throws Exception {
         String program = Files.readString(Paths.get("./input_day23"));
         var result = new LinkedBlockingQueue<Packet>();
-        var sw = new Switch(result);
+        var sw = new Switch();
+        var nat = new Nat(result);
+        sw.attachNat(nat);
 
         List<NetworkInterface> nics = Seq.range(0, 50)
                 .map(address -> {
@@ -99,7 +104,31 @@ class CategorySixTest {
         assertThat(packet.y).isEqualTo("26163");
     }
 
+    @Test
+    @Disabled
+    void secondPuzzle() throws Exception {
+        String program = Files.readString(Paths.get("./input_day23"));
+        var sw = new Switch();
+        var nat = new Nat();
+        sw.attachNat(nat);
+
+        List<NetworkInterface> nics = Seq.range(0, 50)
+                .map(address -> {
+                    var nic = new NetworkInterface(address, sw);
+                    sw.attach(address, nic);
+                    return nic;
+                }).toList();
+
+        nics.forEach( nic -> {
+            new Thread(() -> new Computer().execute(program, nic)).start();
+        });
+
+        String y = nat.twoTimesSentY.take();
+        assertThat(y).isEqualTo("26163");
+    }
+
     private static class NetworkInterface extends ComputerListener {
+        private final String id;
         private String identifier;
         private final Switch sw;
         private Queue<Packet> packetQueue = new LinkedList<>();
@@ -107,6 +136,7 @@ class CategorySixTest {
         private List<String> currentPacketToReceive = new ArrayList<>();
 
         public NetworkInterface(int identifier, Switch sw) {
+            this.id = String.valueOf(identifier);
             this.identifier = String.valueOf(identifier);
             this.sw = sw;
         }
@@ -120,14 +150,18 @@ class CategorySixTest {
             if (identifier != null) {
                 var id = identifier;
                 identifier = null;
+                sw.notEmpty(id);
                 return id;
             }
             if (!currentPacketToSent.isEmpty()) {
+                sw.notEmpty(id);
                 return currentPacketToSent.remove(0);
             }
             if (packetQueue.isEmpty()) {
+                sw.empty(id);
                 return "-1";
             }
+            sw.notEmpty(id);
             Packet packet = packetQueue.poll();
             currentPacketToSent.add(packet.x);
             currentPacketToSent.add(packet.y);
@@ -169,22 +203,15 @@ class CategorySixTest {
     }
 
     private static class Switch {
-        private final LinkedBlockingQueue<Packet> result;
+        private Nat nat = new Nat();
         private Map<String, NetworkInterface> nics = new HashMap<>();
         private Map<String, List<Packet>> buffers = new HashMap<>();
-
-        public Switch() {
-            result = new LinkedBlockingQueue<>();
-        }
-
-        public Switch(LinkedBlockingQueue<Packet> result) {
-            this.result = result;
-        }
+        private Map<String, Boolean> idles = new HashMap<>();
 
         public synchronized void route(Packet packet) {
             var address = packet.address;
             if (address.equals("255")) {
-                result.add(packet);
+                nat.send(packet);
                 return;
             }
             if (nics.containsKey(address)) {
@@ -197,10 +224,58 @@ class CategorySixTest {
         }
 
         public void attach(int address, NetworkInterface nic) {
+            idles.put(String.valueOf(address), false);
             nics.put(String.valueOf(address), nic);
             List<Packet> buffer = buffers.getOrDefault(String.valueOf(address), new ArrayList<>());
             buffer.forEach(nic::addPacket);
             buffer.clear();
+        }
+
+        public void attachNat(Nat nat) {
+            this.nat = nat;
+        }
+
+        public synchronized void empty(String identifier) {
+            idles.put(identifier, true);
+            if (idles.entrySet().stream().allMatch(Map.Entry::getValue)) {
+                var nic = nics.get("0");
+                nat.sendPacketTo(nic);
+            }
+        }
+
+        public void notEmpty(String identifier) {
+            idles.put(identifier, false);
+        }
+    }
+
+    private static class Nat {
+        private final LinkedBlockingQueue<Packet> firstReceivedPacket;
+        private final LinkedBlockingQueue<String> twoTimesSentY = new LinkedBlockingQueue<>();
+        private Packet lastReceivedPacket;
+        private String lastY;
+
+        public Nat() {
+            this(new LinkedBlockingQueue<>());
+        }
+
+        public Nat(LinkedBlockingQueue<Packet> firstReceivedPacket) {
+            this.firstReceivedPacket = firstReceivedPacket;
+        }
+
+        public synchronized void send(Packet packet) {
+            this.firstReceivedPacket.add(packet);
+            this.lastReceivedPacket = packet;
+        }
+
+        public synchronized void sendPacketTo(NetworkInterface nic) {
+            if (lastReceivedPacket == null) {
+                return;
+            }
+            if (lastReceivedPacket.y.equals(lastY)) {
+                twoTimesSentY.add(lastY);
+            }
+            lastY = lastReceivedPacket.y;
+            nic.addPacket(lastReceivedPacket);
         }
     }
 }

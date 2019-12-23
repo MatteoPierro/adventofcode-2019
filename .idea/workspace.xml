@@ -71,7 +71,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CategorySixTest.firstPuzzle">
+  <component name="RunManager" selected="JUnit.CategorySixTest">
+    <configuration name="CategorySixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CategorySixTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -88,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategorySixTest.networkWithTwoNics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CategorySixTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -98,7 +113,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
-      <option name="METHOD_NAME" value="networkWithTwoNics" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -115,22 +130,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
       <option name="METHOD_NAME" value="shouldReturnPacketWithAddress255" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CategorySixTest.shouldSendPackets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
-      <option name="METHOD_NAME" value="shouldSendPackets" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -154,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CategorySixTest" />
+        <item itemvalue="JUnit.CategorySixTest.secondPuzzle" />
         <item itemvalue="JUnit.CategorySixTest.firstPuzzle" />
         <item itemvalue="JUnit.CategorySixTest.shouldReturnPacketWithAddress255" />
         <item itemvalue="JUnit.CategorySixTest.switchBufferResults" />
-        <item itemvalue="JUnit.CategorySixTest.networkWithTwoNics" />
-        <item itemvalue="JUnit.CategorySixTest.shouldSendPackets" />
       </list>
     </recent_temporary>
   </component>
@@ -172,27 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00031" summary="resolve first puzzle">
-      <created>1576084466842</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1576084466842</updated>
-    </task>
-    <task id="LOCAL-00032" summary="solve second puzzle challenge">
-      <created>1576088146682</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1576088146682</updated>
-    </task>
-    <task id="LOCAL-00033" summary="calculate Gravity position">
-      <created>1576134423664</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1576134423664</updated>
     </task>
     <task id="LOCAL-00034" summary="refactor position for gravity">
       <created>1576134702572</created>
@@ -516,7 +494,28 @@
       <option name="project" value="LOCAL" />
       <updated>1577091587391</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="solve first puzzle day 23">
+      <created>1577091961141</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1577091961141</updated>
+    </task>
+    <task id="LOCAL-00081" summary="solve first puzzle day 23">
+      <created>1577091993187</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1577091993187</updated>
+    </task>
+    <task id="LOCAL-00082" summary="introduce Nat">
+      <created>1577092724203</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1577092724203</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -535,8 +534,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="first attempt" />
-    <MESSAGE value="solve first puzzle day19" />
     <MESSAGE value="solve attempt second puzzle day19" />
     <MESSAGE value="find tiles" />
     <MESSAGE value="solve first example" />
@@ -560,7 +557,9 @@
     <MESSAGE value="create a switch" />
     <MESSAGE value="add buffers to switch" />
     <MESSAGE value="return as result the packet with address 255" />
-    <option name="LAST_COMMIT_MESSAGE" value="return as result the packet with address 255" />
+    <MESSAGE value="solve first puzzle day 23" />
+    <MESSAGE value="introduce Nat" />
+    <option name="LAST_COMMIT_MESSAGE" value="introduce Nat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -579,6 +578,11 @@
           <url>file://$PROJECT_DIR$/src/it/matteopierro/SlamShuffleTest.java</url>
           <line>278</line>
           <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java</url>
+          <line>263</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
