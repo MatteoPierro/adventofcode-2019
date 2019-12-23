@@ -122,7 +122,7 @@ class CategorySixTest {
         });
 
         String y = nat.twoTimesSentY.take();
-        assertThat(y).isEqualTo("26163");
+        assertThat(y).isEqualTo("18733");
     }
 
     private static class NetworkInterface extends ComputerListener {
@@ -148,11 +148,9 @@ class CategorySixTest {
             if (identifier != null) {
                 var id = identifier;
                 identifier = null;
-                sw.notEmpty(id);
                 return id;
             }
             if (!currentPacketToSent.isEmpty()) {
-                sw.notEmpty(id);
                 return currentPacketToSent.remove(0);
             }
             if (packetQueue.isEmpty()) {
