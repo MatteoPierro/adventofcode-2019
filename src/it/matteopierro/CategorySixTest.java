@@ -46,6 +46,19 @@ class CategorySixTest {
         assertThat(nic2.onReadRequested()).isEqualTo("5");
     }
 
+    @Test
+    void switchBufferResults() {
+        var sw = new Switch();
+        var packet = new Packet("0", "8", "5");
+        sw.route(packet);
+        var nic1 = new NetworkInterface(0, sw);
+        sw.attach(0, nic1);
+        assertThat(nic1.onReadRequested()).isEqualTo("0");
+        assertThat(nic1.onReadRequested()).isEqualTo("8");
+        assertThat(nic1.onReadRequested()).isEqualTo("5");
+        assertThat(nic1.onReadRequested()).isEqualTo("-1");
+    }
+
     private static class NetworkInterface extends ComputerListener {
         private String identifier;
         private final Switch sw;
@@ -117,16 +130,24 @@ class CategorySixTest {
 
     private static class Switch {
         private Map<String, NetworkInterface> nics = new HashMap<>();
+        private Map<String, List<Packet>> buffers = new HashMap<>();
 
         public void route(Packet packet) {
             var address = packet.address;
             if (nics.containsKey(address)) {
                 nics.get(address).addPacket(packet);
+            } else {
+                List<Packet> queue = buffers.getOrDefault(address, new ArrayList<>());
+                queue.add(packet);
+                buffers.put(address, queue);
             }
         }
 
         public void attach(int address, NetworkInterface nic) {
             nics.put(String.valueOf(address), nic);
+            List<Packet> buffer = buffers.getOrDefault(String.valueOf(address), new ArrayList<>());
+            buffer.forEach(nic::addPacket);
+            buffer.clear();
         }
     }
 }

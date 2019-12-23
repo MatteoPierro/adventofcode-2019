@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CategorySixTest.networkWithTwoNics">
+  <component name="RunManager" selected="JUnit.CategorySixTest.switchBufferResults">
     <configuration name="CategorySixTest.networkWithTwoNics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -98,6 +98,22 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
       <option name="METHOD_NAME" value="shouldSendPackets" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CategorySixTest.switchBufferResults" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
+      <option name="METHOD_NAME" value="switchBufferResults" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,29 +150,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlamShuffleTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.SlamShuffleTest" />
-      <option name="METHOD_NAME" value="secondPuzzle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CategorySixTest.switchBufferResults" />
         <item itemvalue="JUnit.CategorySixTest.networkWithTwoNics" />
         <item itemvalue="JUnit.CategorySixTest.shouldSendPackets" />
         <item itemvalue="JUnit.OxygenSystemTest" />
         <item itemvalue="JUnit.OxygenSystemTest.firstPuzzle" />
-        <item itemvalue="JUnit.SlamShuffleTest.secondPuzzle" />
       </list>
     </recent_temporary>
   </component>
@@ -170,13 +170,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00028" summary="implement second puzzle day 10">
-      <created>1576016650661</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1576016650661</updated>
     </task>
     <task id="LOCAL-00029" summary="implement first part of the robot">
       <created>1576048551672</created>
@@ -514,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577015093597</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="create a switch">
+      <created>1577090833012</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1577090833012</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -533,7 +533,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="second puzzle day 17" />
     <MESSAGE value="build a Maze" />
     <MESSAGE value="first implementation" />
     <MESSAGE value="first attempt" />
@@ -558,7 +557,8 @@
     <MESSAGE value="calculate position in new stack without create an array" />
     <MESSAGE value="calculate position in cut without create an array" />
     <MESSAGE value="calculate position in increment without create an array" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculate position in increment without create an array" />
+    <MESSAGE value="create a switch" />
+    <option name="LAST_COMMIT_MESSAGE" value="create a switch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -580,7 +580,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java</url>
-          <line>121</line>
+          <line>134</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
