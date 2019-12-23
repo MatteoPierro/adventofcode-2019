@@ -4,6 +4,7 @@ import it.matteopierro.computer.ComputerListener;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,6 +58,20 @@ class CategorySixTest {
         assertThat(nic1.onReadRequested()).isEqualTo("8");
         assertThat(nic1.onReadRequested()).isEqualTo("5");
         assertThat(nic1.onReadRequested()).isEqualTo("-1");
+    }
+
+    @Test
+    void shouldReturnPacketWithAddress255() throws InterruptedException {
+        var result = new LinkedBlockingQueue<Packet>();
+        var sw = new Switch(result);
+
+        new Thread(() -> {
+            var packet = new Packet("255", "8", "4");
+            sw.route(packet);
+        }).start();
+
+        Packet packet = result.take();
+        assertThat(packet.y).isEqualTo("4");
     }
 
     private static class NetworkInterface extends ComputerListener {
@@ -129,11 +144,24 @@ class CategorySixTest {
     }
 
     private static class Switch {
+        private final LinkedBlockingQueue<Packet> result;
         private Map<String, NetworkInterface> nics = new HashMap<>();
         private Map<String, List<Packet>> buffers = new HashMap<>();
 
+        public Switch() {
+            result = new LinkedBlockingQueue<>();
+        }
+
+        public Switch(LinkedBlockingQueue<Packet> result) {
+            this.result = result;
+        }
+
         public void route(Packet packet) {
             var address = packet.address;
+            if (address.equals("255")) {
+                result.add(packet);
+                return;
+            }
             if (nics.containsKey(address)) {
                 nics.get(address).addPacket(packet);
             } else {
