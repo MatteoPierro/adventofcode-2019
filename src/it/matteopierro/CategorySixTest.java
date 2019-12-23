@@ -1,8 +1,12 @@
 package it.matteopierro;
 
+import it.matteopierro.computer.Computer;
 import it.matteopierro.computer.ComputerListener;
+import org.jooq.lambda.Seq;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -69,6 +73,27 @@ class CategorySixTest {
             var packet = new Packet("255", "8", "4");
             sw.route(packet);
         }).start();
+
+        Packet packet = result.take();
+        assertThat(packet.y).isEqualTo("4");
+    }
+
+    @Test
+    void firstPuzzle() throws Exception {
+        String program = Files.readString(Paths.get("./input_day23"));
+        var result = new LinkedBlockingQueue<Packet>();
+        var sw = new Switch(result);
+
+        List<NetworkInterface> nics = Seq.range(0, 50)
+                .map(address -> {
+                    var nic = new NetworkInterface(address, sw);
+                    sw.attach(address, nic);
+                    return nic;
+                }).toList();
+
+        nics.forEach( nic -> {
+            new Thread(() -> new Computer().execute(program, nic)).start();
+        });
 
         Packet packet = result.take();
         assertThat(packet.y).isEqualTo("4");
@@ -156,7 +181,7 @@ class CategorySixTest {
             this.result = result;
         }
 
-        public void route(Packet packet) {
+        public synchronized void route(Packet packet) {
             var address = packet.address;
             if (address.equals("255")) {
                 result.add(packet);

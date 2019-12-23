@@ -71,7 +71,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CategorySixTest.shouldReturnPacketWithAddress255">
+  <component name="RunManager" selected="JUnit.CategorySixTest.firstPuzzle">
+    <configuration name="CategorySixTest.firstPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
+      <option name="METHOD_NAME" value="firstPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CategorySixTest.networkWithTwoNics" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -136,28 +152,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OxygenSystemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.OxygenSystemTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CategorySixTest.firstPuzzle" />
         <item itemvalue="JUnit.CategorySixTest.shouldReturnPacketWithAddress255" />
         <item itemvalue="JUnit.CategorySixTest.switchBufferResults" />
         <item itemvalue="JUnit.CategorySixTest.networkWithTwoNics" />
         <item itemvalue="JUnit.CategorySixTest.shouldSendPackets" />
-        <item itemvalue="JUnit.OxygenSystemTest" />
       </list>
     </recent_temporary>
   </component>
@@ -171,13 +172,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00030" summary="introduce Directions">
-      <created>1576063743836</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1576063743836</updated>
     </task>
     <task id="LOCAL-00031" summary="resolve first puzzle">
       <created>1576084466842</created>
@@ -515,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577091197602</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="return as result the packet with address 255">
+      <created>1577091587391</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1577091587391</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +535,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="first implementation" />
     <MESSAGE value="first attempt" />
     <MESSAGE value="solve first puzzle day19" />
     <MESSAGE value="solve attempt second puzzle day19" />
@@ -559,7 +559,8 @@
     <MESSAGE value="calculate position in increment without create an array" />
     <MESSAGE value="create a switch" />
     <MESSAGE value="add buffers to switch" />
-    <option name="LAST_COMMIT_MESSAGE" value="add buffers to switch" />
+    <MESSAGE value="return as result the packet with address 255" />
+    <option name="LAST_COMMIT_MESSAGE" value="return as result the packet with address 255" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
