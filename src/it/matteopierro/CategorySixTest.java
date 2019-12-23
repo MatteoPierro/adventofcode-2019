@@ -3,7 +3,6 @@ package it.matteopierro;
 import it.matteopierro.computer.Computer;
 import it.matteopierro.computer.ComputerListener;
 import org.jooq.lambda.Seq;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
@@ -105,7 +104,6 @@ class CategorySixTest {
     }
 
     @Test
-    @Disabled
     void secondPuzzle() throws Exception {
         String program = Files.readString(Paths.get("./input_day23"));
         var sw = new Switch();
@@ -276,6 +274,7 @@ class CategorySixTest {
             }
             lastY = lastReceivedPacket.y;
             nic.addPacket(lastReceivedPacket);
+            lastReceivedPacket = null;
         }
     }
 }

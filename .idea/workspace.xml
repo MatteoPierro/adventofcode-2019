@@ -71,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CategorySixTest">
+  <component name="RunManager" selected="JUnit.CategorySixTest.secondPuzzle">
     <configuration name="CategorySixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -153,8 +153,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CategorySixTest" />
         <item itemvalue="JUnit.CategorySixTest.secondPuzzle" />
+        <item itemvalue="JUnit.CategorySixTest" />
         <item itemvalue="JUnit.CategorySixTest.firstPuzzle" />
         <item itemvalue="JUnit.CategorySixTest.shouldReturnPacketWithAddress255" />
         <item itemvalue="JUnit.CategorySixTest.switchBufferResults" />
@@ -583,6 +583,16 @@
           <url>file://$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java</url>
           <line>263</line>
           <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java</url>
+          <line>274</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java</url>
+          <line>268</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
