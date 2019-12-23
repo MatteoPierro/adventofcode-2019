@@ -96,7 +96,7 @@ class CategorySixTest {
         });
 
         Packet packet = result.take();
-        assertThat(packet.y).isEqualTo("4");
+        assertThat(packet.y).isEqualTo("26163");
     }
 
     private static class NetworkInterface extends ComputerListener {
