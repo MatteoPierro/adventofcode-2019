@@ -3,6 +3,9 @@ package it.matteopierro;
 import org.jooq.lambda.tuple.Tuple2;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -123,6 +126,16 @@ public class PlanetOfDiscordTest {
                         "#....\n" +
                         ".#...\n");
         assertThat(world.biodiversity()).isEqualTo(2129920L);
+    }
+
+    @Test
+    void firstPuzzle() throws IOException {
+        var input = Files.readString(Paths.get("./input_day24"));
+
+        var world = new World(input);
+        world.evolveUntilRepeating();
+
+        assertThat(world.biodiversity()).isEqualTo(27777901L);
     }
 
     private class World {
