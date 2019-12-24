@@ -70,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PlanetOfDiscordTest.firstPuzzle">
+  <component name="RunManager" selected="JUnit.PlanetOfDiscordTest">
     <configuration name="PlanetOfDiscordTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -102,6 +102,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PlanetOfDiscordTest.secondPuzzle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
+      <option name="METHOD_NAME" value="secondPuzzle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PlanetOfDiscordTest.shouldEvolveSeveralTimes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -113,22 +129,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
       <option name="METHOD_NAME" value="shouldEvolveSeveralTimes" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlanetOfDiscordTest.shouldEvolveTwice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
-      <option name="METHOD_NAME" value="shouldEvolveTwice" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -152,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlanetOfDiscordTest" />
+        <item itemvalue="JUnit.PlanetOfDiscordTest.secondPuzzle" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.firstPuzzle" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.shouldFindRepeatingWorld" />
-        <item itemvalue="JUnit.PlanetOfDiscordTest" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.shouldEvolveSeveralTimes" />
-        <item itemvalue="JUnit.PlanetOfDiscordTest.shouldEvolveTwice" />
       </list>
     </recent_temporary>
   </component>
@@ -170,20 +170,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00039" summary="solve second challenge day 12">
-      <created>1576188489362</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1576188489362</updated>
-    </task>
-    <task id="LOCAL-00040" summary="solve first challenge day 12">
-      <created>1576221119597</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1576221119597</updated>
     </task>
     <task id="LOCAL-00041" summary="calculate ore">
       <created>1576316908885</created>
@@ -514,7 +500,21 @@
       <option name="project" value="LOCAL" />
       <updated>1577176367970</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="solve first puzzle day 24">
+      <created>1577176467983</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1577176467984</updated>
+    </task>
+    <task id="LOCAL-00089" summary="solve second puzzle day 24">
+      <created>1577212566260</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1577212566260</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -533,8 +533,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="calculate inner and outer portals" />
-    <MESSAGE value="first attempt to resolve part 2" />
     <MESSAGE value="second attempt to resolve part 2" />
     <MESSAGE value="third attempt to resolve part 2" />
     <MESSAGE value="first puzzle day 21" />
@@ -558,7 +556,9 @@
     <MESSAGE value="evolve world" />
     <MESSAGE value="find repeating world" />
     <MESSAGE value="calculate biodiversity" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculate biodiversity" />
+    <MESSAGE value="solve first puzzle day 24" />
+    <MESSAGE value="solve second puzzle day 24" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve second puzzle day 24" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -592,11 +592,6 @@
           <url>file://$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java</url>
           <line>266</line>
           <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java</url>
-          <line>182</line>
-          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
