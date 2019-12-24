@@ -104,6 +104,26 @@ public class PlanetOfDiscordTest {
                         "##...\n");
     }
 
+    @Test
+    void shouldFindRepeatingWorld() {
+        var input =
+                "....#\n" +
+                        "#..#.\n" +
+                        "#..##\n" +
+                        "..#..\n" +
+                        "#....\n";
+
+        var world = new World(input);
+        world.evolveUntilRepeating();
+
+        assertThat(world.toString()).isEqualTo(
+                ".....\n" +
+                        ".....\n" +
+                        ".....\n" +
+                        "#....\n" +
+                        ".#...\n");
+    }
+
     private class World {
         private Set<Tuple2<Integer, Integer>> livingCells = new HashSet<>();
         private List<Tuple2<Integer, Integer>> NEIGHBOUR_DELTA = List.of(
@@ -180,6 +200,14 @@ public class PlanetOfDiscordTest {
             }
 
             return result.toString();
+        }
+
+        public void evolveUntilRepeating() {
+            var previousWorlds = new HashSet<Set<Tuple2<Integer, Integer>>>();
+            while(!previousWorlds.contains(livingCells)) {
+                previousWorlds.add(livingCells);
+                tick();
+            }
         }
     }
 }

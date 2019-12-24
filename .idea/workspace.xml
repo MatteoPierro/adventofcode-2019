@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="evolve world">
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PlanetOfDiscordTest">
+  <component name="RunManager" selected="JUnit.PlanetOfDiscordTest.shouldFindRepeatingWorld">
     <configuration name="PlanetOfDiscordTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -83,22 +82,6 @@
       <option name="PACKAGE_NAME" value="it.matteopierro" />
       <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlanetOfDiscordTest.shouldCreateWorld" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
-      <option name="METHOD_NAME" value="shouldCreateWorld" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,13 +134,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PlanetOfDiscordTest.shouldFindRepeatingWorld" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="it.matteopierro" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
+      <option name="METHOD_NAME" value="shouldFindRepeatingWorld" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlanetOfDiscordTest.shouldFindRepeatingWorld" />
         <item itemvalue="JUnit.PlanetOfDiscordTest" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.shouldEvolveSeveralTimes" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.shouldEvolveTwice" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.shouldEvolve" />
-        <item itemvalue="JUnit.PlanetOfDiscordTest.shouldCreateWorld" />
       </list>
     </recent_temporary>
   </component>
@@ -171,13 +170,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00036" summary="introduce Moon">
-      <created>1576137712647</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1576137712647</updated>
     </task>
     <task id="LOCAL-00037" summary="calculate velocity">
       <created>1576152005927</created>
@@ -515,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577172656371</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="evolve world">
+      <created>1577175688408</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1577175688408</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +533,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="solve first example" />
     <MESSAGE value="resolve second example" />
     <MESSAGE value="solve first puzzle" />
     <MESSAGE value="calculate inner and outer portals" />
@@ -559,7 +557,8 @@
     <MESSAGE value="introduce Nat" />
     <MESSAGE value="first attempt second part" />
     <MESSAGE value="parse the world" />
-    <option name="LAST_COMMIT_MESSAGE" value="parse the world" />
+    <MESSAGE value="evolve world" />
+    <option name="LAST_COMMIT_MESSAGE" value="evolve world" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -596,7 +595,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java</url>
-          <line>102</line>
+          <line>164</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
