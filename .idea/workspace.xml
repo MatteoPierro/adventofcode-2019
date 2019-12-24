@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CategorySixTest">
+  <component name="RunManager" selected="JUnit.PlanetOfDiscordTest.shouldCreateWorld">
     <configuration name="CategorySixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -134,7 +134,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategorySixTest.switchBufferResults" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlanetOfDiscordTest.shouldCreateWorld" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
         <pattern>
@@ -143,8 +143,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.CategorySixTest" />
-      <option name="METHOD_NAME" value="switchBufferResults" />
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
+      <option name="METHOD_NAME" value="shouldCreateWorld" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -152,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlanetOfDiscordTest.shouldCreateWorld" />
         <item itemvalue="JUnit.CategorySixTest" />
         <item itemvalue="JUnit.CategorySixTest.secondPuzzle" />
         <item itemvalue="JUnit.CategorySixTest.firstPuzzle" />
         <item itemvalue="JUnit.CategorySixTest.shouldReturnPacketWithAddress255" />
-        <item itemvalue="JUnit.CategorySixTest.switchBufferResults" />
       </list>
     </recent_temporary>
   </component>
