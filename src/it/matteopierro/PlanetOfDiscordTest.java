@@ -122,6 +122,7 @@ public class PlanetOfDiscordTest {
                         ".....\n" +
                         "#....\n" +
                         ".#...\n");
+        assertThat(world.biodiversity()).isEqualTo(2129920L);
     }
 
     private class World {
@@ -208,6 +209,20 @@ public class PlanetOfDiscordTest {
                 previousWorlds.add(livingCells);
                 tick();
             }
+        }
+
+        public long biodiversity() {
+            long result = 0;
+            int position = 0;
+            for (int j = 0; j < 5; j++) {
+                for (int i = 0; i < 5; i++) {
+                    if (livingCells.contains(tuple(i, j))) {
+                        result += Math.pow(2, position);
+                    }
+                    position++;
+                }
+            }
+            return result;
         }
     }
 }

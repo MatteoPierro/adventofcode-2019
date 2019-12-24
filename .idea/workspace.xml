@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="evolve world">
+    <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -170,13 +170,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575398691785</updated>
-    </task>
-    <task id="LOCAL-00037" summary="calculate velocity">
-      <created>1576152005927</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1576152005927</updated>
     </task>
     <task id="LOCAL-00038" summary="solve first challenge day 12">
       <created>1576183780755</created>
@@ -514,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577175688408</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="find repeating world">
+      <created>1577176183679</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1577176183679</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -533,7 +533,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="resolve second example" />
     <MESSAGE value="solve first puzzle" />
     <MESSAGE value="calculate inner and outer portals" />
     <MESSAGE value="first attempt to resolve part 2" />
@@ -558,7 +557,8 @@
     <MESSAGE value="first attempt second part" />
     <MESSAGE value="parse the world" />
     <MESSAGE value="evolve world" />
-    <option name="LAST_COMMIT_MESSAGE" value="evolve world" />
+    <MESSAGE value="find repeating world" />
+    <option name="LAST_COMMIT_MESSAGE" value="find repeating world" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -595,7 +595,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java</url>
-          <line>164</line>
+          <line>169</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
