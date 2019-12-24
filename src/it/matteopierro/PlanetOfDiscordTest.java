@@ -1,5 +1,6 @@
 package it.matteopierro;
 
+import org.jooq.lambda.Seq;
 import org.jooq.lambda.tuple.Tuple2;
 import org.jooq.lambda.tuple.Tuple3;
 import org.junit.jupiter.api.Test;
@@ -7,12 +8,11 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.jooq.lambda.tuple.Tuple.tuple;
 
@@ -248,7 +248,7 @@ public class PlanetOfDiscordTest {
         private Set<Tuple2<Integer, Integer>> neighbour(Tuple2<Integer, Integer> cell) {
             return NEIGHBOUR_DELTA.stream()
                     .map(d -> tuple(cell.v1 + d.v1, cell.v2 + d.v2))
-                    .collect(Collectors.toSet());
+                    .collect(toSet());
         }
 
         @Override
@@ -293,12 +293,27 @@ public class PlanetOfDiscordTest {
         }
     }
 
-    public static final Tuple2<Integer, Integer> DOWN = tuple(0, +1);
-    public static final Tuple2<Integer, Integer> RIGHT = tuple(+1, 0);
-    public static final Tuple2<Integer, Integer> LEFT = tuple(-1, 0);
-    public static final Tuple2<Integer, Integer> UP = tuple(0, -1);
+    private static class ComplexWorld {
 
-    private class ComplexWorld {
+        private static final Tuple2<Integer, Integer> DOWN = tuple(0, +1);
+        private static final Tuple2<Integer, Integer> RIGHT = tuple(+1, 0);
+        private static final Tuple2<Integer, Integer> LEFT = tuple(-1, 0);
+        private static final Tuple2<Integer, Integer> UP = tuple(0, -1);
+
+        private static final Map<Tuple2<Integer, Integer>, Function<Integer, Tuple2<Integer, Integer>>>
+                INNER_NEIGHBOUR_MAPPER = Map.of(
+                RIGHT, (i) -> tuple(0, i),
+                LEFT, (i) -> tuple(4, i),
+                UP, (i) -> tuple(i, 4),
+                DOWN, (i) -> tuple(i, 0)
+        );
+
+        private List<Tuple2<Integer, Integer>> NEIGHBOUR_DELTA = List.of(
+                LEFT,
+                UP,
+                DOWN,
+                RIGHT
+        );
 
         private Set<Tuple3<Integer, Integer, Integer>> livingCells = new HashSet<>();
 
@@ -317,12 +332,29 @@ public class PlanetOfDiscordTest {
             }
         }
 
-        private List<Tuple2<Integer, Integer>> NEIGHBOUR_DELTA = List.of(
-                LEFT,
-                UP,
-                DOWN,
-                RIGHT
-        );
+        public void tick() {
+            livingCells = neighboursCounter().entrySet().stream()
+                    .filter(entry -> isAlive(entry.getKey(), entry.getValue()))
+                    .map(Map.Entry::getKey)
+                    .collect(toSet());
+        }
+
+        public boolean isAlive(Tuple3<Integer, Integer, Integer> neighbour, Integer counter) {
+            return livingCells.contains(neighbour) ? counter == 1 : (counter == 1 || counter == 2);
+        }
+
+        public HashMap<Tuple3<Integer, Integer, Integer>, Integer> neighboursCounter() {
+            var neighboursCounter = new HashMap<Tuple3<Integer, Integer, Integer>, Integer>();
+
+            for (Tuple3<Integer, Integer, Integer> cell : livingCells) {
+                for (Tuple3<Integer, Integer, Integer> neighbour : neighbours(cell)) {
+                    var counter = neighboursCounter.getOrDefault(neighbour, 0);
+                    neighboursCounter.put(neighbour, counter + 1);
+                }
+            }
+
+            return neighboursCounter;
+        }
 
         private Set<Tuple3<Integer, Integer, Integer>> neighbours(Tuple3<Integer, Integer, Integer> cell) {
             var neighbours = new HashSet<Tuple3<Integer, Integer, Integer>>();
@@ -332,9 +364,9 @@ public class PlanetOfDiscordTest {
                 int x = cell.v1 + delta.v1;
                 int y = cell.v2 + delta.v2;
 
-                if (x == 2 && y == 2) {
+                if (Stream.of(x, y).allMatch(v -> v == 2)) {
                     neighbours.addAll(innerWorldNeighbours(delta, level));
-                } else if ((x < 0 || x > 4) || (y < 0 || y > 4)) {
+                } else if (Stream.of(x, y).anyMatch(v -> v < 0 || v > 4)) {
                     neighbours.addAll(outWorldNeighbours(delta, level));
                 } else {
                     neighbours.add(tuple(x, y, level));
@@ -350,47 +382,10 @@ public class PlanetOfDiscordTest {
         }
 
         private Set<Tuple3<Integer, Integer, Integer>> innerWorldNeighbours(Tuple2<Integer, Integer> delta, Integer level) {
-            var result = new HashSet<Tuple3<Integer, Integer, Integer>>();
-            
-            for (int i = 0; i < 5; i++) {
-                if (RIGHT.equals(delta)) {
-                    result.add(tuple(0, i, level + 1));
-                }
-                if (LEFT.equals(delta)) {
-                    result.add(tuple(4, i, level + 1));
-                }
-                if (DOWN.equals(delta)) {
-                    result.add(tuple(i, 0, level + 1));
-                }
-                if (UP.equals(delta)) {
-                    result.add(tuple(i, 4, level + 1));
-                }
-            }
-
-            return result;
-        }
-
-        public void tick() {
-            var neighboursCounter = new HashMap<Tuple3<Integer, Integer, Integer>, Integer>();
-
-            for (Tuple3<Integer, Integer, Integer> cell : livingCells) {
-                for (Tuple3<Integer, Integer, Integer> neighbour : neighbours(cell)) {
-                    var counter = neighboursCounter.getOrDefault(neighbour, 0);
-                    neighboursCounter.put(neighbour, counter + 1);
-                }
-            }
-
-            var next = new HashSet<Tuple3<Integer, Integer, Integer>>();
-
-            for (Tuple3<Integer, Integer, Integer> neighbour : neighboursCounter.keySet()) {
-                var counter = neighboursCounter.get(neighbour);
-                var isAlive = livingCells.contains(neighbour) ? counter == 1 : (counter == 1 || counter == 2);
-                if (isAlive) {
-                    next.add(neighbour);
-                }
-            }
-
-            livingCells = next;
+            return Seq.range(0, 5)
+                    .map(INNER_NEIGHBOUR_MAPPER.get(delta))
+                    .map(t -> tuple(t.v1, t.v2, level + 1))
+                    .toSet();
         }
     }
 }
