@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8441bab6-0a4e-4d32-a9cb-417cb842a8cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/matteopierro/PlanetOfDiscordTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/it/matteopierro/cryostasis/Cryostasis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +71,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PlanetOfDiscordTest">
+  <component name="RunManager" selected="Application.Cryostasis">
+    <configuration name="Cryostasis" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.matteopierro.cryostasis.Cryostasis" />
+      <module name="day2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.matteopierro.cryostasis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PlanetOfDiscordTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -118,22 +132,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlanetOfDiscordTest.shouldEvolveSeveralTimes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="day2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="it.matteopierro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="it.matteopierro" />
-      <option name="MAIN_CLASS_NAME" value="it.matteopierro.PlanetOfDiscordTest" />
-      <option name="METHOD_NAME" value="shouldEvolveSeveralTimes" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PlanetOfDiscordTest.shouldFindRepeatingWorld" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="day2" />
       <extension name="coverage">
@@ -152,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Cryostasis" />
         <item itemvalue="JUnit.PlanetOfDiscordTest" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.secondPuzzle" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.firstPuzzle" />
         <item itemvalue="JUnit.PlanetOfDiscordTest.shouldFindRepeatingWorld" />
-        <item itemvalue="JUnit.PlanetOfDiscordTest.shouldEvolveSeveralTimes" />
       </list>
     </recent_temporary>
   </component>
@@ -592,6 +590,16 @@
           <url>file://$PROJECT_DIR$/src/it/matteopierro/CategorySixTest.java</url>
           <line>266</line>
           <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/cryostasis/Cryostasis.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/it/matteopierro/cryostasis/Cryostasis.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
